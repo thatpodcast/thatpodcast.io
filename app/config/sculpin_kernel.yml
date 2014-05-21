@@ -1,0 +1,4 @@
+sculpin_content_types:
+    episodes:
+        permalink: episodes/:year/:month/:day/:basename/
+

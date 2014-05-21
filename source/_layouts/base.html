@@ -1,0 +1,67 @@
+<html>
+<head>
+</head>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <title>That Podcast with Beau and Dave</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ site.url }}/assets/icnfnt/fontawesome.css?ab={{ assets_bump }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ site.url }}/assets/css/screen.css?ab={{ site.asset_bump }}">
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body {% if page.nav_current %} id="page-nav-{{ page.nav_current }}" {% endif %}>
+    <header role="banner">
+        <nav role="navigation">
+            <button type="button">
+                <span>Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <header>
+                <a href="{{ site.url }}/">
+                    That Podcast
+                </a>
+            </header>
+            <div>
+                <ul>
+                    <li {% if page.nav_current == 'home' %}class="active"{% endif %}><a href="{{ site.url }}/">Episodes</a></li>
+                    <li {% if page.nav_current == 'newsletter' %}class="active"{% endif %}><a href="{{ site.url }}/newsletter">Newsletter</a></li>
+                    <li {% if page.nav_current == 'about' %}class="active"{% endif %}><a href="{{ site.url }}/about">About</a></li>
+                </ul>
+                <ul>
+                    <li><a href="https://twitter.com/ThatPodcast"><i class="icon-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/115001521342575956145"><i class="icon-google-plus"></i></a></li>
+                    <li><a href="https://www.facebook.com/wearboogio"><i class="icon-facebook"></i></a></li>
+                    <li><a href="https://github.com/davedevelopment/thatpodcast.io"><i class="icon-github"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="main-content">
+        {% block hero_wrapper %}{% block hero %}{% endblock %}{% endblock %}
+        {% block content_wrapper %}{% block content %}{% endblock %}{% endblock %}
+    </div>
+    <footer role="contentinfo">
+    </footer>
+    <script>
+(function () {
+    var screen = document.createElement('div');
+    if (screen.classList) {
+        screen.classList.add('screen');
+    } else {
+        screen.className += ' screen';
+    }
+    var hero = document.querySelector('#hero');
+    hero.insertBefore(screen, hero.firstChild);
+})();
+    </script>
+</body>
+</html>

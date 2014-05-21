@@ -1,0 +1,19 @@
+{% extends "base" %}
+{% block hero %}
+<section id="hero" class="episode" style="background-image: url({{ site.url }}{{ page.bg_image }});">
+    <div>
+        <header>
+            <h1>Episode {{ page.number }}: {{ page.title }}</h1>
+            <h2>{{ page.description }}</h2>
+        </header>
+        {% include "image_credit" %}
+    </div>
+</section>
+{% endblock %}
+{% block content_wrapper %}
+<section>
+    <article>
+        {% block content %}{% endblock %}
+    </article>
+</section>
+{% endblock %}

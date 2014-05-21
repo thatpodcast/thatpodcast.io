@@ -1,0 +1,34 @@
+---
+layout: default
+use:
+    - episodes
+nav_current: home
+image_credit:
+    url: https://www.flickr.com/photos/eschipul/555287661/
+    by: Ed Schipul
+    description: open mic
+---
+{% block hero %}
+<section id="hero">
+    <div>
+        <header>
+            <h1>That Podcast</h1>
+        </header>
+        {% include "image_credit" %}
+    </div>
+</section>
+{% endblock %}
+{% block content %}
+<section id="episode-list">
+    {% for episode in data.episodes %}
+        <article>
+            <header>
+                <h1><a href="{{ episode.url }}">Episode {{ episode.number }}: {{ episode.title }}</a></h1>
+                <h2>{{ episode.description }}</h2>
+            </header>
+            <div>
+            </div>
+        </article>
+    {% endfor %}
+</section>
+{% endblock %}
