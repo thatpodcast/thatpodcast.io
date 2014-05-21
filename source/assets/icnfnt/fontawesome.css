@@ -268,7 +268,11 @@ ul.icons li [class*=" icon-"] {
   .btn .icon-spin.icon-large {
     height: .75em;
   }
-}.icon-twitter:before		{ content: "\f021"; }
-.icon-facebook:before		{ content: "\f022"; }
-.icon-github:before		{ content: "\f023"; }
-.icon-google-plus:before		{ content: "\f024"; }
+}.icon-envelope:before		{ content: "\f021"; }
+.icon-twitter:before		{ content: "\f022"; }
+.icon-facebook:before		{ content: "\f023"; }
+.icon-github:before		{ content: "\f024"; }
+.icon-rss:before		{ content: "\f025"; }
+.icon-google-plus:before		{ content: "\f026"; }
+.icon-envelope-alt:before		{ content: "\f027"; }
+.icon-github-alt:before		{ content: "\f028"; }

@@ -7,6 +7,11 @@
             <h2>{{ page.description }}</h2>
         </header>
     </div>
+    <div style="background-color: black; width: 100%; position: relative; z-index: 2;">
+        <div class="audio-player">
+            <iframe src="{{ page.embed_url }}" width="500" height="70" frameborder="0"></iframe>
+        </div>
+    </div>
 </section>
 {% endblock %}
 {% block content_wrapper %}

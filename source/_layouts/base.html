@@ -12,7 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ site.url }}/assets/icnfnt/fontawesome.css?ab={{ assets_bump }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ site.url }}/assets/css/screen.css?ab={{ site.asset_bump }}">
-    <!--[if IE]>
+    <script src="{{ site.url }}/assets/js/modernizr/modernizr.min.js"></script>
+     <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
@@ -37,10 +38,12 @@
                     <li {% if page.nav_current == 'about' %}class="active"{% endif %}><a href="{{ site.url }}/about">About</a></li>
                 </ul>
                 <ul>
-                    <li><a href="https://twitter.com/ThatPodcast"><i class="icon-twitter"></i></a></li>
-                    <li><a href="https://plus.google.com/115001521342575956145"><i class="icon-google-plus"></i></a></li>
-                    <li><a href="https://www.facebook.com/wearboogio"><i class="icon-facebook"></i></a></li>
-                    <li><a href="https://github.com/davedevelopment/thatpodcast.io"><i class="icon-github"></i></a></li>
+                    <li><a href="#">iTunes</a></li>
+                    <li><a href="#"><i class="icon-rss"></i></a></li>
+                    <li class="social-media"><a href="https://twitter.com/thatpodcast"><i class="icon-twitter"></i></a></li>
+                    <li class="social-media"><a href="https://plus.google.com/115001521342575956145"><i class="icon-google-plus"></i></a></li>
+                    <li class="social-media"><a href="https://www.facebook.com/pages/That-Podcast/318310284991754"><i class="icon-facebook"></i></a></li>
+                    <li class="social-media"><a href="https://github.com/davedevelopment/thatpodcast.io"><i class="icon-github"></i></a></li>
                 </ul>
             </div>
         </nav>
@@ -54,6 +57,7 @@
     </div>
     <footer role="contentinfo">
     </footer>
+    <script src="{{ site.url }}/assets/js/jquery/jquery-1.11.1.min.js"></script>
     <script>
 (function () {
     var screen = document.createElement('div');

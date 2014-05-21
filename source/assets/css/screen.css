@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body {
   height: 100%;
   margin: 0;
@@ -13,16 +14,37 @@ section#hero {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  display: -webkit-box;
+  /* OLD: Safari,  iOS, Android browser, older WebKit browsers.  */
+  display: -moz-box;
+  /* OLD: Firefox (buggy) */
+  display: -ms-flexbox;
+  /* MID: IE 10 */
+  display: -webkit-flex;
+  /* NEW, Chrome 21–28, Safari 6.1+ */
   display: flex;
+  /* NEW: IE11, Chrome 29+, Opera 12.1+, Firefox 22+ */
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
   color: white;
-  min-height: 75%;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75); }
-  section#hero > div:not(.screen) {
+  min-height: 100%;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
+  -webkit-box-align: flex-end;
+  -moz-box-align: flex-end;
+  /* OLD… */
+  -ms-flex-align: flex-end;
+  /* You know the drill now… */
+  -webkit-align-items: flex-end;
+  align-items: flex-end; }
+  section#hero div.audio-player,
+  section#hero > div:first-of-type {
     position: relative;
-    z-index: 2;
-    align-self: flex-end;
+    z-index: 2; }
+  section#hero > div:first-of-type {
     width: 100%;
-    padding: 10em 1em 2em; }
+    padding: 2em 1em 2em; }
   section#hero div.screen {
     display: block;
     xbackground-image: url(screen.png);
@@ -40,23 +62,22 @@ section#hero {
 
 .image-credit {
   position: absolute;
-  z-index: 2;
-  margin-top: -1.5em;
-  margin-left: 1em; }
+  margin-left: 1em;
+  margin-top: .5em; }
   .image-credit a {
     transition: .125s ease-in-out;
     font-size: .75em;
-    color: white;
+    color: black;
     text-decoration: none;
-    opacity: .5; }
+    opacity: .25; }
   .image-credit a:hover {
-    opacity: .75; }
+    opacity: .5; }
 
 section:not(#hero) {
   padding: 2em 1em; }
 
 section:not(#hero):nth-of-type(2n) {
-  background-color: white; }
+  background-color: #eee; }
 
 section:not(#hero):nth-of-type(2n+1) {
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%);
@@ -73,10 +94,17 @@ body:not(#page-nav-home) section#hero h1 {
   margin: 0 0 .25em;
   line-height: 1.125em; }
 body:not(#page-nav-home) section#hero h2 {
-  font-size: 1.125em;
+  font-size: 1em;
   font-weight: normal;
   margin: 0;
   color: #bbb; }
+
+section#hero .audio-player {
+  width: 100%;
+  background-color: black; }
+  section#hero .audio-player iframe {
+    padding: 0 1em;
+    width: 100%; }
 
 section#episode-list {
   padding: 4em 1em; }
@@ -118,7 +146,7 @@ header[role="banner"] {
     width: 0;
     height: 100%; }
   header[role="banner"] nav[role="navigation"] > header a {
-    background-image: url(../images/thatpodcast.svg);
+    background-image: url(../images/thatpodcast-small.svg);
     background-size: cover;
     background-position: center;
     display: block;
@@ -136,8 +164,8 @@ header[role="banner"] {
 
 @media only screen and (min-width: 768px) {
   header[role="banner"] {
-    line-height: 2em;
-    height: 2em; }
+    line-height: 3em;
+    height: 3em; }
     header[role="banner"] nav[role="navigation"] {
       margin: 0 auto;
       width: 700px; }
@@ -145,8 +173,7 @@ header[role="banner"] {
         display: none; }
       header[role="banner"] nav[role="navigation"] > header {
         display: inline-block;
-        float: left;
-        margin-right: .5em; }
+        float: left; }
         header[role="banner"] nav[role="navigation"] > header a {
           margin-top: .25em;
           width: 2.5em;
@@ -159,15 +186,19 @@ header[role="banner"] {
       header[role="banner"] nav[role="navigation"] ul:last-of-type {
         float: right;
         margin-right: 1em; }
+        header[role="banner"] nav[role="navigation"] ul:last-of-type li.social-media a {
+          margin: 0; }
       header[role="banner"] nav[role="navigation"] li a {
-        margin: 0 .25em; }
+        margin: 0 .25em;
+        height: 3em;
+        display: inline-block; }
       header[role="banner"] nav[role="navigation"] li.active {
         border-bottom: 2px solid white; }
         header[role="banner"] nav[role="navigation"] li.active a {
           color: white; }
       header[role="banner"] nav[role="navigation"] a {
         transition: .125s ease-in-out;
-        color: #eee;
+        color: #ccc;
         text-decoration: none;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75); }
       header[role="banner"] nav[role="navigation"] a:hover {
@@ -178,32 +209,52 @@ header[role="banner"] {
     max-width: 700px;
     padding: 0 1em; }
 
-  section#hero > div {
+  section#hero > div:first-of-type {
     max-width: 700px;
     margin: 0 auto; }
 
   .image-credit {
-    right: .5em;
-    margin-top: .25em; }
-    .image-credit a {
-      text-shadow: none;
-      color: black;
-      opacity: .25; }
-    .image-credit a:hover {
-      opacity: .5; }
+    right: .5em; }
 
   body:not(#page-nav-home) section#hero h1 {
-    font-size: 3em; }
+    font-size: 2.25em; }
   body:not(#page-nav-home) section#hero h2 {
-    font-size: 1.5em; } }
-@media only screen and (min-width: 992px) {
-  header[role="banner"] nav[role="navigation"] > header {
+    font-size: 1.125em; }
+
+  section#hero .audio-player iframe {
     display: block;
-    margin: 0;
-    position: fixed;
-    left: 1em;
-    top: 1em; }
-    header[role="banner"] nav[role="navigation"] > header a {
+    max-width: 700px;
+    margin: 0 auto; } }
+@media only screen and (min-width: 992px) {
+  header[role="banner"] nav[role="navigation"] {
+    width: 840px; }
+    header[role="banner"] nav[role="navigation"] > header {
+      display: block;
       margin: 0;
-      width: 4em;
-      height: 4em; } }
+      position: fixed;
+      left: 1em;
+      top: 1em; }
+      header[role="banner"] nav[role="navigation"] > header a {
+        background-image: url(../images/thatpodcast.svg);
+        margin: 0;
+        width: 4em;
+        height: 4em; }
+
+  #main-content section > article {
+    max-width: 840px; }
+
+  section#hero > div:first-of-type {
+    max-width: 840px; }
+
+  body:not(#page-nav-home) section#hero h1 {
+    font-size: 2.75em; }
+  body:not(#page-nav-home) section#hero h2 {
+    font-size: 1.25em; }
+
+  section#hero .audio-player iframe {
+    max-width: 840px;
+    margin: 0 auto; } }
+@media only screen and (min-width: 1200px) {
+  header[role="banner"] nav[role="navigation"] > header a {
+    width: 8em;
+    height: 8em; } }
