@@ -7,6 +7,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
+	background-color: #333;
 }
 
 * {
@@ -95,16 +96,17 @@ section:not(#hero):nth-of-type(2n) {
 }
 
 section:not(#hero):nth-of-type(2n+1) {
-	background: -moz-linear-gradient(top,  rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.2)), color-stop(100%,rgba(0,0,0,0.1)));
-	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.1) 100%);
-	background: -o-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.1) 100%);
-	background: -ms-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.1) 100%);
-	background: linear-gradient(to bottom,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#1a000000',GradientType=0 );
+	background-color: #ddd;
 }
 
-body:not(#page-nav-home) section#hero {
+body#page-nav-home section#hero {
+	min-height: 66%;
+}
+
+section#hero h1 {
+	padding-top: 1em;
+}
+section#hero {
 	h1 {
 		font-size: 2em;
 		font-weight: bold;
@@ -196,6 +198,11 @@ header[role="banner"] {
 			    overflow: hidden;
 			    /* IE 6/7 fallback */
 			    *text-indent: -9999px;
+			    opacity: .9;
+				transition: opacity .125s ease-in-out;
+			}
+			a:hover {
+				opacity: 1;
 			}
 		}
 
@@ -203,6 +210,10 @@ header[role="banner"] {
 			padding: 0;
 			margin: 0;
 			list-style-type: none;
+
+			a {
+				transition: color .125s ease-in-out;
+			}
 		}
 	}
 }
@@ -265,7 +276,6 @@ header[role="banner"] {
 			}
 
 			a {
-				transition: .125s ease-in-out;
 				color: #ccc;
 				text-decoration: none;
 				text-shadow: 1px 1px 1px rgba(0,0,0,.75);
@@ -299,7 +309,7 @@ header[role="banner"] {
 		right: .5em;
 	}
 
-	body:not(#page-nav-home) section#hero {
+	section#hero {
 		h1 {
 			font-size: 2.25em;
 		}
@@ -314,6 +324,14 @@ header[role="banner"] {
 			max-width: $main_width_768;
 			margin: 0 auto;
 		}
+	}
+}
+
+footer[role="contentinfo"] {
+	padding: 2em 1em;
+	color: white;
+	div.copyright {
+		text-align: center;
 	}
 }
 
@@ -352,7 +370,7 @@ header[role="banner"] {
 		}
 	}
 
-	body:not(#page-nav-home) section#hero {
+	section#hero {
 		h1 {
 			font-size: 2.75em;
 		}
