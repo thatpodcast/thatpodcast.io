@@ -17,6 +17,12 @@ section#hero {
   color: white;
   min-height: 75%;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75); }
+  section#hero > div:not(.screen) {
+    position: relative;
+    z-index: 2;
+    align-self: flex-end;
+    width: 100%;
+    padding: 10em 1em 2em; }
   section#hero div.screen {
     display: block;
     xbackground-image: url(screen.png);
@@ -31,21 +37,20 @@ section#hero {
     padding: 0;
     width: 100%;
     max-width: 100%; }
-  section#hero > div:not(.screen) {
-    z-index: 2;
-    align-self: flex-end;
-    width: 100%;
-    padding: 10em 1em 2em; }
-  section#hero .image-credit {
-    margin-top: 1em; }
-    section#hero .image-credit a {
-      transition: .125s ease-in-out;
-      font-size: .75em;
-      color: white;
-      text-decoration: none;
-      opacity: .5; }
-    section#hero .image-credit a:hover {
-      opacity: .75; }
+
+.image-credit {
+  position: absolute;
+  z-index: 2;
+  margin-top: -1.5em;
+  margin-left: 1em; }
+  .image-credit a {
+    transition: .125s ease-in-out;
+    font-size: .75em;
+    color: white;
+    text-decoration: none;
+    opacity: .5; }
+  .image-credit a:hover {
+    opacity: .75; }
 
 section:not(#hero) {
   padding: 2em 1em; }
@@ -100,7 +105,7 @@ body#page-nav-about section#hero {
 
 header[role="banner"] {
   position: absolute;
-  z-index: 2;
+  z-index: 100;
   width: 100%; }
   header[role="banner"] nav[role="navigation"] > button {
     display: none; }
@@ -173,16 +178,16 @@ header[role="banner"] {
   section#hero > div {
     max-width: 700px;
     margin: 0 auto; }
-    section#hero > div .image-credit {
-      position: absolute;
-      bottom: -1em;
-      right: .25em; }
-      section#hero > div .image-credit a {
-        text-shadow: none;
-        color: black;
-        opacity: .25; }
-      section#hero > div .image-credit a:hover {
-        opacity: .5; } }
+
+  .image-credit {
+    right: .5em;
+    margin-top: .25em; }
+    .image-credit a {
+      text-shadow: none;
+      color: black;
+      opacity: .25; }
+    .image-credit a:hover {
+      opacity: .5; } }
 @media only screen and (min-width: 992px) {
   header[role="banner"] nav[role="navigation"] > header {
     display: block;

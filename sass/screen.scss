@@ -23,6 +23,15 @@ section#hero {
 	min-height: 75%;
 	text-shadow: 2px 2px 2px rgba(0,0,0,.75);
 
+
+	> div:not(.screen) {
+		position: relative;
+		z-index: 2;
+		align-self: flex-end;
+		width: 100%;
+		padding: 10em 1em 2em;
+	}
+
 	div.screen {
 		display: block;
 		xbackground-image: url(screen.png);
@@ -38,30 +47,26 @@ section#hero {
 		width: 100%;
 		max-width: 100%;
 	}
-
-	> div:not(.screen) {
-		z-index: 2;
-		align-self: flex-end;
-		width: 100%;
-		padding: 10em 1em 2em;
-	}
-
-	.image-credit {
-		margin-top: 1em;
-		a {
-			transition: .125s ease-in-out;
-			font-size: .75em;
-			color: white;
-			text-decoration: none;
-			opacity: .5;
-		}
-
-		a:hover {
-			opacity: .75;
-		}
-	}
-
 }
+
+.image-credit {
+	position: absolute;
+	z-index: 2;
+	margin-top: -1.5em;
+	margin-left: 1em;
+	a {
+		transition: .125s ease-in-out;
+		font-size: .75em;
+		color: white;
+		text-decoration: none;
+		opacity: .5;
+	}
+
+	a:hover {
+		opacity: .75;
+	}
+}
+
 
 section:not(#hero) {
 	padding: 2em 1em;
@@ -132,7 +137,7 @@ body#page-nav-about section#hero {
 
 header[role="banner"] {
 	position: absolute;
-	z-index: 2;
+	z-index: 100;
 	width: 100%;
 	nav[role="navigation"] {
 		> button {
@@ -248,21 +253,20 @@ header[role="banner"] {
 		> div {
 			max-width: $main_width_768;
 			margin: 0 auto;
+		}
+	}
 
-			.image-credit {
-				position: absolute;
-				bottom: -1em;
-				right: .25em;
-				a {
-					text-shadow: none;
-					color: black;
-					opacity: .25;
-				}
+	.image-credit {
+		right: .5em;
+		margin-top: .25em;
+		a {
+			text-shadow: none;
+			color: black;
+			opacity: .25;
+		}
 
-				a:hover {
-					opacity: .5;
-				}
-			}
+		a:hover {
+			opacity: .5;
 		}
 	}
 }

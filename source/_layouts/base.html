@@ -46,7 +46,10 @@
         </nav>
     </header>
     <div id="main-content">
-        {% block hero_wrapper %}{% block hero %}{% endblock %}{% endblock %}
+        {% block hero_wrapper %}
+            {% block hero %}{% endblock %}
+            {% include "image_credit" %}
+        {% endblock %}
         {% block content_wrapper %}{% block content %}{% endblock %}{% endblock %}
     </div>
     <footer role="contentinfo">
@@ -60,7 +63,7 @@
         screen.className += ' screen';
     }
     var hero = document.querySelector('#hero');
-    hero.insertBefore(screen, hero.firstChild);
+    hero.appendChild(screen);
 })();
     </script>
 </body>
