@@ -88,16 +88,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', e
 
 body:not(#page-nav-home) section#hero {
 	h1 {
-		font-size: 3em;
+		font-size: 2em;
 		font-weight: bold;
 		margin: 0 0 .25em;
 		line-height: 1.125em;
 	}
 	h2 {
-		font-size: 1.25em;
+		font-size: 1.125em;
 		font-weight: normal;
 		margin: 0;
-		color: #ddd;
+		color: #bbb;
 	}
 }
 
@@ -111,15 +111,20 @@ section#episode-list {
 		line-height: 1.125em;
 
 		a {
-			color: black;
+			transition: .125s ease-in-out;
+			color: #555;
 			text-decoration: none;
+		}
+
+		a:hover {
+			color: #333;
 		}
 	}
 	h2 {
 		font-size: 1em;
 		font-weight: normal;
 		margin: 0;
-		color: #555;
+		color: #999;
 	}
 }
 
@@ -267,6 +272,15 @@ header[role="banner"] {
 
 		a:hover {
 			opacity: .5;
+		}
+	}
+
+	body:not(#page-nav-home) section#hero {
+		h1 {
+			font-size: 3em;
+		}
+		h2 {
+			font-size: 1.5em;
 		}
 	}
 }

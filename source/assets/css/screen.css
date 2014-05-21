@@ -68,15 +68,15 @@ section:not(#hero):nth-of-type(2n+1) {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#1a000000',GradientType=0 ); }
 
 body:not(#page-nav-home) section#hero h1 {
-  font-size: 3em;
+  font-size: 2em;
   font-weight: bold;
   margin: 0 0 .25em;
   line-height: 1.125em; }
 body:not(#page-nav-home) section#hero h2 {
-  font-size: 1.25em;
+  font-size: 1.125em;
   font-weight: normal;
   margin: 0;
-  color: #ddd; }
+  color: #bbb; }
 
 section#episode-list {
   padding: 4em 1em; }
@@ -86,13 +86,16 @@ section#episode-list {
     margin: 0 0 .25em;
     line-height: 1.125em; }
     section#episode-list h1 a {
-      color: black;
+      transition: .125s ease-in-out;
+      color: #555;
       text-decoration: none; }
+    section#episode-list h1 a:hover {
+      color: #333; }
   section#episode-list h2 {
     font-size: 1em;
     font-weight: normal;
     margin: 0;
-    color: #555; }
+    color: #999; }
 
 body#page-nav-home section#hero {
   background-image: url(red-mic.jpg); }
@@ -187,7 +190,12 @@ header[role="banner"] {
       color: black;
       opacity: .25; }
     .image-credit a:hover {
-      opacity: .5; } }
+      opacity: .5; }
+
+  body:not(#page-nav-home) section#hero h1 {
+    font-size: 3em; }
+  body:not(#page-nav-home) section#hero h2 {
+    font-size: 1.5em; } }
 @media only screen and (min-width: 992px) {
   header[role="banner"] nav[role="navigation"] > header {
     display: block;
