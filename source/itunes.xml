@@ -5,7 +5,7 @@ permalink: itunes.rss
 <?xml version="1.0" encoding="utf-8"?>
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
 <channel>
-    <atom:link href="http://media.signalleaf.com/That-Podcast/rss" rel="self" type="application/rss+xml"/>
+    <atom:link href="{{ site.url }}{{ page.url }}" rel="self" type="application/rss+xml"/>
     <title>That Podcast</title>
     <link>http://thatpodcast.io</link>
     <language>en-GB</language>
