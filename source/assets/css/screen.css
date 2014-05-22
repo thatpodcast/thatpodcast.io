@@ -1,4 +1,27 @@
 @charset "UTF-8";
+form input[type="submit"] {
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: inline-block;
+  margin: 1em 0;
+  text-decoration: none;
+  line-height: 20px;
+  padding: .5em 2em;
+  border-radius: 20px;
+  background-color: #f7761f;
+  color: #fff;
+  font-size: inherit;
+  cursor: pointer; }
+form input[type="email"] {
+  line-height: 32px;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0 1em;
+  border-radius: 1em;
+  width: 17em;
+  border: 2px solid #9e9d9d; }
+
 html, body {
   height: 100%;
   margin: 0;
@@ -137,6 +160,8 @@ section#episode-list {
 body#page-nav-home section#hero {
   background-image: url(red-mic.jpg); }
 
+body#page-nav-newsletter-confirmation section#hero,
+body#page-nav-newsletter-thanks section#hero,
 body#page-nav-newsletter section#hero {
   background-image: url(newsletter.jpg); }
 
@@ -147,41 +172,59 @@ header[role="banner"] {
   position: absolute;
   z-index: 100;
   width: 100%; }
-  header[role="banner"] nav[role="navigation"] > button {
-    display: none; }
-  header[role="banner"] nav[role="navigation"] > header a:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 100%; }
-  header[role="banner"] nav[role="navigation"] > header a {
-    background-image: url(../images/thatpodcast-small.svg);
-    background-size: cover;
-    background-position: center;
-    display: block;
-    height: 40px;
-    width: 40px;
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    /* IE 6/7 fallback */
-    *text-indent: -9999px;
-    opacity: .9;
-    transition: opacity .125s ease-in-out; }
-  header[role="banner"] nav[role="navigation"] > header a:hover {
-    opacity: 1; }
-  header[role="banner"] nav[role="navigation"] ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none; }
-    header[role="banner"] nav[role="navigation"] ul a {
-      transition: color .125s ease-in-out; }
+  header[role="banner"] nav[role="navigation"] {
+    padding: 1em; }
+    header[role="banner"] nav[role="navigation"] > button {
+      display: none; }
+    header[role="banner"] nav[role="navigation"] > header a:before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 100%; }
+    header[role="banner"] nav[role="navigation"] > header a {
+      background-image: url(../images/thatpodcast-small.svg);
+      background-size: cover;
+      background-position: center;
+      display: block;
+      height: 40px;
+      width: 40px;
+      background-color: transparent;
+      border: 0;
+      overflow: hidden;
+      /* IE 6/7 fallback */
+      *text-indent: -9999px;
+      opacity: .9;
+      transition: opacity .125s ease-in-out; }
+    header[role="banner"] nav[role="navigation"] > header a:hover {
+      opacity: 1; }
+    header[role="banner"] nav[role="navigation"] ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none; }
+      header[role="banner"] nav[role="navigation"] ul a {
+        transition: color .125s ease-in-out;
+        display: block;
+        height: 2em;
+        line-height: 2em; }
+    header[role="banner"] nav[role="navigation"] ul:first-of-type {
+      margin-top: .5em; }
+    header[role="banner"] nav[role="navigation"] ul:last-of-type {
+      display: none; }
+    header[role="banner"] nav[role="navigation"] a {
+      color: #ccc;
+      text-decoration: none;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75); }
+    header[role="banner"] nav[role="navigation"] a:hover {
+      color: white; }
+    header[role="banner"] nav[role="navigation"] li.active a {
+      color: white; }
 
 @media only screen and (min-width: 768px) {
   header[role="banner"] {
     line-height: 3em;
     height: 3em; }
     header[role="banner"] nav[role="navigation"] {
+      padding: 0;
       margin: 0 auto;
       width: 700px; }
       header[role="banner"] nav[role="navigation"] > button {
@@ -196,9 +239,11 @@ header[role="banner"] {
       header[role="banner"] nav[role="navigation"] ul li {
         display: inline-block; }
       header[role="banner"] nav[role="navigation"] ul:first-of-type {
+        margin-top: 0;
         margin-left: 1em;
         float: left; }
       header[role="banner"] nav[role="navigation"] ul:last-of-type {
+        display: block;
         float: right;
         margin-right: 1em; }
         header[role="banner"] nav[role="navigation"] ul:last-of-type li.social-media a {
@@ -209,14 +254,6 @@ header[role="banner"] {
         display: inline-block; }
       header[role="banner"] nav[role="navigation"] li.active {
         border-bottom: 2px solid white; }
-        header[role="banner"] nav[role="navigation"] li.active a {
-          color: white; }
-      header[role="banner"] nav[role="navigation"] a {
-        color: #ccc;
-        text-decoration: none;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75); }
-      header[role="banner"] nav[role="navigation"] a:hover {
-        color: white; }
 
   #main-content section > article {
     margin: 0 auto;
@@ -241,7 +278,7 @@ header[role="banner"] {
     margin: 0 auto; } }
 footer[role="contentinfo"] {
   padding: 2em 1em;
-  color: white; }
+  color: #ccc; }
   footer[role="contentinfo"] div.copyright {
     text-align: center; }
 

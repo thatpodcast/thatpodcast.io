@@ -2,6 +2,36 @@
 $main_width_768: 700px;
 $main_width_992: 840px;
 
+form {
+	input[type="submit"] {
+	    border: none;
+	    -webkit-appearance: none;
+	    -moz-appearance: none;
+
+	    display: inline-block;
+	    margin: 1em 0;
+	    text-decoration: none;
+	    line-height: 20px;
+	    padding: .5em 2em;
+	    border-radius: 20px;
+	    background-color: #f7761f;
+	    color: #fff;
+	    font-size: inherit;
+	    cursor: pointer;
+	}
+
+	input[type="email"] {
+	    line-height: 32px;
+	    font-size: 1em;
+	    font-weight: bold;
+	    padding: 0 1em;
+	    border-radius: 1em;
+	    width: 17em;
+	    border: 2px solid #9e9d9d;
+	}
+}
+
+
 html, body {
 	height: 100%;
 	margin: 0;
@@ -170,6 +200,8 @@ body#page-nav-home section#hero {
 	background-image: url(red-mic.jpg);
 }
 
+body#page-nav-newsletter-confirmation section#hero,
+body#page-nav-newsletter-thanks section#hero,
 body#page-nav-newsletter section#hero {
 	background-image: url(newsletter.jpg);
 }
@@ -183,6 +215,7 @@ header[role="banner"] {
 	z-index: 100;
 	width: 100%;
 	nav[role="navigation"] {
+		padding: 1em;
 		> button {
 			display: none;
 		}
@@ -222,8 +255,34 @@ header[role="banner"] {
 
 			a {
 				transition: color .125s ease-in-out;
+				display: block;
+				height: 2em;
+				line-height: 2em;
 			}
 		}
+		ul:first-of-type {
+			margin-top: .5em;
+		}
+		ul:last-of-type {
+			display: none;
+		}
+
+		a {
+			color: #ccc;
+			text-decoration: none;
+			text-shadow: 1px 1px 1px rgba(0,0,0,.75);
+		}
+
+		a:hover {
+			color: white;
+		}
+
+		li.active {
+			a {
+				color: white;
+			}
+		}
+
 	}
 }
 
@@ -232,6 +291,7 @@ header[role="banner"] {
 		line-height: 3em;
 		height: 3em;
 		nav[role="navigation"] {
+			padding: 0;
 			margin: 0 auto;
 			width: $main_width_768;
 			> button {
@@ -255,11 +315,13 @@ header[role="banner"] {
 			}
 
 			ul:first-of-type {
+				margin-top: 0;
 				margin-left: 1em;
 				float: left;
 			}
 
 			ul:last-of-type {
+				display: block;
 				float: right;
 				margin-right: 1em;
 
@@ -278,22 +340,7 @@ header[role="banner"] {
 
 			li.active {
 				border-bottom: 2px solid white;
-
-				a {
-					color: white;
-				}
 			}
-
-			a {
-				color: #ccc;
-				text-decoration: none;
-				text-shadow: 1px 1px 1px rgba(0,0,0,.75);
-			}
-
-			a:hover {
-				color: white;
-			}
-
 		}
 	}
 
@@ -338,7 +385,7 @@ header[role="banner"] {
 
 footer[role="contentinfo"] {
 	padding: 2em 1em;
-	color: white;
+	color: #ccc;
 	div.copyright {
 		text-align: center;
 	}
