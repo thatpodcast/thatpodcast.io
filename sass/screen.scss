@@ -172,6 +172,12 @@ section#hero .audio-player {
 section#episode-list {
 	padding: 4em 1em;
 
+	article:not(:first-of-type) {
+		margin-top: 3em;
+		padding-top: 3em;
+		border-top: 2px solid rgba(0,0,0, .125);
+	}
+
 	h1 {
 		font-size: 1.5em;
 		font-weight: bold;
