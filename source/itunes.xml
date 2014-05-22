@@ -32,9 +32,9 @@ permalink: itunes.rss
         {% if episode.subtitle %}
           <itunes:subtitle>{{ episode.subtitle }}</itunes:subtitle>
         {% endif %}
-        <itunes:explicit>no</itunes:explicit>
+        <itunes:explicit>{{ episode.explicit }}</itunes:explicit>
         <itunes:summary>
-            <![CDATA[{{ episode.description }}]]>
+            <![CDATA[{{ episode.blocks.itunes_summary|raw }}]]>
         </itunes:summary>
         <itunes:image href="http://thatpodcast.io/assets/images/thatpodcast-cover.jpg"/>
         <enclosure url="{{ episode.rss_url }}" length="{{ episode.file_size }}" type="audio/mp3"/>

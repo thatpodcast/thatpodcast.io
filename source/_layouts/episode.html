@@ -4,7 +4,7 @@
     <div>
         <header>
             <h1>Episode {{ page.number }}: {{ page.title }}</h1>
-            <h2>{{ page.description }}</h2>
+            <h2>{{ page.subtitle }}</h2>
         </header>
     </div>
     <div style="background-color: black; width: 100%; position: relative; z-index: 2;">
@@ -18,6 +18,21 @@
 <section>
     <article>
         {% block content %}{% endblock %}
+        <div id="disqus_thread" aria-live="polite">
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
     </article>
 </section>
+<script type="text/javascript">
+    var disqus_shortname = '{{ site.disqus_shortname }}';
+    var disqus_identifier = '{{ site.url }}{{ page.url }}';
+    var disqus_url = '{{ site.url }}{{ page.url }}';
+    var disqus_script = 'embed.js';
+
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 {% endblock %}

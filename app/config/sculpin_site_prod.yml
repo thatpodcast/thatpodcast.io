@@ -1,0 +1,4 @@
+imports:
+    - sculpin_site.yml
+google_analytics_tracking_id:
+disqus_shortname: thatpodcast

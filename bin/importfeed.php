@@ -19,20 +19,25 @@ function slugify($string) {
 
 $template = <<<EOS
 ---
-layout: episode
 title: %TITLE%
-description: %SUBTITLE%
-tags:
+subtitle: %SUBTITLE%
+number: %NUMBER%
 date: %PUB_DATE%
+guid: %GUID%
+embed_url: %EMBED_URL%
+rss_url: %RSS_URL%
+download_url: %DOWNLOAD_URL%
+duration: %DURATION%
+file_size: %FILE_SIZE%
+explicit: %EXPLICIT%
+
 ---
-
-%SUBTITLE%
-
-%SHOW_NOTES%
-
-<iframe 
-src="%GUID_URL%" 
-width="500" height="70" frameborder="0"></iframe>
+{% block content %}
+%SUMMARY%
+{% endblock %}
+{% block itunes_summary %}
+%SUMMARY_STRIPPED%
+{% endblock %}
 
 EOS;
 
@@ -46,16 +51,42 @@ foreach ($feed->channel->item as $item) {
     $itunes = $item->children('itunes', true);
 
     $pubDate = new \DateTime($item->pubDate);
-    $filename = sprintf("%s/%s-%s.md", $targetDir, $pubDate->format("Y-m-d"), slugify($item->title));
+    $filename = sprintf("%s/%s-%s.html", $targetDir, $pubDate->format("Y-m-d"), slugify($item->title));
 
     if ($force || !file_exists($filename)) {
-        
+
+        preg_match('/^Episode\s+(\d+):\s*(.*?)$/', (string) $item->title, $matches);
+
+        if (count($matches) < 3) {
+            print "Title '".(string) $item->title."' does not match expected pattern\n";
+            continue;
+        }
+
+        list ($dummy, $number, $title) = $matches;
+
+        $guid = (string) $item->guid;
+
+        $id = substr($guid, strrpos($guid, '/')+1);
+
+        $rssUrl = (string) $item->enclosure['url'];
+
+        $urlFilename = substr($rssUrl, strrpos($rssUrl, '/')+1);
+
+
         $templateData = [
-            "%TITLE%" => (string) $item->title,
+            "%TITLE%" => $title,
+            "%NUMBER%" => $number,
             "%SUBTITLE%" => (string) $itunes->subtitle,
             "%PUB_DATE%" => $pubDate->format("r"),
-            "%SHOW_NOTES%" => (string) $itunes->summary,
-            "%GUID_URL%" => (string) $item->guid,
+            "%SUMMARY%" => (string) $itunes->summary,
+            "%SUMMARY_STRIPPED%" => strip_tags((string) $itunes->summary),
+            "%GUID%" => $guid,
+            "%EMBED_URL%" => "http://media.signalleaf.com/player/That-Podcast/$id/",
+            "%RSS_URL%" => $rssUrl,
+            "%DOWNLOAD_URL%" => "http://media.signalleaf.com/That-Podcast/$id/$urlFilename",
+            "%DURATION%" => (string) $itunes->duration,
+            "%FILE_SIZE%" => (string) $item->enclosure['length'],
+            '%EXPLICIT%' => (string) $itunes->explicit,
         ];
 
         $output = strtr($template, $templateData);
