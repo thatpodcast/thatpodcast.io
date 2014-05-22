@@ -30,6 +30,11 @@ download_url: %DOWNLOAD_URL%
 duration: %DURATION%
 file_size: %FILE_SIZE%
 explicit: %EXPLICIT%
+#bg_image: /assets/...
+#image_credit:
+#    url:
+#    description:
+#    by:
 
 ---
 {% block content %}
