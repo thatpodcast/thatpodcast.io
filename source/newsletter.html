@@ -7,6 +7,25 @@ image_credit:
     by: Mike Hammerton
     description: We bought a Telegraph subscription last week...
 ---
+{% block meta %}
+    <meta name="description" content="That Podcast: Get super secret extra content from Beau and Dave sent directly to your inbox.">
+    {% if page.tags %}
+        <meta name="keywords" content="beau, beau simensen, dave, dave marshall, podcast, that podcast, newsletter">
+    {% endif %}
+
+    <!-- Facebook -->
+    <meta property="og:title" content="That Podcast Newsletter" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{{ site.url }}/assets/images/thatpodcast-cover.jpg" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:description" content="Get super secret extra content from Beau and Dave sent directly to your inbox." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="That Podcast Newsletter" />
+    <meta name="twitter:description" content="Get super secret extra content from Beau and Dave sent directly to your inbox." />
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/thatpodcast-cover.jpg" />
+{% endblock %}
 {% block hero %}
 <section id="hero">
     <div>

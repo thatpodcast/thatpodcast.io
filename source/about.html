@@ -7,6 +7,25 @@ image_credit:
     by: Les Haines
     description: Monochrome Patterns
 ---
+{% block meta %}
+    <meta name="description" content="About That Podcast: Everything you might want to know...">
+    {% if page.tags %}
+        <meta name="keywords" content="beau, beau simensen, dave, dave marshall, podcast, that podcast, about">
+    {% endif %}
+
+    <!-- Facebook -->
+    <meta property="og:title" content="About That Podcast" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{{ site.url }}/assets/images/thatpodcast-cover.jpg" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:description" content="Everything you might want to know..." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="That Podcast Newsletter" />
+    <meta name="twitter:description" content="Everything you might want to know..." />
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/thatpodcast-cover.jpg" />
+{% endblock %}
 {% block hero %}
 <section id="hero">
     <div>

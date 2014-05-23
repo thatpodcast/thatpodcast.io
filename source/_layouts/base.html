@@ -10,6 +10,9 @@
     <title>{% if page.number is defined %}Episode {{ page.number }}: {% endif %}{% if page.title %}{{ page.title }} &middot; {% endif %}That Podcast with Beau and Dave</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block meta %}{% endblock %}
+
     <link href="{{ site.url }}/assets/icnfnt/fontawesome.css?ab={{ assets_bump }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ site.url }}/assets/css/screen.css?ab={{ site.asset_bump }}">
     <script src="{{ site.url }}/assets/js/modernizr/modernizr.min.js"></script>

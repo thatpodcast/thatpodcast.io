@@ -1,4 +1,21 @@
 {% extends "base" %}
+{% block meta %}
+    <meta name="description" content="{{ page.subtitle }}">
+    <meta name="keywords" content="beau, beau simensen, dave, dave marshall, podcast, that podcast{% for tag in page.tags %}{% if loop.first %}, {% endif %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}" />
+
+    <!-- Facebook -->
+    <meta property="og:title" content="Episode {{ page.number }}: {{ page.title }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{{ site.url }}/assets/images/thatpodcast-cover.jpg" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:description" content="{{ page.subtitle }}" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Episode {{ page.number }}: {{ page.title }}" />
+    <meta name="twitter:description" content="{{ page.subtitle }}" />
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/thatpodcast-cover.jpg" />
+{% endblock %}
 {% block hero %}
 <section id="hero" class="episode" style="background-image: url({{ site.url }}{{ page.bg_image }});">
     <div>

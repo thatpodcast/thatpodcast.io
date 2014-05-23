@@ -9,6 +9,25 @@ image_credit:
     by: Ed Schipul
     description: open mic
 ---
+{% block meta %}
+    <meta name="description" content="That Podcast: Beau and Dave talking about life as dads, programmers, and entrepreneurs.">
+    {% if page.tags %}
+        <meta name="keywords" content="beau, beau simensen, dave, dave marshall, podcast, that podcast">
+    {% endif %}
+
+    <!-- Facebook -->
+    <meta property="og:title" content="That Podcast" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{{ site.url }}/assets/images/thatpodcast-cover.jpg" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:description" content="Beau and Dave talking about life as dads, programmers, and entrepreneurs." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="That Podcast" />
+    <meta name="twitter:description" content="Beau and Dave talking about life as dads, programmers, and entrepreneurs." />
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/thatpodcast-cover.jpg" />
+{% endblock %}
 {% block hero %}
 <section id="hero">
     <div>
