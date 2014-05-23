@@ -163,10 +163,6 @@ section#hero {
 section#hero .audio-player {
 	width: 100%;
 	background-color: black;
-	iframe {
-		padding: 0 1em;
-		width: 100%;
-	}
 }
 
 section#episode-list {
@@ -381,11 +377,9 @@ header[role="banner"] {
 	}
 
 	section#hero .audio-player {
-		iframe {
-			display: block;
-			max-width: $main_width_768;
-			margin: 0 auto;
-		}
+		max-width: $main_width_768;
+		margin: 0 auto;
+		padding: 0 1em;
 	}
 }
 
@@ -442,10 +436,7 @@ footer[role="contentinfo"] {
 	}
 
 	section#hero .audio-player {
-		iframe {
-			max-width: $main_width_992;
-			margin: 0 auto;
-		}
+		max-width: $main_width_992;
 	}
 }
 

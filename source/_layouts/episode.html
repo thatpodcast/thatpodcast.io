@@ -7,9 +7,27 @@
             <h2>{{ page.subtitle }}</h2>
         </header>
     </div>
-    <div style="background-color: black; width: 100%; position: relative; z-index: 2;">
+    <div style="position: relative; z-index: 2; width: 100%; left: 0; background-color: black;">
         <div class="audio-player">
-            <iframe src="{{ page.embed_url }}" width="500" height="70" frameborder="0"></iframe>
+            <div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
+
+            <div id="jp_container_audio_1" class="jp-flat-audio">
+                <div class="jp-play-control jp-control">
+                    <a class="jp-play jp-button"></a>
+                    <a class="jp-pause jp-button"></a>
+                </div>
+                <div class="jp-bar">
+                    <div class="jp-seek-bar">
+                        <div class="jp-play-bar"></div>
+                        <div class="jp-details"><span class="jp-title"></span></div>
+                        <div class="jp-timing"><span class="jp-duration"></span></div>
+                    </div>
+                </div>
+                <div class="jp-no-solution">
+                    Media Player Error<br />
+                    Update your browser or Flash plugin
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -23,6 +41,46 @@
         </div>
     </article>
 </section>
+{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ site.url }}/assets/css/flat.audio/flat.audio.css?ab={{ site.asset_bump }}">
+{% endblock %}
+{% block scripts %}
+<script src="{{ site.url }}/assets/js/jplayer/jquery.jplayer.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function($) {
+            $("#jquery_jplayer_audio_1").jPlayer({
+                ready: function(event) {
+                    $(this).jPlayer("setMedia", {
+                        mp3: "{{ page.embed_url }}"
+                    });
+                },
+                play: function() { // Avoid multiple jPlayers playing together.
+                    console.log('PLAY!');
+                    $(this).jPlayer("pauseOthers");
+                },
+                timeFormat: {
+                    padMin: false
+                },
+                swfPath: "js",
+                supplied: "mp3",
+                cssSelectorAncestor: "#jp_container_audio_1",
+                smoothPlayBar: true,
+                remainingDuration: true,
+                keyEnabled: true,
+                keyBindings: {
+                    // Disable some of the default key controls
+                    muted: null,
+                    volumeUp: null,
+                    volumeDown: null
+                },
+                wmode: "window"
+            });
+        });
+    })(jQuery);
+</script>
+
 <script type="text/javascript">
     var disqus_shortname = '{{ site.disqus_shortname }}';
     var disqus_identifier = '{{ site.url }}{{ page.url }}';

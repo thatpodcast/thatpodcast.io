@@ -86,7 +86,7 @@ foreach ($feed->channel->item as $item) {
             "%SUMMARY%" => (string) $itunes->summary,
             "%SUMMARY_STRIPPED%" => strip_tags((string) $itunes->summary),
             "%GUID%" => $guid,
-            "%EMBED_URL%" => "http://media.signalleaf.com/player/That-Podcast/$id/",
+            "%EMBED_URL%" => "http://media.signalleaf.com/That-Podcast/$id/embed/$urlFilename",
             "%RSS_URL%" => $rssUrl,
             "%DOWNLOAD_URL%" => "http://media.signalleaf.com/That-Podcast/$id/$urlFilename",
             "%DURATION%" => (string) $itunes->duration,

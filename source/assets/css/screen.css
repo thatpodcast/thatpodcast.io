@@ -134,9 +134,6 @@ section#hero h2 {
 section#hero .audio-player {
   width: 100%;
   background-color: black; }
-  section#hero .audio-player iframe {
-    padding: 0 1em;
-    width: 100%; }
 
 section#episode-list {
   padding: 4em 1em; }
@@ -276,10 +273,10 @@ header[role="banner"] {
   section#hero h2 {
     font-size: 1.125em; }
 
-  section#hero .audio-player iframe {
-    display: block;
+  section#hero .audio-player {
     max-width: 700px;
-    margin: 0 auto; } }
+    margin: 0 auto;
+    padding: 0 1em; } }
 footer[role="contentinfo"] {
   padding: 2em 1em;
   color: #ccc; }
@@ -312,9 +309,8 @@ footer[role="contentinfo"] {
   section#hero h2 {
     font-size: 1.25em; }
 
-  section#hero .audio-player iframe {
-    max-width: 840px;
-    margin: 0 auto; } }
+  section#hero .audio-player {
+    max-width: 840px; } }
 @media only screen and (min-width: 1200px) {
   header[role="banner"] nav[role="navigation"] > header a {
     width: 8em;
