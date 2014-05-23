@@ -132,8 +132,7 @@ section#hero h2 {
   color: #bbb; }
 
 section#hero .audio-player {
-  width: 100%;
-  background-color: black; }
+  width: 100%; }
 
 section#episode-list {
   padding: 4em 1em; }
