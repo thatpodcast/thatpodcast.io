@@ -108,6 +108,9 @@ section#hero {
 section:not(#hero) {
   padding: 2em 1em; }
 
+section#notice {
+  padding: 1em; }
+
 section:not(#hero):nth-of-type(2n) {
   background-color: #eee; }
 
