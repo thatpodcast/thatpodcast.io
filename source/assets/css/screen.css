@@ -76,7 +76,7 @@ section#hero {
     z-index: 2; }
   section#hero > div:first-of-type {
     width: 100%;
-    padding: 2em 1em 2em; }
+    padding: 20em 1em 2em; }
   section#hero div.screen {
     display: block;
     xbackground-image: url(screen.png);
@@ -236,6 +236,11 @@ header[role="banner"] {
     header[role="banner"] nav[role="navigation"] li.active a {
       color: white; }
 
+#main-content section p {
+  line-height: 1.5em; }
+#main-content section:not(#hero) p {
+  margin-bottom: 1.25em; }
+
 @media only screen and (min-width: 768px) {
   header[role="banner"] {
     line-height: 3em;
@@ -276,8 +281,6 @@ header[role="banner"] {
     margin: 0 auto;
     max-width: 700px;
     padding: 0 1em; }
-  #main-content section .episode-description {
-    line-height: 1.5em; }
 
   section#hero > div:first-of-type {
     max-width: 700px;

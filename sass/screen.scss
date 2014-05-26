@@ -88,7 +88,7 @@ section#hero {
 
    	> div:first-of-type {
 		width: 100%;
-		padding: 2em 1em 2em;
+		padding: 20em 1em 2em;
 	}
 
 	div.screen {
@@ -318,6 +318,20 @@ header[role="banner"] {
 	}
 }
 
+#main-content {
+	section {
+		p {
+			line-height: 1.5em;
+		}
+	}
+
+	section:not(#hero) {
+		p {
+			margin-bottom: 1.25em;
+		}
+	}
+}
+
 @media only screen and (min-width: 768px) {
 	header[role="banner"] {
 		line-height: 3em;
@@ -382,10 +396,6 @@ header[role="banner"] {
 				margin: 0 auto;
 				max-width: $main_width_768;
 				padding: 0 1em;
-			}
-
-			.episode-description {
-				line-height: 1.5em;
 			}
 		}
 	}
