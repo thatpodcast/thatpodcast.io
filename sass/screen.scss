@@ -434,6 +434,31 @@ footer[role="contentinfo"] {
 	div.copyright {
 		text-align: center;
 	}
+
+	.links {
+		font-size: 2em;
+		ul {
+
+			padding: 0;
+			margin: 0 0 1em;
+			list-style-type: none;
+			text-align: center;
+			li {
+				display: inline-block;
+			}
+		}
+	}
+
+	a {
+		transition: color .125s ease-in-out;
+		height: 2em;
+		line-height: 2em;
+		color: #aaa;
+	}
+
+	a:hover {
+		color: white;
+	}
 }
 
 @media only screen and (min-width: 992px) {
