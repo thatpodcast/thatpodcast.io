@@ -269,10 +269,10 @@ ul.icons li [class*=" icon-"] {
     height: .75em;
   }
 }.icon-envelope:before		{ content: "\f021"; }
-.icon-twitter:before		{ content: "\f022"; }
-.icon-facebook:before		{ content: "\f023"; }
-.icon-github:before		{ content: "\f024"; }
-.icon-rss:before		{ content: "\f025"; }
-.icon-google-plus:before		{ content: "\f026"; }
-.icon-envelope-alt:before		{ content: "\f027"; }
-.icon-github-alt:before		{ content: "\f028"; }
+.icon-download:before		{ content: "\f022"; }
+.icon-chevron-down:before		{ content: "\f023"; }
+.icon-twitter:before		{ content: "\f024"; }
+.icon-facebook:before		{ content: "\f025"; }
+.icon-github:before		{ content: "\f026"; }
+.icon-rss:before		{ content: "\f027"; }
+.icon-google-plus:before		{ content: "\f028"; }

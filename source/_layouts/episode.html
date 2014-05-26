@@ -23,6 +23,34 @@
             <h1>Episode {{ page.number }}: {{ page.title }}</h1>
             <h2>{{ page.subtitle }}</h2>
         </header>
+        <div class="controls">
+            <p>
+                <span class="duration">{{ page.duration }}</span>
+                <span class="size">
+                    {% spaceless %}
+                        {% set kilobyte = 1024 %}
+                        {% set megabyte = kilobyte * 1024 %}
+                        {% set gigabyte = megabyte * 1024 %}
+                        {% set terabyte = gigabyte * 1024 %}
+
+                        {% if page.file_size < kilobyte %}
+                            {{ page.file_size ~ ' B' }}
+                        {% elseif page.file_size < megabyte %}
+                            {{ (page.file_size / kilobyte)|number_format(2, '.') ~ ' KB' }}
+                        {% elseif page.file_size < gigabyte %}
+                            {{ (page.file_size / megabyte)|number_format(2, '.') ~ ' MB' }}
+                        {% elseif page.file_size < terabyte %}
+                            {{ (page.file_size / gigabyte)|number_format(2, '.') ~ ' GB' }}
+                        {% else %}
+                            {{ (page.file_size / terabyte)|number_format(2, '.') ~ ' TB' }}
+                        {% endif %}
+                    {% endspaceless %}
+
+
+                </span>
+                <span class="download"><a href="{{ page.download_url }}"><i class="icon-download"></i> download</a></span>
+            </p>
+        </div>
     </div>
     <div style="position: relative; z-index: 2; width: 100%; left: 0; background-color: rgba(0,0,0,.5);">
         <div class="audio-player">
@@ -52,7 +80,9 @@
 {% block content_wrapper %}
 <section>
     <article>
-        {% block content %}{% endblock %}
+        <div class="episode-description">
+            {% block content %}{% endblock %}
+        <div>
         <div id="disqus_thread" aria-live="polite">
             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>

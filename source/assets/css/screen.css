@@ -91,6 +91,15 @@ section#hero {
     padding: 0;
     width: 100%;
     max-width: 100%; }
+  section#hero a {
+    color: #ccc;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75); }
+  section#hero a:hover {
+    color: white; }
+  section#hero .controls .download,
+  section#hero .controls .size {
+    margin-left: .5em; }
 
 .image-credit {
   position: absolute;
@@ -159,6 +168,11 @@ section#episode-list {
     font-weight: normal;
     margin: 0;
     color: #999; }
+  section#episode-list .controls .download,
+  section#episode-list .controls .size {
+    margin-left: .5em; }
+  section#episode-list p {
+    margin: .5em 0 0; }
 
 body#page-nav-home section#hero {
   background-image: url(red-mic.jpg); }
@@ -262,6 +276,8 @@ header[role="banner"] {
     margin: 0 auto;
     max-width: 700px;
     padding: 0 1em; }
+  #main-content section .episode-description {
+    line-height: 1.5em; }
 
   section#hero > div:first-of-type {
     max-width: 700px;
@@ -273,7 +289,8 @@ header[role="banner"] {
   section#hero h1 {
     font-size: 2.25em; }
   section#hero h2 {
-    font-size: 1.125em; }
+    font-size: 1.125em;
+    line-height: 1.25em; }
 
   section#hero .audio-player {
     max-width: 700px;
