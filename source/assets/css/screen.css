@@ -76,7 +76,7 @@ section#hero {
     z-index: 2; }
   section#hero > div:first-of-type {
     width: 100%;
-    padding: 20em 1em 2em; }
+    padding: 12em 1em 2em; }
   section#hero div.screen {
     display: block;
     xbackground-image: url(screen.png);
