@@ -304,15 +304,13 @@ footer[role="contentinfo"] {
   color: #ccc; }
   footer[role="contentinfo"] div.copyright {
     text-align: center; }
-  footer[role="contentinfo"] .links {
-    font-size: 2em; }
-    footer[role="contentinfo"] .links ul {
-      padding: 0;
-      margin: 0 0 1em;
-      list-style-type: none;
-      text-align: center; }
-      footer[role="contentinfo"] .links ul li {
-        display: inline-block; }
+  footer[role="contentinfo"] .links ul {
+    padding: 0;
+    margin: 0 0 1em;
+    list-style-type: none;
+    text-align: center; }
+    footer[role="contentinfo"] .links ul li {
+      display: inline-block; }
   footer[role="contentinfo"] a {
     transition: color .125s ease-in-out;
     height: 2em;
