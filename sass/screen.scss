@@ -179,6 +179,10 @@ section#hero {
 		margin: 0;
 		color: #bbb;
 	}
+
+	.share {
+		display: none;
+	}
 }
 
 section#hero .audio-player {
@@ -329,6 +333,10 @@ header[role="banner"] {
 		p {
 			margin-bottom: 1.25em;
 		}
+
+		.share {
+			margin: 2em;
+		}
 	}
 }
 
@@ -404,6 +412,13 @@ header[role="banner"] {
 		> div:first-of-type {
 			max-width: $main_width_768;
 			margin: 0 auto;
+		}
+
+		.share {
+			display: block;
+			float: right;
+			line-height: 1.5em;
+			margin-top: 1.125em;
 		}
 	}
 

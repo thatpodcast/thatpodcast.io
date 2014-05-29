@@ -23,6 +23,11 @@
             <h1>Episode {{ page.number }}: {{ page.title }}</h1>
             <h2>{{ page.subtitle }}</h2>
         </header>
+        <div class="share">
+            <a href="http://twitter.com/share" class="twitter-share-button" data-url="{{ site.url }}{{ page.url }}" data-via="thatpodcast" data-counturl="{{ site.url }}{{ page.url }}" ><i class="icon-twitter"></i> Twitter</a>
+            <div class="g-plusone" data-size="medium"></div>
+            <div class="fb-share-button" data-href="{{ site.url }}{{ page.url }}" data-type="button_count"></div>
+        </div>
         <div class="controls">
             <p>
                 <span class="duration">{{ page.duration }}</span>
@@ -83,6 +88,13 @@
         <div class="episode-description">
             {% block content %}{% endblock %}
         <div>
+
+        <div class="share">
+            <a href="http://twitter.com/share" class="twitter-share-button" data-url="{{ site.url }}{{ page.url }}" data-via="thatpodcast" data-counturl="{{ site.url }}{{ page.url }}" ><i class="icon-twitter"></i> Twitter</a>
+            <div class="g-plusone" data-size="medium"></div>
+            <div class="fb-share-button" data-href="{{ site.url }}{{ page.url }}" data-type="button_count"></div>
+        </div>
+
         <div id="disqus_thread" aria-live="polite">
             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>

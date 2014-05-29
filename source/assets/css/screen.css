@@ -142,6 +142,8 @@ section#hero h2 {
   font-weight: normal;
   margin: 0;
   color: #bbb; }
+section#hero .share {
+  display: none; }
 
 section#hero .audio-player {
   width: 100%; }
@@ -240,6 +242,8 @@ header[role="banner"] {
   line-height: 1.5em; }
 #main-content section:not(#hero) p {
   margin-bottom: 1.25em; }
+#main-content section:not(#hero) .share {
+  margin: 2em; }
 
 @media only screen and (min-width: 768px) {
   header[role="banner"] {
@@ -285,6 +289,11 @@ header[role="banner"] {
   section#hero > div:first-of-type {
     max-width: 700px;
     margin: 0 auto; }
+  section#hero .share {
+    display: block;
+    float: right;
+    line-height: 1.5em;
+    margin-top: 1.125em; }
 
   .image-credit {
     right: .5em; }
