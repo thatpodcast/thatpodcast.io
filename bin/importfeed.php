@@ -73,7 +73,7 @@ foreach ($feed->channel->item as $item) {
 
         $id = substr($guid, strrpos($guid, '/')+1);
 
-        $rssUrl = (string) $item->enclosure['url'];
+        $rssUrl = str_replace('https://', 'http://', (string) $item->enclosure['url']);
 
         $urlFilename = substr($rssUrl, strrpos($rssUrl, '/')+1);
 
