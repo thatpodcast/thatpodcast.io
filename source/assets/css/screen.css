@@ -243,7 +243,8 @@ header[role="banner"] {
 #main-content section:not(#hero) p {
   margin-bottom: 1.25em; }
 #main-content section:not(#hero) .share {
-  margin: 2em; }
+  margin: 2em;
+  line-height: .75em; }
 
 @media only screen and (min-width: 768px) {
   header[role="banner"] {
