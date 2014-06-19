@@ -246,7 +246,20 @@ header[role="banner"] {
   margin: 2em;
   line-height: .75em; }
 
+.headshot {
+  float: right;
+  max-width: 20%;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  margin-top: .125em; }
+  .headshot img {
+    width: 100%;
+    height: auto; }
+
 @media only screen and (min-width: 768px) {
+  .headshot {
+    max-width: 33%; }
+
   header[role="banner"] {
     line-height: 3em;
     height: 3em; }
