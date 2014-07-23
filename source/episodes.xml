@@ -1,0 +1,78 @@
+---
+use: ["episodes"]
+permalink: episodes.rss
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+    <atom:link href="{{ site.url }}{{ page.url }}" rel="self" type="application/rss+xml"/>
+    <title>That Podcast</title>
+    <link>http://thatpodcast.io</link>
+    <language>en-GB</language>
+    <copyright>2014 That Podcast, Beau Simensen, and Dave Marshall</copyright>
+    <itunes:subtitle>Beau and Dave talking about life as dads, programmers, and entrepreneurs.</itunes:subtitle>
+    <itunes:author>Beau Simensen &amp; Dave Marshall</itunes:author>
+    <itunes:category text="Technology">
+        <itunes:category text="Podcasting"/>
+    </itunes:category>
+    <itunes:summary>
+    </itunes:summary>
+    <description>
+    </description>
+    <itunes:owner>
+        <itunes:name>Beau Simensen &amp; Dave Marshall</itunes:name>
+        <itunes:email>hello@thatpodcast.io</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:image href="http://thatpodcast.io/assets/images/thatpodcast-cover.jpg"/>
+    {% for episode in data.episodes %}
+    <item>
+        <title>Episode {{ episode.number }}: {{ episode.title }}</title>
+        <description>
+            <![CDATA[
+                <div>
+                    <img src="{{ site.url }}{{ episode.meta.bg_image }}" style="max-width: 100%; height: auto;">
+                </div>
+
+                {{ episode.blocks.content|raw }}
+
+                <div>
+                    <a href="{{ site.url }}{{ episode.url }}">Listen now ({{ episode.meta.duration }})</a> or <a href="{{ episode.meta.download_url }}">Download ({% spaceless %}
+                        {% set kilobyte = 1024 %}
+                        {% set megabyte = kilobyte * 1024 %}
+                        {% set gigabyte = megabyte * 1024 %}
+                        {% set terabyte = gigabyte * 1024 %}
+
+                        {% if episode.meta.file_size < kilobyte %}
+                            {{ episode.meta.file_size ~ ' B' }}
+                        {% elseif episode.meta.file_size < megabyte %}
+                            {{ (episode.meta.file_size / kilobyte)|number_format(2, '.') ~ ' KB' }}
+                        {% elseif episode.meta.file_size < gigabyte %}
+                            {{ (episode.meta.file_size / megabyte)|number_format(2, '.') ~ ' MB' }}
+                        {% elseif episode.meta.file_size < terabyte %}
+                            {{ (episode.meta.file_size / gigabyte)|number_format(2, '.') ~ ' GB' }}
+                        {% else %}
+                            {{ (episode.meta.file_size / terabyte)|number_format(2, '.') ~ ' TB' }}
+                        {% endif %}
+                    {% endspaceless %})</a>
+                </div>
+            ]]>
+        </description>
+        <itunes:author>Beau Simensen &amp; Dave Marshall</itunes:author>
+        {% if episode.subtitle %}
+          <itunes:subtitle>{{ episode.subtitle }}</itunes:subtitle>
+        {% endif %}
+        <itunes:explicit>{{ episode.explicit }}</itunes:explicit>
+        <itunes:summary>
+            <![CDATA[{{ episode.blocks.itunes_summary|raw }}]]>
+        </itunes:summary>
+        <itunes:image href="http://thatpodcast.io/assets/images/thatpodcast-cover.jpg"/>
+        <enclosure url="{{ episode.rss_url }}" length="{{ episode.file_size }}" type="audio/mp3"/>
+        <guid isPermaLink="false">{{ episode.guid }}</guid>
+        <pubDate>{{ episode.date|date("D, d M Y H:i:s O", "Etc/UTC") }}</pubDate>
+        <itunes:duration>{{ episode.duration }}</itunes:duration>
+        <link>{{ site.url }}{{ episode.url }}</link>
+    </item>
+    {% endfor %}
+</channel>
+</rss>
