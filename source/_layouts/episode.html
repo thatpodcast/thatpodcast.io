@@ -113,7 +113,7 @@
     (function ($) {
         $(document).ready(function($) {
             $("#jquery_jplayer_audio_1").jPlayer({
-                //swfPath: "{{ site.url }}/assets/js/jplayer/Jplayer.swf",
+                swfPath: "{{ site.url }}/assets/js/jplayer/Jplayer.swf",
                 ready: function(event) {
                     $(this).jPlayer("setMedia", {
                         mp3: "{{ page.embed_url }}"
