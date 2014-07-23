@@ -85,6 +85,9 @@
 {% block content_wrapper %}
 <section>
     <article>
+        <time datetime="{{ episode.date|date('c') }}" pubdate>
+            <span class='month'>{{ episode.date|date('M') }}</span> <span class='day'>{{ episode.date|date('jS') }}</span> <span class='year'>{{ episode.date|date('Y') }}</span>
+        </time>
         <div class="episode-description">
             {% block content %}{% endblock %}
         <div>

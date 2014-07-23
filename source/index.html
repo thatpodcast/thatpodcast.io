@@ -42,6 +42,9 @@ image_credit:
 <section id="episode-list">
     {% for episode in data.episodes %}
         <article>
+            <time datetime="{{ episode.date|date('c') }}" pubdate>
+                <span class='month'>{{ episode.date|date('M') }}</span> <span class='day'>{{ episode.date|date('jS') }}</span> <span class='year'>{{ episode.date|date('Y') }}</span>
+            </time>
             <header>
                 <h1><a href="{{ episode.url }}">Episode {{ episode.number }}: {{ episode.title }}</a></h1>
                 <h2>{{ episode.subtitle }}</h2>
