@@ -12,8 +12,9 @@ permalink: itunes.rss
     <copyright>2014 That Podcast, Beau Simensen, and Dave Marshall</copyright>
     <itunes:subtitle>Beau and Dave talking about life as dads, programmers, and entrepreneurs.</itunes:subtitle>
     <itunes:author>Beau Simensen &amp; Dave Marshall</itunes:author>
+    <itunes:keywords>php,development,software,entrepreneurship</itunes:keywords>
     <itunes:category text="Technology">
-        <itunes:category text="Podcasting"/>
+        <itunes:category text="Tech News"/>
     </itunes:category>
     <itunes:summary>
     </itunes:summary>
