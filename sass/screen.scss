@@ -327,6 +327,12 @@ header[role="banner"] {
 		p {
 			line-height: 1.5em;
 		}
+
+		.episode-description {
+			ul {
+				line-height: 1.5em;
+			}
+		}
 	}
 
 	section:not(#hero) {

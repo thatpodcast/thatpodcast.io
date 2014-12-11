@@ -240,6 +240,8 @@ header[role="banner"] {
 
 #main-content section p {
   line-height: 1.5em; }
+#main-content section .episode-description ul {
+  line-height: 1.5em; }
 #main-content section:not(#hero) p {
   margin-bottom: 1.25em; }
 #main-content section:not(#hero) .share {
