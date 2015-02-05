@@ -42,6 +42,7 @@ permalink: itunes.rss
         <guid>{{ episode.guid }}</guid>
         <pubDate>{{ episode.date|date("D, d M Y H:i:s O", "Etc/UTC") }}</pubDate>
         <itunes:duration>{{ episode.duration }}</itunes:duration>
+        <link>{{ site.url }}{{ episode.url }}</link>
     </item>
     {% endfor %}
 </channel>
