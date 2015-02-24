@@ -1,0 +1,95 @@
+---
+layout: default
+title: "Midwest PHP 2015!"
+permalink: /mwphp15/
+bg_image: /assets/css/minneapolis.jpg
+image_credit:
+    url: https://www.flickr.com/photos/onepointfour/6656602863
+    by: Dustin Gaffke
+    description: Minneapolis Skyline - HDR
+
+---
+{% block meta %}
+    <meta name="description" content="That Podcast at Midwest PHP 2015">
+    {% if page.tags %}
+        <meta name="keywords" content="beau, beau simensen, dave, dave marshall, podcast, that podcast, about">
+    {% endif %}
+
+    <!-- Facebook -->
+    <meta property="og:title" content="That Podcast at Midwest PHP 2015" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="{{ site.url }}/css/minneapolis.jpg" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:description" content="Will we see you there?" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="That Podcast at Midwest PHP 2015" />
+    <meta name="twitter:description" content="Will we see you there?" />
+    <meta name="twitter:image:src" content="{{ site.url }}/assets/css/minneapolis.jpg" />
+    <meta name="twitter:site" content="@thatpodcast" />
+{% endblock %}
+{% block hero %}
+<section id="hero" style="background-image: url({{ site.url }}{{ page.bg_image }});">
+    <div>
+        <header>
+            <h1>Midwest PHP 2015</h1>
+            <h2>We'll be there, will you?</h2>
+        </header>
+    </div>
+</section>
+{% endblock %}
+{% block content %}
+<section style="overflow: auto;">
+    <article>
+        <div class="headshot">
+            <a href="http://2015.midwestphp.org/"><img src="{{ site.url }}/assets/images/pr/midwestphp-logo.png"></a>
+        </div>
+        <h2>That Podcast at #mwphp15</h2>
+        <p>
+            That Podcast will be at <a href="http://2015.midwestphp.org/">Midwest PHP 2015</a> this year! Beau attended last year and had a great time. He'll have a bunch of fun goodies with him this year, including copies of <a href="http://wisdomoftheelephpant.com/">Wisdom of the ElePHPant</a>, That Podcast stickers, <a href="https://sculpin.io">Sculpin</a> stickers, and <a href="http://oss.ninjagrl.com/">#ossart</a> to give away!
+        </p>
+        <p>
+            Want to learn more about That Podcast? Start <a href="{{ site.url }}/about/">here</a>!
+        </p>
+        <div class="voicemail-cta" style="font-style: italic;">
+            <hr>
+            <p>We want to interact with YOU! Call <a href="tel:+19793530100" target="_blank">+1 979-353-0100</a> and leave us a voicemail! Ask a question. Make a comment. Tell us how awesome we are. Tell us how NOT awesome we are. We don't care. As long as it is awesome we'll play it on the air and respond!</p>
+        </div>
+    </article>
+</section>
+<section style="overflow: auto;">
+    <article>
+        <div class="headshot">
+            <img src="{{ site.url }}/assets/images/beau.jpg">
+        </div>
+        <h2>How to find us</h2>
+        <p>
+            Beau Simensen (<a href="https://twitter.com/beausimensen">@beausimensen</a>, <a href="https://beau.io">beau.io</a>) will be speaking on his experience bringing his project, <a href="https://sculpin.io">Sculpin</a>, to life! You can read more about his talk, <a href="https://beau.io/talks/2015/03/14/bringing-sculpin-to-life-midwestphp-2015/">Bringing Sculpin to Life</a>.
+            Beau's talk is at 3:00pm on Day 1, March 14th, in Room 235 (Law School).
+        </p>
+        <p>
+            Find him before or after his talk and let him know you are a That Podcast listener!
+        </p>
+    </article>
+</section>
+<section>
+    <article>
+        <h2>Join our newsletter!</h2>
+        <p>
+            Don't worry. We won't spam you. Much. We just want to make sure that we can let you know when new episodes are ready.
+        </p>
+        <p>
+            We would also like to do some fun things for those people who end up sharing their email address with us. Yay for exclusive content, schwag, and awesomeness!
+        </p>
+        <p>
+            You don't want to be left out. Right? Sign up now!
+        </p>
+        <form action="http://atstsolutions.us8.list-manage.com/subscribe/post?u=89b0a4154f9e0afcf4b61555c&amp;id=3a3f0a13bd" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" target="_blank" role="form" novalidate>
+            <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="awesome@listener.com">
+            <div style="position: absolute; left: -5000px;"><input type="text" name="b_89b0a4154f9e0afcf4b61555c_3a3f0a13bd" value=""></div>
+            <input type="submit" value="Subscribe">
+        </form>
+    </article>
+</section>
+{% endblock %}
