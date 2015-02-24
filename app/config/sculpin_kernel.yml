@@ -1,4 +1,5 @@
 sculpin_content_types:
     episodes:
         permalink: episodes/:basename/
-
+    posts:
+        enabled: false
