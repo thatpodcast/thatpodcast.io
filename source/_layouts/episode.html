@@ -7,17 +7,21 @@
     <meta property="og:title" content="Episode {{ page.number }}: {{ page.title }}" />
     <meta property="og:type" content="article" />
     <meta property="og:image" content="{{ site.url }}{{ page.bg_image }}" />
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}/" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:description" content="{{ page.subtitle }}" />
     <meta property="article:publisher" content="https://www.facebook.com/ThatPodcastIo" />
     <meta property="article:author" content="https://www.facebook.com/simensen" />
     <meta property="article:author" content="https://www.facebook.com/davedevelopment" />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Episode {{ page.number }}: {{ page.title }}" />
     <meta name="twitter:description" content="{{ page.subtitle }}" />
     <meta name="twitter:image" content="{{ site.url }}/assets/images/thatpodcast-cover.jpg" />
+    <meta name="twitter:image:src" content="{{ site.url }}{{ page.bg_image }}" />
+    <meta name="twitter:site" content="@thatpodcast" />
+    <meta name="twitter:creator" content="@thatpodcast" />
+    <meta name="twitter:url" content="{{ site.url }}{{ page.url }}" />
 {% endblock %}
 {% block hero %}
 <section id="hero" class="episode" style="background-image: url({{ site.url }}{{ page.bg_image }});">
