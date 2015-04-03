@@ -3,6 +3,14 @@
 
 $force = in_array("-f", $argv, true);
 
+function strip_and_clean($string)
+{
+    $string = strip_tags($string);
+    $string = str_ireplace('&nbsp;', ' ', $string);
+
+    return $string;
+}
+
 function slugify($string) {
     $slug = preg_replace('~[^\\pL\d]+~u', '-', $string);
     $slug = trim($slug, '-');
@@ -84,7 +92,7 @@ foreach ($feed->channel->item as $item) {
             "%SUBTITLE%" => (string) $itunes->subtitle,
             "%PUB_DATE%" => $pubDate->format("r"),
             "%SUMMARY%" => (string) $itunes->summary,
-            "%SUMMARY_STRIPPED%" => strip_tags((string) $itunes->summary),
+            "%SUMMARY_STRIPPED%" => strip_and_clean((string) $itunes->summary),
             "%GUID%" => $guid,
             "%EMBED_URL%" => "http://media.signalleaf.com/That-Podcast/$id/embed/$urlFilename",
             "%RSS_URL%" => $rssUrl,
