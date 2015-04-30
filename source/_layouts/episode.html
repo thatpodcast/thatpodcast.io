@@ -129,7 +129,7 @@
                 swfPath: "{{ site.url }}/assets/js/jplayer/Jplayer.swf",
                 ready: function(event) {
                     $(this).jPlayer("setMedia", {
-                        mp3: "{{ page.embed_url }}"
+                        mp3: "{{ page.embed_url|replace({'http://': '//'}) }}"
                     });
                 },
                 play: function() { // Avoid multiple jPlayers playing together.
