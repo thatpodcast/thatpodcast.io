@@ -1,3 +1,4 @@
+url: https://thatpodcast.io
 imports:
     - sculpin_site.yml
 google_analytics_tracking_id: UA-51248311-1
