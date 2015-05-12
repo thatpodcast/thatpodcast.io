@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-    <title>{% if page.number is defined %}Episode {{ page.number }}: {% endif %}{% if page.title %}{{ page.title }} &middot; {% endif %}That Podcast with Beau and Dave</title>
+    <title>{% if page.number is defined %}Episode {{ page.number }}: {% endif %}{% if page.full_title %}{{ page.full_title }}{% elseif page.title %}{{ page.title }} &middot; That Podcast with Beau and Dave{% else %}That Podcast with Beau and Dave{% endif %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
