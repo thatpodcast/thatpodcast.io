@@ -18,6 +18,7 @@ form {
 	    color: #fff;
 	    font-size: inherit;
 	    cursor: pointer;
+	    width: 100%;
 	}
 
 	input[type="email"] {
@@ -26,8 +27,9 @@ form {
 	    font-weight: bold;
 	    padding: 0 1em;
 	    border-radius: 1em;
-	    width: 17em;
 	    border: 2px solid #9e9d9d;
+	    display: inline-block;
+	    width: 100%;
 	}
 }
 
@@ -345,6 +347,17 @@ header[role="banner"] {
 			line-height: .75em;
 		}
 	}
+
+	section#form-band {
+		padding: 1.5em 0 .75em;
+		> div {
+			margin: 0 auto;
+			padding: 0 1em;
+		}
+		p {
+			font-weight: 500;
+		}
+	}
 }
 
 .headshot {
@@ -359,6 +372,27 @@ header[role="banner"] {
         height: auto;
     }
 }
+
+@media only screen and (min-width: 420px) {
+	form {
+		input[type="submit"] {
+		    width: auto;
+		}
+
+		input[type="email"] {
+		    width: 15em;
+		}
+	}
+	#main-content {
+		section#form-band {
+			padding-top: 2.5em;
+			p {
+				margin: 0;
+			}
+		}
+	}
+}
+
 @media only screen and (min-width: 768px) {
     .headshot {
         max-width: 33%;
@@ -421,6 +455,14 @@ header[role="banner"] {
 	}
 
 	#main-content {
+		section#form-band {
+			padding-bottom: 1.5em;
+			> div {
+				margin: 0 auto;
+				padding: 0 1em;
+				max-width: $main_width_768;
+			}
+		}
 		section {
 			> article {
 				margin: 0 auto;
@@ -519,6 +561,13 @@ footer[role="contentinfo"] {
 	}
 
 	#main-content {
+		section#form-band {
+			> div {
+				margin: 0 auto;
+				max-width: $main_width_992;
+			}
+		}
+
 		section {
 			> article {
 				max-width: $main_width_992;
