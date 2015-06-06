@@ -14,6 +14,12 @@
     <meta property="article:author" content="https://www.facebook.com/simensen" />
     <meta property="article:author" content="https://www.facebook.com/davedevelopment" />
 
+    <meta property="og:video:url" content="{{ page.embed_url }}" />
+    <meta property="og:video:secure_url" content="{{ page.embed_url|replace({'http://': 'https://'}) }}" />
+    <meta property="og:video:width" content="435" />
+    <meta property="og:video:height" content="251" />
+    <meta property="og:video:type" content="audio/mpeg" />
+
     <!-- Twitter -->
     <meta name="twitter:card" content="player" />
     <meta name="twitter:title" content="Episode {{ page.number }}: {{ page.title }}" />
