@@ -14,7 +14,7 @@
     <meta property="article:author" content="https://www.facebook.com/davedevelopment" />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="player" />
     <meta name="twitter:title" content="Episode {{ page.number }}: {{ page.title }}" />
     <meta name="twitter:description" content="{{ page.subtitle }}" />
     <meta name="twitter:image" content="{{ site.url }}/assets/images/thatpodcast-cover.jpg" />
@@ -22,6 +22,9 @@
     <meta name="twitter:site" content="@thatpodcast" />
     <meta name="twitter:creator" content="@thatpodcast" />
     <meta name="twitter:url" content="{{ site.url }}{{ page.url }}" />
+    <meta name="twitter:player" content="{{ site.url }}/player.html?duration={{ page.duration }}&episode={{ page.number }}&subtitle={{ page.subtitle|url_encode(true) }}&title={{ page.title|url_encode(true) }}&url={{ page.embed_url|replace({'http://': '//'})|url_encode }}&image={{ site.url|url_encode }}{{ page.bg_image|url_encode }}" />
+    <meta name="twitter:player:stream" content="{{ page.embed_url|replace({'http://': 'https://'}) }}" />
+    <meta name="twitter:player:stream:content_type" content="audio/mpeg" />
 {% endblock %}
 {% block hero %}
 <section id="hero" class="episode" style="background-image: url({{ site.url }}{{ page.bg_image }});">
