@@ -3,15 +3,21 @@
     <meta name="description" content="{{ page.subtitle }}">
     <meta name="keywords" content="beau, beau simensen, dave, dave marshall, podcast, that podcast{% for tag in page.tags %}{% if loop.first %}, {% endif %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}" />
 
+    {% set standalone_player %}{{ site.url }}/player.html?duration={{ page.duration }}&episode={{ page.number }}&subtitle={{ page.subtitle|url_encode(true) }}&title={{ page.title|url_encode(true) }}&audio_url={{ page.embed_url|replace({'http://': '//'})|url_encode }}&image={{ site.url|url_encode }}{{ page.bg_image|url_encode }}&site_url={{ site.url|url_encode }}{{ page.url|url_encode }}{% endset %}
     <!-- Facebook -->
     <meta property="og:title" content="Episode {{ page.number }}: {{ page.title }}" />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="video.other" />
     <meta property="og:image" content="{{ site.url }}{{ page.bg_image }}" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:description" content="{{ page.subtitle }}" />
     <meta property="article:publisher" content="https://www.facebook.com/ThatPodcastIo" />
     <meta property="article:author" content="https://www.facebook.com/simensen" />
     <meta property="article:author" content="https://www.facebook.com/davedevelopment" />
+
+    <meta property="og:video:url" content="{{ standalone_player }}" />
+    <meta property="og:video:secure_url" content="{{ standalone_player|replace({'http://': 'https://'}) }}" />
+    <meta property="og:video:width" content="435" />
+    <meta property="og:video:height" content="251" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="player" />
@@ -22,7 +28,7 @@
     <meta name="twitter:site" content="@thatpodcast" />
     <meta name="twitter:creator" content="@thatpodcast" />
     <meta name="twitter:url" content="{{ site.url }}{{ page.url }}" />
-    <meta name="twitter:player" content="{{ site.url }}/player.html?duration={{ page.duration }}&episode={{ page.number }}&subtitle={{ page.subtitle|url_encode(true) }}&title={{ page.title|url_encode(true) }}&audio_url={{ page.embed_url|replace({'http://': '//'})|url_encode }}&image={{ site.url|url_encode }}{{ page.bg_image|url_encode }}&site_url={{ site.url|url_encode }}{{ page.url|url_encode }}" />
+    <meta name="twitter:player" content="{{ standalone_player }}" />
     <meta name="twitter:player:stream" content="{{ page.embed_url|replace({'http://': 'https://'}) }}" />
     <meta name="twitter:player:stream:content_type" content="audio/mpeg" />
     <meta name="twitter:player:width" content="435" />
