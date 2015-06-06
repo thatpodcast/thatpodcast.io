@@ -75,8 +75,8 @@ a.bug {
     background-size: cover;
     background-position: center;
     display: block;
-    height: 100px;
-    width: 100px;
+    height: 40px;
+    width: 40px;
 
     background-color: transparent;
     border: 0;
@@ -94,14 +94,16 @@ h1, h2 {
 }
 h1 {
     margin: 0;
-    font-size: 2.5em;
+    font-size: 1.5em;
 
     font-weight: 700;
     font-style: normal;
     letter-spacing: -0.04em;
     line-height: 1.1;
 }
+h1 a { color: inherit; text-decoration: none; }
 h2 {
+    font-size: .75em;
     color: #ddd;
     margin: .25em 0;
 }
@@ -111,7 +113,7 @@ h2 {
 <body>
 <a class="bug" href="{{ site.url }}">That Podcast</a>
 <header>
-    <h1></h1>
+    <h1><a></a></h1>
     <h2></h2>
     <span></span>
 </header>
@@ -152,16 +154,15 @@ h2 {
                return(false);
         }
         $('html').css('background-image', 'url(' + getQueryVariable('image') + ')');
-        $('header h1').text('Episode '+getQueryVariable('episode')+': '+getQueryVariable('title'));
+        $('header h1 a').text('Episode '+getQueryVariable('episode')+': '+getQueryVariable('title')).attr('href', getQueryVariable('site_url'));
         $('header h2').text(getQueryVariable('subtitle'));
         $('header span').text(getQueryVariable('duration'));
         $(document).ready(function($) {
-            console.log(getQueryVariable('url'));
             $("#jquery_jplayer_audio_1").jPlayer({
                 swfPath: "{{ site.url }}/assets/js/jplayer/Jplayer.swf",
                 ready: function(event) {
                     $(this).jPlayer("setMedia", {
-                        mp3: getQueryVariable('url')
+                        mp3: getQueryVariable('audio_url')
                     });
                 },
                 play: function() { // Avoid multiple jPlayers playing together.

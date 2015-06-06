@@ -22,7 +22,7 @@
     <meta name="twitter:site" content="@thatpodcast" />
     <meta name="twitter:creator" content="@thatpodcast" />
     <meta name="twitter:url" content="{{ site.url }}{{ page.url }}" />
-    <meta name="twitter:player" content="{{ site.url }}/player.html?duration={{ page.duration }}&episode={{ page.number }}&subtitle={{ page.subtitle|url_encode(true) }}&title={{ page.title|url_encode(true) }}&url={{ page.embed_url|replace({'http://': '//'})|url_encode }}&image={{ site.url|url_encode }}{{ page.bg_image|url_encode }}" />
+    <meta name="twitter:player" content="{{ site.url }}/player.html?duration={{ page.duration }}&episode={{ page.number }}&subtitle={{ page.subtitle|url_encode(true) }}&title={{ page.title|url_encode(true) }}&audio_url={{ page.embed_url|replace({'http://': '//'})|url_encode }}&image={{ site.url|url_encode }}{{ page.bg_image|url_encode }}&site_url={{ site.url|url_encode }}{{ page.url|url_encode }}" />
     <meta name="twitter:player:stream" content="{{ page.embed_url|replace({'http://': 'https://'}) }}" />
     <meta name="twitter:player:stream:content_type" content="audio/mpeg" />
     <meta name="twitter:player:width" content="435" />
