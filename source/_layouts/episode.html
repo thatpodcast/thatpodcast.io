@@ -25,6 +25,8 @@
     <meta name="twitter:player" content="{{ site.url }}/player.html?duration={{ page.duration }}&episode={{ page.number }}&subtitle={{ page.subtitle|url_encode(true) }}&title={{ page.title|url_encode(true) }}&url={{ page.embed_url|replace({'http://': '//'})|url_encode }}&image={{ site.url|url_encode }}{{ page.bg_image|url_encode }}" />
     <meta name="twitter:player:stream" content="{{ page.embed_url|replace({'http://': 'https://'}) }}" />
     <meta name="twitter:player:stream:content_type" content="audio/mpeg" />
+    <meta name="twitter:player:width" content="435" />
+    <meta name="twitter:player:height" content="251" />
 {% endblock %}
 {% block hero %}
 <section id="hero" class="episode" style="background-image: url({{ site.url }}{{ page.bg_image }});">
