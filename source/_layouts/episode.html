@@ -6,7 +6,6 @@
     {% set standalone_player %}{{ site.url }}/player.html?duration={{ page.duration }}&episode={{ page.number }}&subtitle={{ page.subtitle|url_encode(true) }}&title={{ page.title|url_encode(true) }}&audio_url={{ page.embed_url|replace({'http://': '//'})|url_encode }}&image={{ site.url|url_encode }}{{ page.bg_image|url_encode }}&site_url={{ site.url|url_encode }}{{ page.url|url_encode }}{% endset %}
     <!-- Facebook -->
     <meta property="og:title" content="Episode {{ page.number }}: {{ page.title }}" />
-    <meta property="og:type" content="video.other" />
     <meta property="og:image" content="{{ site.url }}{{ page.bg_image }}" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:description" content="{{ page.subtitle }}" />
@@ -14,11 +13,16 @@
     <meta property="article:author" content="https://www.facebook.com/simensen" />
     <meta property="article:author" content="https://www.facebook.com/davedevelopment" />
 
-    <meta property="og:video:url" content="{{ page.embed_url }}" />
-    <meta property="og:video:secure_url" content="{{ page.embed_url|replace({'http://': 'https://'}) }}" />
+    <meta property="og:type" content="article" />
+
+    <!--
+    <meta property="og:type" content="video.other" />
+    <meta property="og:video:url" content="{{ standalone_player }}" />
+    <meta property="og:video:secure_url" content="{{ standalone_player|replace({'http://': 'https://'}) }}" />
     <meta property="og:video:width" content="435" />
     <meta property="og:video:height" content="251" />
     <meta property="og:video:type" content="audio/mpeg" />
+    -->
 
     <!-- Twitter -->
     <meta name="twitter:card" content="player" />
