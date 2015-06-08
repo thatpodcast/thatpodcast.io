@@ -153,39 +153,46 @@ h2 {
                }
                return(false);
         }
-        $('html').css('background-image', 'url(' + getQueryVariable('image') + ')');
-        $('header h1 a').text('Episode '+getQueryVariable('episode')+': '+getQueryVariable('title')).attr('href', getQueryVariable('site_url'));
-        $('header h2').text(getQueryVariable('subtitle'));
-        $('header span').text(getQueryVariable('duration'));
-        $(document).ready(function($) {
-            $("#jquery_jplayer_audio_1").jPlayer({
-                swfPath: "{{ site.url }}/assets/js/jplayer/Jplayer.swf",
-                ready: function(event) {
-                    $(this).jPlayer("setMedia", {
-                        mp3: getQueryVariable('audio_url')
-                    });
-                },
-                play: function() { // Avoid multiple jPlayers playing together.
-                    console.log('PLAY!');
-                    $(this).jPlayer("pauseOthers");
-                },
-                timeFormat: {
-                    padMin: false
-                },
-                preload: "none",
-                supplied: "mp3",
-                cssSelectorAncestor: "#jp_container_audio_1",
-                smoothPlayBar: true,
-                remainingDuration: true,
-                keyEnabled: true,
-                keyBindings: {
-                    // Disable some of the default key controls
-                    muted: null,
-                    volumeUp: null,
-                    volumeDown: null
-                },
-                wmode: "window"
+
+        $.get("/episodes.json", function(data) {
+
+            var episode = data.episodes[getQueryVariable('episode')];
+
+            $('html').css('background-image', 'url(' + episode.image + ')');
+            $('header h1 a').text(episode.title).attr('href', episode.site_url);
+            $('header h2').text(episode.subtitle);
+            $('header span').text(episode.duration);
+            $(document).ready(function($) {
+                $("#jquery_jplayer_audio_1").jPlayer({
+                    swfPath: "{{ site.url }}/assets/js/jplayer/Jplayer.swf",
+                    ready: function(event) {
+                        $(this).jPlayer("setMedia", {
+                            mp3: episode.audio_url
+                        });
+                    },
+                    play: function() { // Avoid multiple jPlayers playing together.
+                        console.log('PLAY!');
+                        $(this).jPlayer("pauseOthers");
+                    },
+                    timeFormat: {
+                        padMin: false
+                    },
+                    preload: "none",
+                    supplied: "mp3",
+                    cssSelectorAncestor: "#jp_container_audio_1",
+                    smoothPlayBar: true,
+                    remainingDuration: true,
+                    keyEnabled: true,
+                    keyBindings: {
+                        // Disable some of the default key controls
+                        muted: null,
+                        volumeUp: null,
+                        volumeDown: null
+                    },
+                    wmode: "window"
+                });
             });
+
         });
     })(jQuery);
 </script>

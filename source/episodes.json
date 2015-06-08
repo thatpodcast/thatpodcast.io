@@ -1,0 +1,18 @@
+---
+use: ["episodes"]
+permalink: episodes.json
+---
+{
+    "episodes": {    
+{% for episode in data.episodes %}
+        "{{ episode.number }}": {
+            "title": "Episode {{ episode.number }}: {{ episode.title }}",
+            "subtitle": "{{ episode.subtitle }}",
+            "audio_url": "{{ episode.meta.download_url }}",
+            "duration": "{{ episode.meta.duration }}",
+            "site_url": "{{ site.url }}{{ episode.url }}",
+            "image": "{{ site.url }}{{ episode.bg_image }}"
+        }{% if not loop.last %},{% endif %}
+{% endfor %}
+    }
+}
