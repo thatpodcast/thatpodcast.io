@@ -3,3 +3,11 @@ sculpin_content_types:
         permalink: episodes/:basename/
     posts:
         enabled: false
+sculpin_twig:
+  extensions:
+    - ''
+    - html
+    - twig
+    - json
+    - html.twig
+    - twig.html
