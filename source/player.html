@@ -159,7 +159,7 @@ h2 {
             var episode = data.episodes[getQueryVariable('episode')];
 
             $('html').css('background-image', 'url(' + episode.image + ')');
-            $('header h1 a').text('Episode '+episode.number+': '+episode.title).attr('href', episode.site_url);
+            $('header h1 a').text(episode.title).attr('href', episode.site_url);
             $('header h2').text(episode.subtitle);
             $('header span').text(episode.duration);
             $(document).ready(function($) {

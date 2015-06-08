@@ -6,8 +6,7 @@ permalink: episodes.json
     "episodes": {    
 {% for episode in data.episodes %}
         "{{ episode.number }}": {
-            "number": "{{ episode.number }}",
-            "title": "{{ episode.title }}",
+            "title": "Episode {{ episode.number }}: {{ episode.title }}",
             "subtitle": "{{ episode.subtitle }}",
             "audio_url": "{{ episode.meta.download_url }}",
             "duration": "{{ episode.meta.duration }}",
