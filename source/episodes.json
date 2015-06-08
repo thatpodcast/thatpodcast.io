@@ -8,7 +8,7 @@ permalink: episodes.json
         "{{ episode.number }}": {
             "title": "Episode {{ episode.number }}: {{ episode.title }}",
             "subtitle": "{{ episode.subtitle }}",
-            "audio_url": "{{ episode.meta.download_url }}",
+            "audio_url": "{{ episode.meta.download_url|replace({'http://': 'https://'}) }}",
             "duration": "{{ episode.meta.duration }}",
             "site_url": "{{ site.url }}{{ episode.url }}",
             "image": "{{ site.url }}{{ episode.bg_image }}"
