@@ -3,7 +3,7 @@
     <meta name="description" content="{{ page.subtitle }}">
     <meta name="keywords" content="beau, beau simensen, dave, dave marshall, podcast, that podcast{% for tag in page.tags %}{% if loop.first %}, {% endif %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}" />
 
-    {% set standalone_player %}{{ site.url }}/player.html?duration={{ page.duration }}&episode={{ page.number }}&subtitle={{ page.subtitle|url_encode(true) }}&title={{ page.title|url_encode(true) }}&audio_url={{ page.embed_url|replace({'http://': 'https://'})|url_encode }}&image={{ site.url|url_encode }}{{ page.bg_image|url_encode }}&site_url={{ site.url|url_encode }}{{ page.url|url_encode }}{% endset %}
+    {% set standalone_player %}{{ site.url }}/player.html?episode={{ page.number }}{% endset %}
     <!-- Facebook -->
     <meta property="og:title" content="Episode {{ page.number }}: {{ page.title }}" />
     <meta property="og:image" content="{{ site.url }}{{ page.bg_image }}" />
