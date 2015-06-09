@@ -186,6 +186,7 @@ body#page-nav-newsletter-thanks section#hero,
 body#page-nav-newsletter section#hero {
   background-image: url(newsletter.jpg); }
 
+body#page-nav-privacy section#hero,
 body#page-nav-about section#hero {
   background-image: url(about.jpg); }
 
