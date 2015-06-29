@@ -159,9 +159,9 @@ h2 {
             var episode = data.episodes[getQueryVariable('episode')];
 
             $('html').css('background-image', 'url(' + episode.image + ')');
-            $('header h1 a').text(episode.title).attr('href', episode.site_url);
-            $('header h2').text(episode.subtitle);
-            $('header span').text(episode.duration);
+            $('header h1 a').html(episode.title).attr('href', episode.site_url);
+            $('header h2').html(episode.subtitle);
+            $('header span').html(episode.duration);
             $(document).ready(function($) {
                 $("#jquery_jplayer_audio_1").jPlayer({
                     swfPath: "{{ site.url }}/assets/js/jplayer/Jplayer.swf",
