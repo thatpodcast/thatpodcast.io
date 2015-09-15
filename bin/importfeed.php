@@ -55,7 +55,7 @@ explicit: %EXPLICIT%
 EOS;
 
 $targetDir = __DIR__."/../source/_episodes";
-$feedUrl = "http://media.signalleaf.com/That-Podcast/rss";
+$feedUrl = "http://simplecast.fm/podcasts/1301/rss";
 $feed = simplexml_load_file($feedUrl);
 $feed->registerXPathNamespace("itunes", "http://www.itunes.com/dtds/podcast-1.0.dtd");
 $feed->registerXPathNamespace("atom", "http://www.w3.org/2005/Atom");
@@ -94,9 +94,9 @@ foreach ($feed->channel->item as $item) {
             "%SUMMARY%" => (string) $itunes->summary,
             "%SUMMARY_STRIPPED%" => strip_and_clean((string) $itunes->summary),
             "%GUID%" => $guid,
-            "%EMBED_URL%" => "http://media.signalleaf.com/That-Podcast/$id/embed/$urlFilename",
+            "%EMBED_URL%" => $rssUrl,
             "%RSS_URL%" => $rssUrl,
-            "%DOWNLOAD_URL%" => "http://media.signalleaf.com/That-Podcast/$id/$urlFilename",
+            "%DOWNLOAD_URL%" => $rssUrl,
             "%DURATION%" => (string) $itunes->duration,
             "%FILE_SIZE%" => (string) $item->enclosure['length'],
             '%EXPLICIT%' => (string) $itunes->explicit,
