@@ -60,7 +60,18 @@ $feed = simplexml_load_file($feedUrl);
 $feed->registerXPathNamespace("itunes", "http://www.itunes.com/dtds/podcast-1.0.dtd");
 $feed->registerXPathNamespace("atom", "http://www.w3.org/2005/Atom");
 
+# these were published on the site later than the media hosting
+$skip = [
+    "https://www.signalleaf.com/podcasts/That-Podcast/552bde5cddc93203005716dd",
+    "https://www.signalleaf.com/podcasts/That-Podcast/55bfe01315405a030032d8cd",
+];
+
 foreach ($feed->channel->item as $item) {
+
+    if (in_array((string) $item->guid, $skip)) {
+        continue;
+    }
+
     $itunes = $item->children('itunes', true);
 
     $pubDate = new \DateTime($item->pubDate);
