@@ -9,6 +9,7 @@
     <meta property="og:image" content="{{ site.url }}{{ page.bg_image }}" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
     <meta property="og:description" content="{{ page.subtitle }}" />
+    <meta property="og:site_name" content="That Podcast" />
 
     <meta property="og:type" content="article" />
     <meta property="article:publisher" content="https://www.facebook.com/ThatPodcastIo" />
@@ -44,6 +45,10 @@
     <meta name="twitter:player:stream:content_type" content="audio/mpeg" />
     <meta name="twitter:player:width" content="435" />
     <meta name="twitter:player:height" content="251" />
+    <meta name="twitter:label1" value="Published" />
+    <meta name="twitter:data1" value="{{ page.date|date('M jS Y') }}" />
+    <meta name="twitter:label2" value="Duration" />
+    <meta name="twitter:data2" value="{{ page.duration }}" />
 {% endblock %}
 {% block hero %}
 <section id="hero" class="episode" style="background-image: url({{ site.url }}{{ page.bg_image }});">
