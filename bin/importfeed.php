@@ -81,7 +81,7 @@ foreach ($feed->channel->item as $item) {
 
     if ($force || !file_exists($filename)) {
 
-        preg_match('/^Episode\s+(\d+):\s*(.*?)$/', (string) $item->title, $matches);
+        preg_match('/^Episode\s+([\d\.]+):\s*(.*?)$/', (string) $item->title, $matches);
 
         if (count($matches) < 3) {
             print "Title '".(string) $item->title."' does not match expected pattern\n";
