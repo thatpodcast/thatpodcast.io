@@ -39,9 +39,440 @@ personal data out of the immutable event streams.</p>
   <li><a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank">GDPR</a></li>
   <li>more links to come</li>
 </ul>
-
 {% endblock %}
 {% block itunes_summary %}
 Because it's about time we're leaving the wild west
 
+{% endblock %}
+{% block transcript %}
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">00:06</span>
+    <span class="transcript__content">Hi, and welcome to another episode of That Podcast. I am Dave.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">00:18</span>
+    <span class="transcript__content">And I am Beau.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">00:20</span>
+    <span class="transcript__content">We have a special guest with us again this week. Welcome, Shawn McCool.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">00:23</span>
+    <span class="transcript__content">Thanks for having me.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">00:25</span>
+    <span class="transcript__content">So Shawn is a very prominent member in the PHP community. I've got quite a lot of time for the other things Shawn has to say. One thing I admire about you Shawn is you've got tend to hold quite strong opinions about the way you think things should be done but you never seem to sort of scoff at other people's ways of doing things, if that makes sense. You don't denigrate other people's particular methods so I always think that's cool. A particular reason we asked you to come on is because you recently started ... Well, so you started working ... You recently sort of put out to the public a new Event Sourcing library with a sort of, I won't say a twist, but definitely some more unique features. I mean, if you'd like to sort of tell the listeners a little bit about yourself and then we'll start talking about Event Sourcery.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">01:16</span>
+    <span class="transcript__content">Yeah, sure, so I started working with Event Sourcing something like three years ago and it caught me immediately that it was a very interesting way to model. It's very intuitive for me to think, okay, this happened and this happened and then to be able to interpret those things in any number of ways to solve problems. A couple years ago I started making some videos on how to understand Event Sourcing and I started making applications and putting them into production. Between then and now I've probably made about four or five different versions of Event Sourcing libraries and multiple versions are now running in some large companies, running in my business, running in some other businesses of people I know. I've been really enjoying learning how people are implementing their systems using this code and other code, and just trying to come up with new ways to see how to solve problems using events.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">02:25</span>
+    <span class="transcript__content">This current version is really important to me because, as you know, the GDPR is on us now and it's what I feel is a really important regulation that allows people to have more control over their personal data, but people in the Event Sourcing world have been talking, "Okay, how do we handle this kind of personal data when you have immutable event stores?" In order to solve this problem I've kind of looked at a lot of different ways to handle that and I think I've come up with something that will serve now and be really interesting but also as we use it going forward, hopefully we learn some new things and maybe come out with something even better.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">03:13</span>
+    <span class="transcript__content">Yeah, so I'm sure most of our listeners are familiar with Event Sourcing now because Beau talks about it quite a lot. But for those who don't know, usually in the case of Event Sourcing systems the Event Store is a pend only, right? So everything that goes in is immutable, it can't be change and you only ever add more events to the store. With regards to GDPR, we're talking about things like the right to arrange an Event Store, if an Event Store is immutable and contains personal data you have an issue in that you can't go back and delete that data, right?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">03:49</span>
+    <span class="transcript__content">Yeah, so actually there's a number of interesting things that the GDPR requires. You have to be able to explain how you're using somebody's data, you have to be able to provide their data to them, and if they request it you have to be able to remove it. I am really fascinated by this because I feel like this breeds new life into the industry in a way that I feel like we've been kind of like the Wild West and just doing whatever we wanted to do, and you see problems all over the world with data breaches, data being used in unethical ways and I'm really excited that now we have to deal with this problem and we have to create algorithms to deal with it. This is a real big motivator for me. I want to keep tackling this problem and Event Sourcery, this new version of this library that it's open source but it's still very much in flux. I'm trying to create enough tooling that allows us to solve for these problems so that Event Source system development can be very easy without having to give up the ability to provide people's data and the ability to erase it.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">05:12</span>
+    <span class="transcript__content">Yeah, I like your comment about software sort of being the Wild West. I keep seeing that coming up more and more, people talking about ethics in soft design, ethics in all sorts of areas, especially AI. What are we actually doing? Why are we doing it? These are important questions that, you know, we can call back to the Jurassic Park thing where we're too busy figuring out if we can do it to decide whether or not we should. I think we've definitely gotten to that point. I almost think the rest non-software developers are probably getting to that point too, like wait a minute, what's going on here? People are seeing all these things happening around the world and starting to ask questions beyond just the tin foil hat looking security people that worry about this stuff all the time and have been for years. Now it seemed to be more mainstream even moving into mainstream non-software development communities as well.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">06:12</span>
+    <span class="transcript__content">Definitely. I mean, I think even without necessarily the GDPR getting to where it is now things like the recent Facebook and Cambridge Analytica sort of scandal has even brought it forward to the more general public and minds about the data that's held on then, what people are doing with it, you know? People are becoming more and more aware regardless of what they know about building software, you know? They know about all these systems and they know how much they use them, and then they also know what they see when they use them as well.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">06:49</span>
+    <span class="transcript__content">Yeah, definitely. I think the end results, I'd say like the Cambridge Analytica thing is ... I think it's easy to see now how this could actually be abused in ways people weren't expecting or didn't even think about beforehand.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">07:03</span>
+    <span class="transcript__content">It's all very unorganized. There's no it's distributed decision making, distributed intelligence and there's not an easy way to solve that kind of problem. A regulation like GDPR isn't going to fix everything. I believe that most systems are simply not going to even try to conform to it and the interesting thing for me is that the tooling, the culture, there's things that are going to be changing that are very important. Even if it's not like we get every application suddenly complying to your privacy requirements, at least we're entering into that area. The conversation has begun.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">07:47</span>
+    <span class="transcript__content">Mm-hmm (affirmative). There's actually two sides of the GDPRs when it comes to privacy information, right? There's the processor versus the controller or something?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">07:58</span>
+    <span class="transcript__content">Yeah, that's right.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">08:00</span>
+    <span class="transcript__content">I think ... like I don't know much about that at all, but it seems like even that can be gray areas when you start talking about not even your personal data, but ... or say your customer's personal data being stored on some third party server. Now who's responsible for it? You know, say we use Intercom and our users email address is now sent off to Intercom so we can communicate them when they have support questions. Well, right to erasure ... because is that like a chain reaction thing? If you delete it from us do we then have to go delete it from Intercom and then assume they're gonna do the right thing as well? Who's liable in that case if Intercom say messes up? Is that Intercom or is that us?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">08:43</span>
+    <span class="transcript__content">Well, I mean, I think that usually boils down to the agreements you have in place with Intercom so a lot of the service providers or ... DPAs, so Data Processing Addendums and which is basically your quite often a cookie cutter contract so you can sign and the contract is basically, or should be, a contract to state that they're gonna be acting to the utmost compliance that they can provide with regards to GDPR. It's really part of ... I mean, I've looked at the list of data processors that we have, looked at the list of contracts I'll then have to read and understand, and more likely have to read to try and understand to pass onto our lawyers to double check and understand. It's getting quite exhaustive.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">09:33</span>
+    <span class="transcript__content">Just getting back to the data processors versus data controls, I had a meeting today with some data protection consultants about us and we discussed one situation where we weren't even sure who was the ... whether this person, this entity was a data processor or a controller. You're familiar with the way iTunes works for In App purchases, so when one our customers makes an In App purchase they don't actually buy from us they buy from Apple and Apple pays a commission. You know, like, does that make sense? They pay VAT to Apple, Apple gives the VAT to the tax man, and then Apple decides how much we're worth from that and give us some money. We don't get to see sort of the transaction with that individual. You know, we know about the transaction because they're also signed into our using our API on our backend. Technically we don't get to see that monetary transaction.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">10:42</span>
+    <span class="transcript__content">To me that makes ... because the easiest distinction for me between a controller and a processor is a controller instructs the processor what to do. The controller's deciding what to do with the data. Whereas in that situation we're not really instructing Apple what to do. We're kind of asking Apple nicely if they'll sort of facilitate money for us on their platform and give us some of it basically.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">11:09</span>
+    <span class="transcript__content">Yeah, I don't think you tell Apple what to do.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">11:10</span>
+    <span class="transcript__content">That's it, you don't do you? You ask nicely and hope they don't raise their rates. Yeah, it's kind of ... some of those distinctions are quite hard to make. Some of them are fairly easy, you know, the data processor. A good example I like to use is Postmark who handles our transactional email, we're specifically asking them, "Send this email to this person." Where only specifically understand that they keep a log of that email for 45 days. We agreed, it's in writing, we understand, it's all good. Some of those other ones it's really hard to get my head around.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">11:51</span>
+    <span class="transcript__content">Let's kick it back to Event Sourcery. I think the key thing is of that unique concept is definitely that you are storing personal data adjacent to the Event Store, right? How does that work in practice when let's say we get the right to erasure request?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">12:11</span>
+    <span class="transcript__content">Yeah, so the current model is that you can serialize the events and you can use primitives if you want to and they just go into the Event Store like normal. You can use value objects and they're serialized at that level, or if you use a specific type of value object you implement a specific interface then you are telling this, "Okay, this is personal data." When that value goes to be stored it looks and says, "Okay, here's a personal key that refers to an individual person. Now what we're gonna do is we're gonna take the data here and we're gonna store it in a separate store, but we're gonna encrypt it and store that encryption again in a separate store." Now we have in the event itself the key for the person who owns it and the key for that actual bit of data. When we de-serialize that back we go and say, "Okay, go give us this personal data," and it'll decrypt it and rehydrate the event, and then once we have that, that's the whole process around.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">13:21</span>
+    <span class="transcript__content">If we want to decide, okay this person comes back and says they want their data removed then we can just trash their data from the data store, it's an entirely mutable store, so my default implementation is just a relational database. We trash that, then when we try to de-serialize the event we do so but in a way that personal serializable value object, it knows that that data has been erased. It's not a perfect solution necessarily, but I think it's something that okay, we can check to see if that data has been erased. We can react in any number of ways and this is going into production into multiple apps this year, and it will have probably processed tens of millions of records or more by the end of the year. We're going to see this in action so we're going to have a chance to just find out what works and what doesn't work about this model, and then come back so that when we do the 1.0 release we have something that's been battle tested for five, six months in large scale.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">14:33</span>
+    <span class="transcript__content">When you encrypt the specific attributes related to a specific person do you encrypt it one entry or does each individual attribute of each potential event have its own spot or are they encrypted together as a set?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">14:54</span>
+    <span class="transcript__content">Yeah, so you can think of it as right now there's a personal key and a data key and those almost form a composite key. If you think about it like that, and then there's the encrypted data. Then there's a separate encryption store with the intent of, okay, if this gets breached then perhaps they don't get everything, right? We isolate three specific aspects like the data, the event store, cryptography store, and all of those things, none of themselves will expose personal data. If you don't want to implement that in a very complex way you can just throw them all in the same database, but if you want to take it further it's not hard to put them into other implementations or other locations. I've discovered after doing a little bit of research that one of the major causes of breach is where you have a remote database that somebody just punches a hole in a firewall so that your application can get to it. You know, just some developer just punched a hole in the firewall and lets through whatever.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">16:08</span>
+    <span class="transcript__content">I think that well, a combination of keeping this data encrypted and separating the personal data from the event store, and I'm going to make a specific effort to try to highlight some common security problems and hopefully we can reduce some of that risk. For me it's-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">16:29</span>
+    <span class="transcript__content">Sounds very exciting.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">16:30</span>
+    <span class="transcript__content">-one of the most interesting things to happen to software development for a long time. Also, I just really love this library because I'm doing this heretical thing where it's both idiomatic, like all of the code requirements are idiomatic such that it's simple objects. There's not magic in the developer UI part. So in the part that the developer's working on. Yet, there's no wasted space. When you make an event it's just dependency injection and that's it. All of the serialization and de-serialization is in the value objects. You write the test for that once in your value objects and then you don't have to keep re-testing it every single time that you write a new event. There's a lot of really fun stuff. The commands are completely different from any implementation I've seen and I'm just having a lot of fun because now when we're testing this stuff or when we're writing it, so implementing it, it's the smallest amount of code I've ever written to implement this stuff.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">17:41</span>
+    <span class="transcript__content">I feel like Event Sourcing doesn't need to be incredibly expensive, it doesn't need to require a ton of code and a ton of tests. I think actually it's so easily testable that the actual test code can be smaller than most any other kind of implementation. My goal is to make prototyping with Event Sourcing as easy as possible so I don't have to keep doing what I've been doing, which is prototyping an idea in CRUD, learning okay, what kind of operations do we apply here mixed with techniques like Event Storming to learn more about what's happening, and then ultimately write this code base where every single event takes me 30 minutes to write because I have all of this serialization code to test. Now I take all of that out and make it somewhat magic. You throw the event in there, it just goes away. You bring it back, it just comes back. All of the specific implementation's in the value object. We've reduced so much code from our previous implementations.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">18:45</span>
+    <span class="transcript__content">I have a question. I mean, this sounds all great to me. I think what you've described works in my head and I understand. Do you have any plans to sort of extend or provide facilities to deal with this kind of thing with things like projections, because I mean, obviously it depends on the need of the projection and the view model, but things like the encryption's not so easy for view models when view models needs to be searchable or things like that. Then I guess I assume things like if you do have that instance where you need to erase the personal data is that gonna mean ... it's probably gonna mean rebuilding projections and things like that? Is that something that sort of like you think could have some sort of a unique solutions as part of the library, or is that something that's probably going to be a case by case and you have to deal with that as you go?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">19:49</span>
+    <span class="transcript__content">These are ideas I've been dealing with. These are problems I've been dealing with, I should say. I have ideas about how this can work but for now I'm just implementing them in real world situations to learn from them and eventually something is going to come out, some tooling to help me because I need the tooling to do my job. Right now I'm trying to lay down specifically these are my values, these are the values of this software, and every step of the way really take those values into consideration so that ... I honestly, I don't see a way to make the projections just effortless and I don't see a way to make much any of this just effortless when it comes to whether or not this data exists because you're going to have to know up front that this data might be gone. You're going to have logical branches and I don't know of a way to just say, "Here's an automated way to deal with that."</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">20:49</span>
+    <span class="transcript__content">I think that it has to be a series of deliberate choices and along the way we might find some patterns that help us to implement them more easily or provide advice for how to implement it. For now I'm just learning through observation, through doing, and by the time that we get to a 1.0 release we'll have at least some idea of what we're doing.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">21:14</span>
+    <span class="transcript__content">Yeah, I mean that makes sense to me. It's quite hard problems. I mean, though I want to mention that chain of processes, you know, if your right to erasure here, do you need it to go through your processor here? I mean, just CQRS regardless is the event sourcing, it almost created distributed distributed model isn't it? You CQRS, you say, and you're gonna have a separate read model and a separate write model so that's two places you've got your data already. Two places that need deleting. Two places that need privacy considerations like encryption. It's almost like you've distributed the system internally before you've even gone out to those processors so ...</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">21:49</span>
+    <span class="transcript__content">Yeah, it really feels like there's this whole GDPR domain that now splits across everything and it's likely that we're going to have to communicate, "Okay, this person invokes the right to be forgotten." Just all of our systems and the sub-systems that make up our systems are going to have to just deal with it independently. We'll see. That currently is my expectation anyway.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">22:15</span>
+    <span class="transcript__content">Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">22:17</span>
+    <span class="transcript__content">How have you implemented it currently? Have you actually implemented within one of these live systems that here is somebody who has wanted to be erased. Did you do that with an event on the aggregate where you said, "Okay, forget me." Then it emits an event that tells everything to go and clean it up or how have you implemented it so far?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">22:38</span>
+    <span class="transcript__content">In my experience what you're having to do is in every single place where that data could be used have some kind of fall back. Now I'm very open to there being emergent ways of handling this, but right now everything that we do where personal information is used has a fall back just in case it's not being used. We emit an event saying, "Okay, they've invoked this right," and then the projections have to ... they're also specific. Maybe in this projection we just remove a record. Maybe in this projection we remove 100 records. Maybe in this projection we clear a field or change a field to-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">23:17</span>
+    <span class="transcript__content">You scrub it.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">23:19</span>
+    <span class="transcript__content">-erased or forgotten. Every single thing is different and I believe that this is a real challenge that is not exactly going to go away. I just don't think that there's a simple solution for this.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">23:32</span>
+    <span class="transcript__content">Yeah, I think ... I mean, you hit the nail on the head there for in logistic terms of how we're doing things we've discussed today, you know? We've discussed [inaudible 00:23:43] data subject today and then obviously there's data sets for all the different information you have on that subject and the retention periods for each different piece of information is completely different depending on the state of our relationship with that subject, you know. Things ... we'll keep certain things but, I mean, the golden one is in the UK the tax man can inquire about things for the past six years and that goes by the nearest tax year. The rule generally in the UK is for tax purposes you'll keep financial records for seven years.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">24:20</span>
+    <span class="transcript__content">Do you need to keep a person's ... well, an extreme example would be genetic data just because they've bought a DNA test from you? No, you don't. So the genetic data can go immediately but you're gonna say, "Well, yeah, we've erased this data here, or this personal data, but the financial records, our dealings with you we're keeping those because we need them." Whether they stay in projections here or there is different isn't it? I guess there's gonna be quite difficult for you to come up with a one solution fits all but it's probably more, I guess, you're probably more like it's becoming sort of giving people recommendations or sort of solutions in how they might deal with it, but it's unlikely that your framework's gonna do this for them, I guess.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">25:09</span>
+    <span class="transcript__content">Right. Yeah, actually this is one of the places where this concept of a bounded context really shines because in one aspect of the system this information is protected data that should be erased. In another part of the system it's just something that's gonna have to stick around because we have to have your invoice data, for example, and that's just part of it. I mean, if you read the regulation, if you're calculating statistics or processing statistics it's perfectly fine to keep that data. I think that there's one part of solving for the GDPR is actually in the interpretation of the GDPR and over time I believe that court rulings will create precedence that will help define the shape of what this thing really is or is going to be. For now I think that this is a reasonable start.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">26:05</span>
+    <span class="transcript__content">Yeah, I definitely think so. Just one thing I picked up on when I was reading [inaudible 00:26:11], particularly the Read Me earlier. It was just a curious thing actually. You link a couple of times to the ICO here in the UK's website. Is that just because it was a resource to be good, you're basically in Holland aren't you?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">26:31</span>
+    <span class="transcript__content">Yeah, the reason for that is at the time I was writing the Read Me I went and grabbed a couple resources and put them into the document. Really this whole ... all this documentation is so that I can share the ideas with the development community that I'm in, the development communities and get critical feedback.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">26:49</span>
+    <span class="transcript__content">I just wondered because I've actually ... and as I've read more of the ICO stuff of here in the UK I've actually sort of grown to appreciation the documentation on this. It's actually been ... it's actually far better than I first appreciated when I think I sort of glanced at the several hundred pages in one the guides and sort of like turned my nose up at it because it looked like a lot of hard work, but when I've actually sat down and read sections at a time and gone through it, it's actually been very useful for me anyway, so ...</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">27:21</span>
+    <span class="transcript__content">Yeah, it's like we're collecting an entire document of resources that we can shoot back and forth like the GDPR checklists and all of these other resources that are slowly helping us build these models into our heads so that we can do the job proper. I mean, I'm not a lawyer. Anything I say is entirely likely to be wrong, but I know a lot of companies can't afford a lawyer to help understand all of their system and understand what's going on. I think this is just an area where we're just going to have to do our best and there's a lot of resources coming out and I just know that this is going to be an area ... there's going to be like Coursera courses or something on this pretty soon. We're gonna have a lot of really great resources.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">28:06</span>
+    <span class="transcript__content">Yeah. I think, I mean, one of things I picked up at my meeting today was it's actually a big deal just to be able to document the steps that you are taking. To be able to say, you know, if the hammer did come down on you to be able to say that, "Well, we've actually been working on this every day for the past three months." You know? "These are things we've been doing. These are the processes we've put in place. These are the training courses we've put our staff through. These are the policies we've put in place. These are the handbooks we've given out." All these things actually makes a big difference because nobody, like you say, you've said there'll be some court cases that set some precedence, because at the minute we are shooting a little bit blind in some respects. There's a lot of gray areas, you know, there's also some things about justifying, I mean legitimate interests is a phrase I hear a lot. Who can justify ... it's very hard to justify legitimate interests sometimes. You just don't know sometimes.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">29:08</span>
+    <span class="transcript__content">The fact that you're considering it, you're writing down your reasons, we're reviewing things regularly as well. You know, we've actually, we've been putting down rules, putting down things in our information asset register and we're actually putting marks saying we need to review this because we might not need it. We actually know we've used it for this, but how many times have we actually used it in the last six months? You know, let's go check that, change it if we need to. I think that's the biggest part of it for me. Like you say, I'm not a lawyer, but I'm actually feeling in a lot better place about all of this than I was maybe even a month or two ago.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">29:44</span>
+    <span class="transcript__content">Yeah, I think the more I work with it and the more I learn about the more relaxed I get. I think that it's actually a pretty decently written ... I know that the EU tends to make these things a little bit vague and then sort them out later, but I don't think that's the worst strategy honestly.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">29:58</span>
+    <span class="transcript__content">Yeah, I mean, and as far as being a consumer I'm so happy about it. I think it's great. It'd be interesting to see if it actually makes as much of a difference as I'd like it to. My gut feeling is that it's gonna make a dent and make a change, and it'll be interesting. I don't know about you but I think everyone in the world's receiving hundreds of emails right now. I'm actually quite interested to see all us people who've ... they've almost opened the Pandora's box by asking me to opt back in. I'm interested to see how they ... come the 25th when they see that their email list has shrunk by 70%, 80%.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">30:41</span>
+    <span class="transcript__content">Oh, it'll be charitable. It'll be so much.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">30:43</span>
+    <span class="transcript__content">Yeah, I'm actually wondering if some of them are just going to turn around and say, "You know what? Screw it. We're just gonna carry on as we were." We'll see.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">30:53</span>
+    <span class="transcript__content">Yeah, the likely thing is that most companies won't comply.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">30:59</span>
+    <span class="transcript__content">I've received two separate email and privacy updates since we've started recording.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">31:09</span>
+    <span class="transcript__content">Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">31:09</span>
+    <span class="transcript__content">They are flowing fast and furious today and this week and the last couple of weeks.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">31:13</span>
+    <span class="transcript__content">I mean, I can be completely honest with you now and say there's only one privacy policy that I've ever read word for word and that's our own when I get it back from the lawyers to check and proofread. You know, that's just the truth. I've got all those emails. There's no way I'm gonna go read that stuff so ...</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">31:34</span>
+    <span class="transcript__content">Yeah, there's an art installation where they print on scrolls the privacy documents for all these major companies and it breaks down to something completely unreasonable for an individual to read.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">31:46</span>
+    <span class="transcript__content">Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">31:46</span>
+    <span class="transcript__content">Sometimes.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">31:47</span>
+    <span class="transcript__content">It's crazy, isn't it? I mean, I heard someone say today about the potential of you having to list your data processors' processors. I don't think that's necessary, but we use PayPal for some payments and their third parties list is something like 1,000 different companies because they offer it in obviously so many different countries and they'll use different companies in each of those ... like think about the fraud agencies and credit check companies. They'll have several different ones in each country. So, yeah, things like that. There's no way we can possibly ... we can audit the companies that PayPal are using. You know, as a company our size we use PayPal to accept payments. We can't go and audit them, can we? It's ...</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">32:44</span>
+    <span class="transcript__content">Yeah, on the converse though, I think that by having to audit your processes and who you're working with we might end up with improvements into the business process as well.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">32:54</span>
+    <span class="transcript__content">Yeah, well I mean, just the fact that I now know how many processors that PayPal use, you know, that's something I probably wouldn't have cared to check before. Already it's made me more aware of the scope of PayPal really, I guess.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">33:11</span>
+    <span class="transcript__content">Cool. Shawn did you have anything else you wanted to talk about since you're on with us?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">33:20</span>
+    <span class="transcript__content">I think that one interesting point might be that I've been discovering over the past year or so that building Event Source systems actually can be a really quick and easy thing. I know that the general idea is that okay, it takes a long time and that it's a very expensive mode of operation, and definitely I believe that it can be, but I think that what's really interesting is the idea of being able to rapidly develop these systems. I'm seeing in my own experience some improved development speed from using these technologies, CQRS and Event Sourcing, over how I was dealing with it in CRUD, but it's taken me years of doing this all the time. You know, three or four days a week sometimes, most of the time on these kind of systems. I think that, yeah, there's a learning curve because you spend ... well, I don't know this is 20 years for me in web development and most of that time has been in PHP or C Sharp and basically all of that has been about the same thing.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">34:37</span>
+    <span class="transcript__content">You know, there was a change from server pages to more Frameworks and ORMs, and stuff at some point in time. This is a big change for me and so after making this transition, and after spending a lot of time slowly slogging through my expectations and becoming more familiar with it I've really sped up. I think that I don't hear this message very often so having the chance to say it is maybe nice, but how long did it take me to get used to developing CodeIgniter, or Laravel, or Symphony? How long did that take from the previous mindset of developing these pages where you start at the top with your includes and then do some database queries, and then at the bottom output HTML? That took some time to speed up and then at some point in time you get so quick you're thinking, "Well, is there a chance for me ever to transition into another mode of operation because I'm so deeply capable at the one I'm in now and it's such a powerful medium that I'm working in?"</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">35:42</span>
+    <span class="transcript__content">I've been pushing myself to question this and I feel like the answer is after two years I really started picking up speed in a big way and I'm expecting to keep pushing this and to keep pushing the tools, and to push myself and I think that this is going to get ... there's going to be a breakthrough in the future to me, in my mind, where events start meaning much more to much more people. I think that it's just coming. Just becoming familiar with these ideas and playing with them now might be worth a lot more than trying to just implement this in your work and shove this into some place. I think it's fun, it's a new way to do things, and you know, I know Beau that you have a lot of experience with this and I'm sure that everyone who listens knows all about this stuff. For me this is ... it's something that I'm starting to see where the costs can be reduced so I think that there's a bright future here.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">36:52</span>
+    <span class="transcript__content">That's awesome. Yeah, we just did an episode with Frank and Event Sauce. I think two or three episodes ago, something like that. Yeah, I'm actually very excited to see a bunch of these new Frameworks popping out. Back when I started to do it there was essentially just Broadway and [inaudible 00:37:13]. Which was just a reference implementation of some ideas. You know, kind of coming off of those and not really having a chance to keep continuing to iterate on the ideas that you're working with, it does feel very complicated, and sticky, and more work than it needs to be. It's very exciting for me to see some of these new things pop up. Makes me want to get my hands dirty and start playing with them because it does look like the UX is a lot different than it was before.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">37:49</span>
+    <span class="transcript__content">There's a lot easier ways for people to jump in and maybe just do event sourcing. You don't have to go all in on event sourcing and CQRS. Yeah, it seems like it's been a really interesting two or three years basically since Broadway sort of published their stuff. There's a lot of options out there now for people, which is pretty cool.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">38:12</span>
+    <span class="transcript__content">Yeah, and they're gonna start springing up like weeds.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">38:14</span>
+    <span class="transcript__content">Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">38:14</span>
+    <span class="transcript__content">I tell ya, it's gonna be a renaissance and so many ideas are gonna come into play. There's gonna be cross-pollination and it's gonna be ... it's just really exciting.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">38:23</span>
+    <span class="transcript__content">Yeah, I think it's good. Just while we're on this, briefly I don't do event sourcing Shawn, but I do and have recorded events for a long time. I do model [inaudible 00:38:34] events and I was shoving them in a database, not specifically an event store, but well, I could call it that but it was within a database. I was doing it just for the audit trail for us to sort of ... long before I knew anything about event sourcing.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">38:51</span>
+    <span class="transcript__content">Just the other day, last week, the CEO came to me and asked me if I could provide some statistics and it was a lot of point in time based statistics on the state of accounts in our system. It was literally the kind of ... this month of this year how many members did we have, how many were premium members, how many people upgraded in that month, how many people had their membership expire in that month, how many people closed their account in that month? All these kinds of things, and I didn't have that data, but I did have ... and I looked and I was surprised actually when I looked back in the event store and I just seen that I had events around this kind of thing since just the beginning of 2011.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">39:36</span>
+    <span class="transcript__content">It wasn't 100% accurate because this isn't ... the events aren't the source of truth for my system. It's a lot of traditional CRUD type stuff, you know, traditional database records but the events were there and the statistics I generated were within definitely ... I was confident to say they were within .5% of what they would have been, all the way back to 2011. Then that's the kind of thing that every now and then I get these reminders of how well, if I was in a full event source system, you know, the power that I'd have there of being able to generate literally point in time statistics right down to the second for the past seven years. Data that we didn't think we had, when all of a sudden, I mean, it took a good few hours of processing and stuff, but it was fantastic and it really sort of made me smile, I think, is what it was.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">40:29</span>
+    <span class="transcript__content">Cool. Yeah, that sounds like a great strategy. You get a lot of the benefit of the event sourcing without a lot of the difficulty, I guess. A lot of systems, I mean, the kind of systems that are fully event sourced really are probably something like a micro service or a small service that's off doing something. A lot of times you don't have the full thing event sourced. For example, user authentication and stuff like this. You're always kind of on this edge where your events as a source of truth system is interacting with this mutable bit. I think that it's really interesting that as you start to work with event sourcing it becomes very clear where you can get away not doing that. At the beginning I intentionally made all these little side projects to just event source literally everything, and that taught me so much about what not to use it for.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">41:28</span>
+    <span class="transcript__content">That's cool.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">41:29</span>
+    <span class="transcript__content">But what a privilege to have that kind of spare time.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">41:32</span>
+    <span class="transcript__content">Right, yeah. I've been looking at that on my own too and every once in a while I think both Dave and I both kick ourselves for not being able to work as much on side projects or dabble on hacking some new idea or concept and I definitely have less time now than I did say three years ago to kind of explore and stuff with these things.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">41:52</span>
+    <span class="transcript__content">Yeah, it's interesting though because sometimes your work literally takes you to these places. I said to you at the start of the year, Beau, I really wanted to get into a bit more of the [inaudible 00:42:01] stuff and just ... we've got our own security researchers, volunteers, you know, reporting books to us now, and I'm learning about sort of vulnerabilities that I'd never have learned about if I'd had to go look for them myself necessarily, I guess. The things I was aware of that happened, you know, and like DNS takeovers and things like this. Even though I've not really carved out any time to learn about that stuff myself it's just naturally my career's taken ... my job's taken me in that direction. Same with the GDPR, if I'm learning something about securities I probably wouldn't have learned ... or I might have gone if I'd found the time otherwise, but it's actually just nice that it's coming up in my job so that's kind of nice. Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">42:49</span>
+    <span class="transcript__content">That's cool. I went to a meet up last Monday. It was the first meetup I've been in quite a while. It was a talk on hacking. I really didn't expect to find out anything interesting. I just thought, "Okay, well someone's gonna go through some weird Word Press hacks or something like that." I was completely blown away by some of the tools, like some of the OWASP tools that, like, this is a security person who's a good guy. These are the tools that he has available. What is it that the black hat hackers have access to? I mean, he did a blind SQL injection attack and was able ... this was a tool, a standardized tool that automatically was able to determine which field potentially had a SQL injection attack, was then able to determine what kind of SQL database it was based on which SQL responses returned data that it wanted or not.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">43:54</span>
+    <span class="transcript__content">It then guessed at database table names to find users and started listing users and passwords that it cracked in a matter of 30 seconds. I just was like ... it was very eye opening for me to see that it isn't just people randomly guessing these things and maybe they're gonna hit your site. It's like, if they hit your site they're going to get you. If there is something wrong they're just gonna get you. Yeah, that whole thing is just amazing, so if you're dealing with that, the opposite side of that I can't imagine having to spend time [crosstalk 00:44:33].</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">44:34</span>
+    <span class="transcript__content">But it's all worth it, sort of, most of it's worth it so yeah. Should we call that a day then? Thanks, Shawn for coming out. It's been great. I'm looking forward to see how this likely develops and also the, I wouldn't say propaganda around it, I'd say the educational tool you're gonna be putting out around it because it sounds like you've got your work cut out for you but it's gonna good fun.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Shawn McCool</span>
+    <span class="transcript__time">44:56</span>
+    <span class="transcript__content">Well, thanks for having me.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">44:58</span>
+    <span class="transcript__content">All right, we'll call this one a wrap.</span>
+</p>
 {% endblock %}

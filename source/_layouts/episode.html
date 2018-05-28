@@ -133,6 +133,18 @@
             {% block content %}{% endblock %}
         <div>
 
+        {% if block("transcript") is defined %}
+            <style>
+                .transcript__speaker { font-weight: bold; }
+                .transcript__time { font-style: italic; font-size: smaller; margin-left: 1em; opacity: .5;}
+                .transcript__content { display: block; }
+            </style>
+            <div class="transcript-container">
+                <h1>Transcript</h1>
+                {% block transcript %}{% endblock %}
+            </div>
+        {% endif %}
+
         <div class="voicemail-cta" style="font-style: italic;">
             <hr>
 
