@@ -133,7 +133,8 @@
             {% block content %}{% endblock %}
         <div>
 
-        {% if block("transcript") is defined %}
+        {% set _block = block('transcript') %}
+        {% if _block is not empty %}
             <style>
                 .transcript__speaker { font-weight: bold; }
                 .transcript__time { font-style: italic; font-size: smaller; margin-left: 1em; opacity: .5;}
@@ -141,7 +142,7 @@
             </style>
             <div class="transcript-container">
                 <h1>Transcript</h1>
-                {% block transcript %}{% endblock %}
+                {{ _block|raw }}
             </div>
         {% endif %}
 
