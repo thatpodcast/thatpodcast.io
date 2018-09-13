@@ -1,0 +1,539 @@
+---
+title: The One with JMac
+subtitle: Shift and BaseCode and stuff.
+number: 51
+date: Thu, 13 Sep 2018 00:02:00 +0000
+guid: ff602315-6a36-4d20-9093-b1d7661cfab0
+embed_url: http://audio.simplecast.com/16556986.mp3
+rss_url: http://audio.simplecast.com/16556986.mp3
+download_url: http://audio.simplecast.com/16556986.mp3
+duration: 00:36:18
+file_size: 17508416
+explicit: no
+bg_image: /assets/css/basecodefieldguide.jpg
+bg_image_width: 1280
+bg_image_height: 495
+image_credit:
+    url: https://basecodefieldguide.com/
+    description: BaseCode
+    by: JMac
+
+---
+{% block content %}
+Beau catches up with JMac about Shift and BaseCode.
+{% endblock %}
+{% block itunes_summary %}
+Beau catches up with JMac about Shift and BaseCode.
+{% endblock %}
+{% block transcript %}
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">00:16</span>
+    <span class="transcript__content">Hi, welcome to another episode of That Podcast. I'm Beau, and Dave is not with us again today, but we're joined by Jason McCreery, otherwise known as JMac.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">00:26</span>
+    <span class="transcript__content">Yeah, so I go by JMac because I tend to work with 100 other Jasons. It seems without fail every team that I've worked on has a Jason that was there before me, so I have to be the one adopting a nickname. It's not necessarily just branding anymore. It originally started as a nickname, but I do try to use it for as much as possible I think; now that I'm speaking at conferences and so forth. I think people kind of just recognize me as JMac or even just kind of use that directly, which is great. You know, again, it's kind of like a fun little brand.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">01:02</span>
+    <span class="transcript__content">Nice.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">01:03</span>
+    <span class="transcript__content">But I've been a PHP developer for probably 15 years now. I mean, way back in the the PHP four days, you know. Before object oriented programming, or whatever. Or formal classes and so forth. So I've been with that the longest, but I mean, I'm a full stack developer, kind of originally, and then I got into IOS development for about two or two years.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">01:26</span>
+    <span class="transcript__content">Made a few apps. I kind of tinkered with Node JS a bit more, lately. Kind of for the day job, I guess you could say, but I'm a PHP fan at heart, so pretty active in the community in general and then specifically the Laravel community, because I also created Shift, which I think you guys have mentioned before on the podcast, so thank you.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">01:45</span>
+    <span class="transcript__content">Yeah, yeah. Sure thing. So yeah, we have mentioned Laravel Shift a few times. Do you mind sharing with the listeners what Shift is?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">01:55</span>
+    <span class="transcript__content">Yeah, so Shift is a SAS product, so it's automated services. Well, there're human services too. So there're the automated services and then there're human services for example if you want kind of, me to do the upgrade for you, but the automated services are really by far what every one really kind of knows and loves. But basically, that will take your ... For example, you have a Laravel 5.1 project, so you've written all your app code in 5.1. Now of course, they're on 5.6, soon to be 5.7, so Shift will actually go through your app code, it will audit it, analyze it. Automatically make updates where it can, and where it can't it will kind of comment.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">02:39</span>
+    <span class="transcript__content">You get everything in a nice, clean pull request, with nice, atomic mitts, and just kind of guide you through the upgrade process. Kind of like you had a Laravel expert right there with you, so ...</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">02:52</span>
+    <span class="transcript__content">Nice. I've actually seen it in action, I think just once. I don't remember which Laravel versions they were going from. But yeah, the pull requests that it had, like pretty intense. I think they were actually jumping multiple versions. So I don't know if that's the reason why it looked as big as it did. Are they generally pretty big, or are some of them bigger than others, depending on which migration you're doing?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">03:18</span>
+    <span class="transcript__content">It definitely depends on which version. I mean, we go back as far as Laravel 4.2, so if you take a 4.0 project to a 5.0 project basically, you're going to get a pretty large pull request maybe with, you know, I would say 12 of 15 comments. But if you're going, if you've got a pretty relatively recent application that you've kind of stayed on top of, you know, you might get five or six comments. Most of them are just informative of, “Hey, here's this new feature in the language, or the framework that you might want to take a look at, because we noticed you were using mail send, in a couple of your controllers. Now there're mailables.” For example.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">04:01</span>
+    <span class="transcript__content">I know that, I believe that Laravel switched to PSR2 at some point-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">04:08</span>
+    <span class="transcript__content">Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">04:08</span>
+    <span class="transcript__content">Or different code formatting. It's possible that this project had made that jump. Is that one of the shifts that you do as well?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">04:14</span>
+    <span class="transcript__content">It is. That's actually one of the automation pieces that happens, which is, it will reformat the code, which is you know, obviously, I don't necessarily believe it should be, but it happens to remain a delicate matter for developers. So it's one of those things where, yes Laravel officially adopted PSR2 in Laravel 5, in 5.0. So that's one shifted, opted it as well to kind of stick, again with the framework.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">04:42</span>
+    <span class="transcript__content">I'll get one in a hundred that send me a nasty gram letter, like, “Oh, I've got this.” But to be fair, if it's something you really don't like, that's why I do everything in Atomic Commits, so it's very easy to just refer that commit. If it's a very large code base, maybe it's not as easy as I'm making it sound, but again, I try to do a good job of making everything in these nice atomic commits, so if there was a change that happened to be faulty, or just one you didn't like, you know, you can revert it.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">05:11</span>
+    <span class="transcript__content">Cool, so I think I saw recently that you sort of moved to a host your own version of Shift. Is Shift like, what is Shift? Is it a, just like a command line application? Does it have a bunch of IQ workers running in the background, running at different bits? Can you talk a little about the infrastructure?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">05:35</span>
+    <span class="transcript__content">Yeah, so at it's core, I guess the website of course, is part of the application. Is built with Laravel, which is always kind of like an inception type thing. Kind of like, I have Laravel Shift, and I use Laravel Shift on Laravel Shift, so ...</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">05:51</span>
+    <span class="transcript__content">Nice!</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">05:52</span>
+    <span class="transcript__content">But underneath, it's actually polyglot. There're actually a lot of pieces to it. At it's core, it used to be a bunch of Shell scripts. So basically a lot of Shell scripts that would fire different kinds of commands. Probably originally, the favorite command was “Grep.” So it would just grep for all these different types of patterns in your code base to try to identify them, and then I would use Pearl from the command line to effectively do extended replaces. It's a little easier in my mind, or it's a little more human readable I suppose, than AWK, or using Grep or Said, even. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">06:27</span>
+    <span class="transcript__content">So I used Pearl, and then, I like to do things I guess, as a tangent, I like to do things in a very MVP fashion. So I'd actually had a set of scripts when I worked at a web agency, you know, four or five years ago. To upgrade a lot of their Laravel projects, because that was kind of their dominant platform that they used. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">06:45</span>
+    <span class="transcript__content">So basically, they would have a client come in, we wanted to upgrade a project. We did about four or five of those. And then finally, we, I just wrote a bunch of scripts for it. So I ran into Taylor at PHP world back then, and kind of just was like, “Do you know if you have anything like this in the framework? Are you going to build anything like this in the framework, or does anything exist in the community?” And he was like, basically said like, “No, but I'd use it.” So, I was like, “Oh, I'm going to go build this.” So you know, all those conferences always had ... Hackathon, which is great, so I just kind of sat there next to him and you know, whipped up a couple things, and you know ...</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">07:21</span>
+    <span class="transcript__content">I think at the time, he was working on integrating View JS into Laravel, so he was kind of hacking on that, and, but anyways, long story short, I turned those scripts into PHP scripts. Eventually, it started using things like Nikic's PHP Parser. It uses things like Code Sniffer. There's also a very small like, Go application. Or I guess, program that just does some of the file IO, because I was actually getting to a scale where that was causing me problems to do kin of the file input output in PHP. So yeah, it's several different things, and it runs, again, through Laravel it runs in a queue.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">08:04</span>
+    <span class="transcript__content">A lot of different moving parts. Every now and then, I'll get a project that's just like too large, and I normally just have to take it off the queue and run it, kind of on a separate worker.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">08:14</span>
+    <span class="transcript__content">Okay, cool. And so the self hosted version, we talked a bit earlier offline about things like pricing, and things like that. That seems like a big jump to be able to offer that. I know that's one of the things that Black Fire does. I do a lot of work with Black Fire. And we do have an on premise edition of Black Fire. And you know, the pricing on that is interesting, because it's a big difference between running something in your own environment and your own eco-system, where you can control it, versus handing it off to other people.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">08:47</span>
+    <span class="transcript__content">Is that something that you've been, people have requested a lot? What sort of interesting business things did you run into with that?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">08:55</span>
+    <span class="transcript__content">Yeah, I mean from the very beginning, pricing has been hard with Shift. Pricing is hard in general, to kind of determine what the value is of something, because value is so subjective, and we also, especially in the greater PHP community, come from that open source mentality, where open source means free. And I think there's a movement to kind of separate the two. But for a long time, I think that's what it kind of means to people. And even though that's 90% of the time true, you have to understand, I guess, at the end of the day like, if you provide a service to someone, there's value to that service.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">09:42</span>
+    <span class="transcript__content">Though in the example of Shift, I'm saving you hours of development time. If you're a developer, that makes, you know, who knows what. As long as you make more than minimum wage in the US. If you make more than $10 an hour, then Shift is cheaper for you to use than spend your own time doing it. That's the bottom line. So, when I came up with pricing for it, I mean I started very, very low. And I actually had the people that used it, would tell me that, "This needs to be more." And I still have people telling me that. Like Marcel. I'm blanking on his last name, because I only ever know him on Twitter.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">10:22</span>
+    <span class="transcript__content">That's okay.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">10:22</span>
+    <span class="transcript__content">But anyways-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">10:22</span>
+    <span class="transcript__content">Is that the BotMan person?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">10:24</span>
+    <span class="transcript__content">Yeah, BotMan! Yeah, so Marcel, who created BotMan. Every time he uses it, which I guess, for BotMan, or whatever. He'll pay for it, but then he'll send me a Pay Pal donation, and he'll always, "Charge more!"</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">10:38</span>
+    <span class="transcript__content">Nice!</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">10:39</span>
+    <span class="transcript__content">So, you know, pricing is hard. I'm comfortable with where the prices ... Just a couple bucks. The older versions go up in price when new versions come out. It's really just an incentive to stay current. That's me helping everybody. That's helping me, you know, obviously have to support still, older versions. But it's also encouraging you. Hey, if you're really that cost concerned, keep your app updated. That's going to help everybody.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">11:06</span>
+    <span class="transcript__content">Cool, well that's awesome. So how about the on premise, or self hosted?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">11:11</span>
+    <span class="transcript__content">Yeah so the on premise one, I'm starting that game all over again. Because basically to your own point, the on premise ones are like, five times the cost. Even ten times the cost. Now to be fair, the on premise ones are really aimed at ... I hate to use the word. But they're aimed at enterprise, or corporation. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">11:32</span>
+    <span class="transcript__content">So taking a step back, basically what I did was, the online service is all cloud based. So you have to sign in through [crosstalk 00:11:40] get lab, whatever. You authenticate, you share access with your repo temporarily. You're in full control, but you basically grant me access to create a pull request. Much like any other service that you use. Cloud based service, so nothing fancy, but as Shift grew in scale, which is great, I started to encounter kind of a high quality problem, which is basically people coming to me and saying, “I can't share, you know, this organization, because I'm under NDA." Like, I can't do that, I work for so and so, and we're too big to do that.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">12:13</span>
+    <span class="transcript__content">Or, vice versa, I have just companies that just are more on the open sourced paranoid side. They don't even want to put their code in, you know, maybe they have IP, so they don't even want to put it in on Get Hub. Or even Get Lab. They just don't want to host it, so they self host. And even though I have the integrations to do Get Hub and Get Lab, whatever, if you're self hosted, now I've got to deal with all sorts of memory problems.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">12:36</span>
+    <span class="transcript__content">So I came up with a solution basically, now that Docker is more popular and more supported on all the different platforms in client. You know, you have Docker for Mac and Docker for Windows. It's just a very easy download now. I finally had the opportunity to meet the demand of this growing audience that was saying, “Hey, I can't use Shift, but I want to.” And also meet it with technology to make it simple enough where it felt very similar to the online two or three clicks in the info request. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">13:02</span>
+    <span class="transcript__content">Now it's the same thing. You run two Docker commands, and your app is updated. Now obviously, that's a premium, right? Because there's a lot of layers there. There's convenience. There's solving a problem that again, you weren't able to solve before. It's a higher end problem, because you have restrictions, so it's more valuable to you. You know, and on top of which, there's a bit of trust, right? You're trusting that I'm not doing something malicious with your code through Docker, and I'm trusting that you're not jumping into Docker and pulling all the Shift code out, right?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">13:33</span>
+    <span class="transcript__content">So if you made that six bucks, like the regular cloud based Shifts are, I just don't think, again, I'm starting to realize that pricing is again, it's kind of about that value. But it's also about perception. There's perceived value in cost as well, if something's $2, and then something else is $10, even though you know $10 is more, some people in the back of their mind are going to tell themselves, “Well the $10 one is better.” Not necessarily, but there is some psychology there, is the point.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">14:04</span>
+    <span class="transcript__content">Yeah, I used to, I don't know how many of our listeners knew this, but I have ... I used to be a DJ. And I had a club night, and it was free. There was no cover charge to do a club night back when I was doing it, and I had people come up to me and tell me that free club nights weren't always good. Like it doesn't draw a crowd, because if it's free, then there's no value, so why would I go? Like, what's the point? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">14:31</span>
+    <span class="transcript__content">Even if the cover charge was five bucks, they said that we'd get more people. Or at least, that's what they said at the time. It's interesting to see how these business ideas in pricing and things like that, it's really all over the place, right? The rules or the ideas that people have really apply to all businesses, but they might apply differently depending in the businesses that you're into.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">14:58</span>
+    <span class="transcript__content">So if someone's doing a self hosted Shift, how does that work? Like, if you don't have a pull request where you can go look at things. Doe sit create a branch for them, or does it just change the code outright?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">15:12</span>
+    <span class="transcript__content">It changes the code outright. There are assumptions, again, you'll still get the same atomic commits. So there's some assumption that you'll get as much of the same experience as the cloud based version as possible, but since I don't know that kind of layer of the get hosting, I don't really mess with that anymore. So instead, you get a markdown file of what the pull request would have been.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">15:40</span>
+    <span class="transcript__content">Okay, interesting, okay.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">15:40</span>
+    <span class="transcript__content">So that you, yeah. So you kind of get the same look and feel. I'm still iterating on it. It's a bit raw, so I may turn the mark down of course, into HDML, so you can just open a reformatted page, maybe that's a little cleaner.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">15:53</span>
+    <span class="transcript__content">Right.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">15:54</span>
+    <span class="transcript__content">Again, I take a very MVP approach. I mean, I kind of built Docker. I built some of the most used Shifts, which are the Laravel Shifts. I mean, I have other Shifts. There are Shifts for PHP projects, for example. Moving MySQL to MySQL i, if you've got a really old code base, you know? As PHP pushes much past seven, I think maybe they'll gain a little more traction, but Laravel by far are the most. So I really only made the Docker versions of Shift for some of the higher end Laravel versions. More recent Laravel versions. But yeah, basically down load the Docker image, build kind of that necessary polyglot system.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">16:33</span>
+    <span class="transcript__content">I learned a little about Docker, I'm definitely not an expert, but I learned about the different kind of flavors. So you know, Alpine, for example. Everybody, I have some friends, and they were like ... I was complaining about the size, because I was using CentOS, and it was huge, you know? The download time was several minutes. You know, it was kind of killing that experience, so again, I wanted to make that experience this single click, two minutes later you get a pull request. So I used Alpine, which is like, five meg, compared to you know, it's image size. And then I'm really just tacking on again Pearl, and downloading a small Go app and then I looked into Phar's to get everything kind of build into a PHP archive, so that was kind of cool.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">17:13</span>
+    <span class="transcript__content">So I just G-zip that. It phones home to check like, you know, API keys and things of that nature. And then it will run on your system through a volume mount. Which is another thing that was interesting. I learned all about the inefficiencies of volume mounts. I stumbled upon the delegated or delayed option, which is nice, because there's a lot file IO's of course, because I'm changing your file.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">17:37</span>
+    <span class="transcript__content">Yeah, yeah, I've run into file IO issues. Any time you're doing that, whether it's Docker or Vagrant, I mean you know, especially if you're running Node, and you have a massive Node modules directory and something has to scan it. So like PHP storm, if you're a PHP storm user and you forget to ignore that directory, it's continuously scanning this massive directory over the network with this, oh it's awful. Yeah, I'm sure you had a lot of fun with that!</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">18:07</span>
+    <span class="transcript__content">Yeah, it's nice though, because Shift again is starting to reach that level where it has a large enough community where I can kind of send out a news letter to that audience, and I'll get at least a few people coming back and being like, “I'll beta test it.” You know? It's unfortunate when you're building things sometimes. Even if you have a good following on Twitter, or whatever. You know, you “Hey, anybody know X, Y, Z?” And it's like crickets. You know? Like there's no response, and you feel so alone. And you're like, "Should I even be building this?"</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">18:38</span>
+    <span class="transcript__content">Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">18:40</span>
+    <span class="transcript__content">So it's nice to have, in the Shift community anyways, some decent feedback. I'll at least get one person that normally responds and says they'll help out.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">18:51</span>
+    <span class="transcript__content">Cool, that's awesome. So Shift is sort of, one of your projects. Do you have other side projects that aren't your so called day job?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">18:59</span>
+    <span class="transcript__content">Yeah, it's one of those things where Shift, that family, I used to build apps, so I mean I'm comfortable building products, IOS apps before. So I had a bit of familiarity with kind of the life cycle of a quote, unquote product. So when Shift came out, and kind of got me into the service, software as a service. Like, that was a very interesting market to me because of the kind of recurring revenue. So that's, I think that's really great.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">19:28</span>
+    <span class="transcript__content">Once I got a taste of that, I actually made a video course called "Getting Get", which is kind of these really short videos that go through pretty much every Get command, through the command line, so it's not even like me talking to you. It's just like ... I mean I'm talking, but like it's not a video of me. It's just a screen cast.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">19:46</span>
+    <span class="transcript__content">Those were pretty good. They weren't as popular as maybe I wanted them to be, but I definitely got a return on my time investment for this. And it'll trickle in every now and then. The point is that I want to, I believe in I guess, what an old boss called the nickel machine. I just want something that is more of a Google approach, right? It's long tail. I'm not looking for the million dollar idea. I don't think, personally, I don't think those are ... You're not going to get those that often anymore. There are so many products that are out there now, and then there's also ... even if you come up with it, there are so many barriers to entry unless you just have this excellent audience following already.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">20:24</span>
+    <span class="transcript__content">It's still going to be that much harder to get it out there. I'm also learning that. Audiences everything, like if you have a platform, it's so much easier to sell something. I not saying you can sell junk, but it's much easier to launch something and get at least your return on time investment.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">20:43</span>
+    <span class="transcript__content">Right, yeah it's really difficult if you don't already have that. We're struggling with Beck's audience. We had a pretty good audience in Seattle, when we lived there. Kind of a West Coast doing the art scene, but finding an audience online and growing that when there isn't anybody local here that really does the same kind of art as her, it's really difficult. So it's definitely a lot easier when people are already there.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">21:18</span>
+    <span class="transcript__content">I've done a lot of reading on growing audiences and things like that.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">21:23</span>
+    <span class="transcript__content">Did you do any of that sort of stuff as well, or did it just happen organically?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">21:28</span>
+    <span class="transcript__content">I mean, I definitely believe that it happens organically, but I've paid a lot of attention to some of the people I guess within the Laravel community. Because again, Shift really gave me a lot of access to that community. And to be fair, it probably where I have the majority of my followers, so I'm attempting to kind of grow beyond that and to your point, that's very hard.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">21:47</span>
+    <span class="transcript__content">But I've paid attention to people like Taylor. He'll always have these really great marketing ideas, but then he kind of does more of an Apple approach where it's very secretive, and he builds a lot of buzz without really telling you anything, which is a talent. It's an excellent talent.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">22:04</span>
+    <span class="transcript__content">Then there's people more like Wes Boss, or Adam Wathan. Who you know, just constantly are sharing these great tips, right? And you've even seen people like, I might be butchering his last name, so I apologize. Steve Shoger, doing a lot of design tips. You know? And even Adam's kind of, he's that, they're buddies, or whatever. Kind of outside of Twitter of course. He grew from like 200 followers to like 20 thousand in less than a year, just from all these design tips. So I mean, I paid attention to that, is kind of the point I'm getting at.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">22:44</span>
+    <span class="transcript__content">And, I started doing that with some coding tips. I did a lot of programming in my previous job, and I just ... There would be all these kinds of like gems, I guess. Of really short programming things that I would tell to my peers. Especially if they were an intern, or somebody new to the team. And they'd be like, “Oh yeah, that's a good tip!” Or you know, they'd even just challenge me like, “Why are you writing your code that way?"</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">23:10</span>
+    <span class="transcript__content">And I started turning those into Tweets, and they by far got the most activity of any, like I think one of them got maybe 400 reTweets, which you know, if you're a superstar, that's nothing, but it you're me who before that, maybe only ever got five, and three of them are mom. That's really good!</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">23:32</span>
+    <span class="transcript__content">Yeah, yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">23:33</span>
+    <span class="transcript__content">You know, so anyways, to drive that all the way home, I took those tips and actually turned them into, I'm turning them into a book. I was doing some log posts on Dot Two, or whatever, and those were the number one blog posts for the week, a couple weeks in a row back, like last November. And so I just thought, oh gosh, the combination of these two, let's turn it into a book. Which is a very like, 37 Signals, or Nathan Barry type thing to do, right? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">24:03</span>
+    <span class="transcript__content">You just take years and years of these things that are freely available, but for whatever reason, you tie them together, you put a hardcover on it, and you know, you can seel it for 50 bucks. Which, to the point of value, makes no sense, right? But the convenience of having it all together, and maybe the way in which you package it up smartly. Like obviously, I'm not going to sell just the book. I'll sell it with accompanying videos, and I'm thinking about doing an audio version where maybe I talk more.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">24:36</span>
+    <span class="transcript__content">I'm going to do one with some live group calls, where like, you're able to ask the author after the fact, kind of thing. So just different ways that add value to it, because obviously you got an ebook, it's not only new to me, it's just it's just a space that seems very, very saturated. How do you price that, you know? I'm going to price it pretty cheaply, like a base package, and you know, go from there.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">25:01</span>
+    <span class="transcript__content">Cool, well that's awesome. Is that project live now, or are you still working on that?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">25:05</span>
+    <span class="transcript__content">Yeah, it's actually, I'm calling it a field guide, as kind of a tricky way to give myself an out. That it doesn't have to be a super long book. It doesn't have to be super serious, so it's BaseCodeFieldGuide.com, but basically the book is called Base Code, and the focus is getting back to writing code that's readable. I think readability is something that we've lost as programmers.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">25:33</span>
+    <span class="transcript__content">We've trumped it with complexity, and for whatever reason, complexity, we seem to justify it way more than we justify readability. Like, for whatever reason, readable code is like, too simple, or too stupid, or dumb, or you should be writing it this way, with this design patter. And this book is kind of an effort to flip that on its head, because I've given some talks at conferences on YAGNI, which is, you're not going to need it. It's kind of a principal of extreme programming, and pushes you to kind of defer design decisions until much later than maybe we naturally would, which I totally believe.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">26:07</span>
+    <span class="transcript__content">I've been speaking about that for about two years at conferences now, and they're again, kind of just like those Tweets, they're the most attended talk of that time slot. I'm getting hounded with questions afterwards and talking. People are coming up to me and talking, which at tech conferences you know, we're introverts! We don't really go up to people and talk unless there's like a celebrity issue, right? So I can tell that it's a very interesting topic, so it's got a bit of that mixed into it as well, but it's 10 practices that I cover, that a lot of people I think might dismiss as fundamental, but I guarantee if you practice all 10 of these, your code would be phenomenal forever.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">26:49</span>
+    <span class="transcript__content">You're going to come back to your code years later, and instead of being like, “What the hell was I thinking?” You're going to be like, “Yeah, maybe there're a few better ways to do this now, more modern ways.” But you're going to be able to address the code.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">27:01</span>
+    <span class="transcript__content">Yeah, yeah, I sort of feel like there's a big divide between say, the Laravel community and the larger PHP community on some of these things. Maybe readability isn't necessarily what Laravel aims for, but it's definitely more developer experience focused, making it pleasurable to code, as opposed to coding air quotes right. Is that kind of what you're getting at, or it's subtly different than that?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">27:33</span>
+    <span class="transcript__content">I definitely think the Laravel community, there's a sense of ... I'm a little scared to use the word elegance, but I mean, it's not me making up that word. If you go to Laravel.com, you're going to see words like “Craft” and “Artisan”, right? Clearly they're pushing again, a brand, if you will. And I think years ago, you saw this in maybe more of an aggressive way with people combating between PHP and Ruby, right. Like Ruby was just so much more elite to the Ruby programmer. Every language has its benefits, but I definitely believe in that saying where someone said, “There're no solutions, only trade offs.” You know, that's a common thing that gets bounced around and re-quoted in the programming community, but my focus is, I don't want to get specific with any one language. I want these to be programming in general. I even considered kind of making a pseudo-language for the code samples. I've currently stuck with PHP, but by the time I make the final version, I might make it, maybe just do something like drop the dollar signs and you know, just simple things where it's not necessarily any one language, but it's C based, and because of that, it's easy to apply to any language.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">28:58</span>
+    <span class="transcript__content">Yeah, I think that makes a lot of sense. I feel like a lot of times when I'm pseudo-coding I do something similar where it looked ... Mixing between PHP and Java Script, for example. Depending on which language has the better approach for what I'm trying to show for that three lines of code, I may do something completely differently. Especially if you're doing things like, I can't remember what they're called, like the in line call backs for Java Script. I just love those. It's little one line things. I'll drop that into my code all the time when I'm trying to share an idea, or kind of solidify my own thought on something.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">29:37</span>
+    <span class="transcript__content">It might be PHP code around it, but then I just do that as my call back instead. I think there's something to coming up with a language, a way to present various languages such that it's easy to follow. It doesn't matter if you know that language or not. I think that's a good idea.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">29:55</span>
+    <span class="transcript__content">I've given a lot of thought. My goal is to release the early edition of base code, hopefully this week. It was actually to release it the other day, but I had some last minute travel pop us. So I'm actually in Costa Rica right now. But yeah, it's one of those things where it's very close, but getting that ... I'm not a marketer again. So the book, the early edition version of the book, which is basically the first six chapters of the 12 chapter book, it's 50% there, so I'm going to launch the early edition in true MMP style. Make it cheaper of course, 50% off or whatever. You know, if it gets any traction, then I'll keep adding to those packages, and so forth, but you know, the book's definitely going to get finished, but like I said, maybe some of the higher end features I won't end up pursuing is five people get it!</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">30:50</span>
+    <span class="transcript__content">Yeah, that whole idea of not spending all your time building something that nobody wants, I think it's pretty powerful so, it sounds like you're doing a great job following that with the MVP principal.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">31:06</span>
+    <span class="transcript__content">Yeah, I mean I think it's hard to do. It's hard to train yourself to do. But unfortunately, if you have enough times where you built something and it failed, and you're not just some hermit that can do this all the time, you start to value your time. Really another, actually kind of, something else that I think really kind of pushed me is a deadline. Not necessarily in the corporate workplace sense of the word, but like a true deadline.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">31:33</span>
+    <span class="transcript__content">So for example, one of those IOS apps that I built before was called Pocket Bracket, and it was a March Madness application. March Madness is a college basketball tournament that starts in March. If I don't have that app approved, reviewed, and in the store by March, it's not going to fly. All that work is for nothing. And so when it gets to be February 5th, and I've got 23 days left to get that through on a two week review process, you start making really hard decisions. You know, of saying, “Look, I can't build this feature. I don't care how much I want it. I don't care how easy I think it is to code. I requires this, requires that, and I've got to cut it all.” So you have to be able to make those decisions if you're going to truly make a product in kind of the MVP fashion. The minimal way.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">32:25</span>
+    <span class="transcript__content">A book's a little harder, but if we go back, I did that. I tested this with those Tweet tips. I tested this with blog posts, I tested this with introductory chapters to a newsletter group where you know, I've had 2000 people sign up, so there's interest there. There's enough interest for me to warrant spending the amount of time it takes to write something like a book, instead of building my next SAS product, for example.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">32:52</span>
+    <span class="transcript__content">Right, cool. That's awesome. So did you have anything else you wanted to talk about, or any specific things coming up this summer you want to plug, besides your book?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">33:06</span>
+    <span class="transcript__content">Yeah, I mean the book, hopefully the early edition will probably be out, I imagine it takes a little while to publish the podcast. So by the time this podcast is played back, you can go to basecodefieldguide.com, and I'm sure you'll be able to check out the early edition. Of course, you can check out Laravelshift.com if you have Laravel projects. Like I said, there are a few PHP Shifts out there, but Laravel seems to be the audience willing to pay some money to save themselves some time.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">33:35</span>
+    <span class="transcript__content">Other than that though, I'm speaking at a lot of conferences coming up. I've got Lara Con. I'll be speaking at SouthEast PHP, I'll be speaking at Zen Con, I'll be speaking at. So just a lot of them, oh, and Wave PHP, so my brother actually lives out in San Diego, so I'm excited for that one, because I'll get to visit him too.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">33:54</span>
+    <span class="transcript__content">That's cool. Yeah, I think there are what, four or five new PHP conferences in the US this year?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">33:58</span>
+    <span class="transcript__content">Yeah, I mean it's still going strong. People can rag on PHP if they want, but it's a great community, and it's why I've stuck with it for 15 years and through all these other tech and languages.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">34:10</span>
+    <span class="transcript__content">Yeah, cool. Awesome, so it sounds like there's lots of opportunities for people to meet with you this year. I'll actually be at Lara Con. I think that's at the end of July.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">34:19</span>
+    <span class="transcript__content">Yeah, are you Dee-Jaying again?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">34:20</span>
+    <span class="transcript__content">So it's coming up pretty soon. I'm not! I asked Taylor. I asked Taylor, and he said he didn't think he needed the Dee-Jay this year-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">34:28</span>
+    <span class="transcript__content">I was going to say, they're like-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">34:29</span>
+    <span class="transcript__content">Which is a-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">34:29</span>
+    <span class="transcript__content">It's in a museum, or something this year. So yeah, maybe the Dee-Jay is not the, maybe the most appropriate. But yeah, I remember you in New York last year, that was awesome!</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">34:38</span>
+    <span class="transcript__content">Yeah, I had a blast with that, that was so fun! The music wasn't as loud as I'd hoped it would be, so I don't think the people down on the main floor could hear it, but I could tell that there were some people hanging around on the second floor-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">34:51</span>
+    <span class="transcript__content">I'm a sucker for 80s-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">34:52</span>
+    <span class="transcript__content">We're digging it.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">34:53</span>
+    <span class="transcript__content">So those remixes that you did were just cracking me up!</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">34:56</span>
+    <span class="transcript__content">Nice, cool! Yeah, I'm still listening to them, between the, I think between the two, there's like five hours of music so I can get through a whole day just listening to those sets, but cool Awesome, well thank you for joining us. Hopefully we can get you on again at some point in the future. Maybe we could hear more about how the Base Code Field Guide actually does, once you launch it. That would be really cool to kind of revisit that, so thank you again for joining us, and I think we'll call this one a wrap!</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">JMac</span>
+    <span class="transcript__time">35:36</span>
+    <span class="transcript__content">All right, thanks.</span>
+</p>
+{% endblock %}
