@@ -1,0 +1,744 @@
+---
+title: geocod.io with Michele and Mathias
+subtitle: Because building a product out of something you need is awesome
+number: 52
+date: Thu, 27 Sep 2018 13:26:00 +0000
+guid: 6da6aac4-654e-42a3-89d7-8ae0410c583a
+embed_url: http://audio.simplecast.com/6fb570a3.mp3
+rss_url: http://audio.simplecast.com/6fb570a3.mp3
+download_url: http://audio.simplecast.com/6fb570a3.mp3
+duration: 00:46:15
+file_size: 22283414
+explicit: no
+bg_image: /assets/css/geocod-io.jpg
+bg_image_width: 1200
+bg_image_height: 720
+image_credit:
+    url: https://www.geocod.io/
+    description: Geocodio
+    by: Geocodio
+
+---
+{% block content %}
+Michele and Mathias from <a href="https://www.geocod.io/">Geocodio</a> join us to talk about their business.
+{% endblock %}
+{% block itunes_summary %}
+Michele and Mathias from <a href="https://www.geocod.io/">Geocodio</a> join us to talk about their business.
+{% endblock %}
+{% block transcript %}
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">00:17</span>
+    <span class="transcript__content">Hi and welcome to another episode of our podcast. I'm Dave. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">00:20</span>
+    <span class="transcript__content">And I'm Beau. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">00:21</span>
+    <span class="transcript__content">And we've got some special guests with us today. We have Michele and Mathias Hansen. I'll let Beau introduce them a little bit, because I'm a bit unprepared. So-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">00:32</span>
+    <span class="transcript__content">Well how about they introduce themselves.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">00:36</span>
+    <span class="transcript__content">Hi, I'm Michele Hansen.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">00:39</span>
+    <span class="transcript__content">And I'm Mathias Hansen. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">00:40</span>
+    <span class="transcript__content">And we together are the founders of geocod.io. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">00:47</span>
+    <span class="transcript__content">Cool. And I think I first started paying more attention to the stuff that you're doing from a blog post that you wrote last year. I don't think we actually got to talk to each other at Lericon, is that correct? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">01:01</span>
+    <span class="transcript__content">I don't think so did we? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">01:04</span>
+    <span class="transcript__content">I don't remember. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">01:07</span>
+    <span class="transcript__content">I remember you were DJing. That's why I remember-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">01:08</span>
+    <span class="transcript__content">Yup. Yeah I was DJing, and I was at the Blackfire booth. But other than that, I think I went to the speaker dinner, speaker dash / sponsor dinner but I didn't really get a chance to meet everybody. And unlike a lot of the other community PHP conferences, I didn't know nearly as many people there. So I kind of got stuck talking to a couple of people that I already knew. Which sometimes tends to happen in social situations like that. But yeah, afterwards I saw a follow-up blog post, about the talk that you gave there. So maybe you could talk a little bit about the talk that you gave. Kind of give a history of your business and then the new aspect of it, that came up from the blog post is that one or both of you actually went full-time on your side project, which is kind of exciting. And then it sounds like there's maybe some new developments since then as well. So, wherever you'd like to start, maybe at the beginning with how geocod.io started?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">02:08</span>
+    <span class="transcript__content">So geocod.io came about because we needed it ourselves. So we had an app called OpenNearby that showed you the hours of grocery stores and coffee shops near you. And Mathias had launched it in Denmark. And what was-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">02:29</span>
+    <span class="transcript__content">Like 10, and 12, 11. Yeah and basically needed to geocode a lot of addresses and we spent a lot of time trying to find a geocode provider that could do what we needed. At the lowest cost possible, preferably free. And after working on that, we ended up working on a lot of other projects, kind of at work, and for side projects, we needed geocoding. And we kept hitting the wall of well if you need a certain amount of lookups per day, you have to start paying. But Google Maps was one of the big providers at the time, and still is of course. But at the time, you basically had the free tier, and you had the Enterprise Subscription. There was nothing in between. So if you wanted to just pay a little bit to get a little bit more than the free limit, we couldn't. So we kind of sat down, and like looked at what would it take to build our own geocoding solution? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">03:25</span>
+    <span class="transcript__content">And kind of went into, like a big project to start working on that, and a few months later, I came up to the surface and we had something that worked, is very simple, very rudimentary, but it kind of worked for our specific use case. And then, long story short, we basically were talking about it, and said hey, if we have this problem maybe others could have the same issue. Let's just try to essentially put a paywall in front of it. And lease it in its current version. As we're using it right now. And just see what happens. And that's kind of how geocd.io was formed. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">04:06</span>
+    <span class="transcript__content">Yeah, it was those two big problems we had, which was the services out there weren't affordable for us. There was no good pay as you go option. Instead of getting the 2500 free a day, just get 5000. You can only get 2500 free or a hundred thousand. And than the other thing were usage restrictions. So this is a huge thing we ran into with Google Maps and Bing, and all the other providers, was that they won't let you store the data in a database. They won't let you manipulate it. They have a huge long list of use cases that you can't use it for. And that was really problematic for us. And in talking to other people, that was problematic for them. And so when we released it, we wanted to make sure of two things. First of all that it was affordable. That you know we had a generous free tier so people could just try it out, or just use it for a side project. And the other thing was that we had a really flexible terms of use, and we didn't want to be sort of standing over our users shoulders telling them what they could and couldn't do. We wanted to give them the same flexibility that we needed. And we found out that a lot of other people really needed that too. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">05:15</span>
+    <span class="transcript__content">Cool. So I actually feel like I've used some of these services in the past. And I've run into the same sorts of issues. I'm curious how you jump-start a service like this? Like where did the data come from? Because I believe those sorts of services would actually have a, you can't resell these services sort of thing. How did you go about trying to solve the solution, that really just other big data providers, were solving? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">05:48</span>
+    <span class="transcript__content">Yeah, of course data was the number one problem or the very first problem we faced. And and it turns out of course, all those major providers basically use proprietary data that we would potentially be able to license if we had a lot of money, which we don't. But if you have a lot of investment up front you can do that. But then we'll hit the same restrictions in terms of like how the data can be used and all this sorts of stuff.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">06:12</span>
+    <span class="transcript__content">Mm-hmm (affirmative).</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">06:13</span>
+    <span class="transcript__content">So we decided from the get go, to go with completely open data. And we started out with data from the US Census Bureau. Who has a data set that can be used for geocoding across the entire country, across the US. It's not super accurate, but it's open and free and kind of allowed us to get started. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">06:39</span>
+    <span class="transcript__content">Cool. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">06:42</span>
+    <span class="transcript__content">And then you know, a lot has happened since 2014. And today we have more than 800 different data sources, and actually have accuracy and precision that's comparable to those major providers. But still based on open data. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">07:02</span>
+    <span class="transcript__content">Cool. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">07:03</span>
+    <span class="transcript__content">Definitely not the absolutely best perfect geocoder that exists out there. We're not going to pretend that we're better than Google or Bing, or whatever. But we are certainly competitive on a couple of fronts.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">07:19</span>
+    <span class="transcript__content">Yeah, we've been fortunate to leverage some open source data collection that people have down. So the open addresses project on GitHub for example has been really helpful. And so we've been using some of their data and trying to contribute as much as we can, when we find the opportunity. So probably not as much as we would hope we would. And then both are on geocoder from scratch at this point. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">07:45</span>
+    <span class="transcript__content">Cool. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">07:45</span>
+    <span class="transcript__content">Yeah. I'm quite familiar with this sort of thing Beau mentioned. So I've seen those usage limits, definitely with Google Maps, are the ones I looked at. They are quite restrictive, aren't they? And also [inaudible 00:07:59] the free tier, and then it goes straight up to Enterprise pricing. And last time I checked, that was Enterprise pricing, where it was pricing on application. And there's no price point actually on the website to even give you an idea of how much it might cost there. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">08:12</span>
+    <span class="transcript__content">Mm-hmm (affirmative).</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">08:14</span>
+    <span class="transcript__content">And for the little amount of geocoding I've done, I've also sort of seen that open data, and it's amazing how data there is out there. But I think where the magic happens is combining data sets, and I've done it with two or three for a few things I needed. But to have 800 sources and pulling them all together is incredible. That's really impressive. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">08:39</span>
+    <span class="transcript__content">Yeah, to the point on usage restrictions, I think we find that many of our users find us because, they found a geocoder they wanted to use for a project, and maybe they work at a bigger company and their legal team reads the terms of use and says no you can't use this. And so the developer or the data analyst is sitting there wanting to throw their laptop out the window, because they just want to get their project done. And they're sort of frustrated and Googling things and then they find us. And then just as often, we also believe in having transparent pricing. So people can very easily calculate how much it's going to cost them, or we also have an unlimited tier, if that's what they need. And it's funny, we'll get emails from people saying you know, hello, I'm from so and so, and, these are our needs. How do we proceed with getting a contract and setting up all these things and like setting up a call with sales and all these sorts of things. And I think it almost confuses them when I'm like, oh hey, you can just go signup here, and just add a credit card, and you can just go get started. Like you don't have to have a call with a salesperson. You don't need to go through all of these hoops.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">09:42</span>
+    <span class="transcript__content">But if you have questions we are happy to help.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">09:42</span>
+    <span class="transcript__content">Oh yeah. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">09:42</span>
+    <span class="transcript__content">Yeah. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">09:45</span>
+    <span class="transcript__content">We're happy to help, but we're not going to keep our pricing hidden and require you to call a sales person. Because that's annoying. And we don't want to annoy people. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">09:59</span>
+    <span class="transcript__content">So what year did geocod.io sort of first go public, if you like. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">10:04</span>
+    <span class="transcript__content">January 2014?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">10:06</span>
+    <span class="transcript__content">Yup. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">10:06</span>
+    <span class="transcript__content">Okay so, sort of four years ago. Now quite a lot's happened since then, I understand you have ... So that was a side project at that point. You were both doing full time employment. You've had a daughter since then, right? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">10:19</span>
+    <span class="transcript__content">Yeah, she was four months old when geocod.io launched. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">10:22</span>
+    <span class="transcript__content">Oh so that makes it even more incredible. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">10:26</span>
+    <span class="transcript__content">There's a great picture of ... Mathias took our daughter Sophie, to the DC startup incubator 1776, when she was about two months old, to meet with some friends and have them beta test geocod.io before we launched it. And so there's a picture of him with his laptop holding her in her car seat.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">10:48</span>
+    <span class="transcript__content">I thinks she was sleeping actually. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">10:49</span>
+    <span class="transcript__content">Yeah, she was sleeping through it. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">10:51</span>
+    <span class="transcript__content">Oh that's amazing. I literally managed to scrape through my day job when our kids were four months old. So ... So talk us through the growth then from that point, and how it progressed that way, if you like. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">11:09</span>
+    <span class="transcript__content">Well I guess that our [inaudible 00:11:10] and we can follow up afterwards. But we started out being completely developer first. Because that's kind of the initial use case we had. So it's only an API based product. And as I said, it was very simple, very rudimentary. It was not very good to be honest. It really wasn't. And really like thinking back, I can't imagine, we launched, like a product like that. But there was clearly a demand from the get-go. Of course it was a slow ramp up to get to where we are today. It took a long long time. But we basically started, API first, very simple use case. Only forward geocoding. So only converting street address to lat long. Not the other way around. And then Michele can maybe talk a little bit about how we worked with adding features and got to the point we are today. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">12:00</span>
+    <span class="transcript__content">Yeah, so a couple of months in, we kept hearing from people who were not developers, who wanted to use it. Who had the same problems about pricing accessibility, and issues with terms of service. And so we ended up launching a CSV upload option as well. And that was interesting because when we had people reach out to us saying hey, can have a spreadsheet upload option, we were like this must already exist. Like how does this not exist? And we looked into it and the leading option at the time was, there was some guy with a website that looks like it was from 2002, and you could send him a file. And he would get it back to you at some point in the next couple of days. And I think it was a Patrick McKenzie quote, or on Twitter he's like, if you find a business where people are sending spreadsheet back and forth ,that's a really strong indication that there's a product opportunity there. Of course mangling that to be fair. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">13:05</span>
+    <span class="transcript__content">I like that sort of story when especially developers, and I fall into this category far too often, who start to really try and solve for like real time solutions, like being able to get people's feedback as soon as possible. And then I hear some pragmatic person saying, seriously just listen to how people are already doing business. They are probably going to be totally fine if it takes 10 minutes to get this report emailed to them. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">13:29</span>
+    <span class="transcript__content">Yeah. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">13:29</span>
+    <span class="transcript__content">You don't have to return it right away. There are people you know doing Sneakernet still, handing actual floppy disks to people or USB drives. And then you know a month later it gets shipped back to them or something. So it's kind of cool that you've actually run into that sort of thing. Like real life example of people still emailing CSV's and waiting, oh maybe it'll come back to you in a week. That's cool. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">13:52</span>
+    <span class="transcript__content">Yeah, so we launched that option, I want to say April, May of 2014.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">13:59</span>
+    <span class="transcript__content">Yeah. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">14:00</span>
+    <span class="transcript__content">And that was really interesting because it opened us up to a totally different user type. Like beforehand it was pretty developer focused. Some data analysts. But then we opened up to people doing marketing, people doing sales, people in real estate. That ended up becoming a huge customer segment for us. And so slowly from there we've just been iterating based on customer feedback and understanding our customers better. Customer input is something that's really important to us. And we want to be talking to our customers all the time, not just in the sense of being accessible for support, but also interviewing them and finding out what is their process? What are the things they struggle with? What are they trying to accomplish overall? And so that sort of led us to the strategy where we try to make things as easy for people as possible. Very rarely does someone want latitude longitude coordinates just for the sake of it. Like as far as I've run across, I have not come across any latitude longitude coordinate collectors. Because you want to do something with it. Maybe you want to make a map, or really you need that because you want to connect it to data about Congress because you work for a nonprofit, and you want people to contact Congress.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">15:18</span>
+    <span class="transcript__content">But the process for that for example was, first you needed the address. Then you need their latitude longitude. Then using their latitude longitude, then you would need to go off to another API and get the congressional districts. Then you would have to go off to another API and get the legislator contact information. Those are four different data sources, all with different formats, different ways of working with, and different terms of use, different pricing. And so we're like, let's just make that all under one roof. So that people can get the information they need quickly and easily, and then get on with whatever it is they were trying to accomplish. So we also have census data, and time zones, and school districts, and all sorts of other things that are core reasons why people need latitude and longitude. And just trying to eliminate annoying steps in their process, so they can just get on with the rest of their work.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">16:10</span>
+    <span class="transcript__content">Yup. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">16:11</span>
+    <span class="transcript__content">Cool. So from that point, I think that's what, like 2014?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">16:13</span>
+    <span class="transcript__content">Yeah, we we're slowly adding all the data patterns over the past couple of years.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">16:24</span>
+    <span class="transcript__content">Right. So as far as your story goes we're in 2014 still, that you started to do that. And then what changed or what were the big milestones that happened between then and when you gave your talk at Lericon last year?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">16:39</span>
+    <span class="transcript__content">Let's see. So I think it was September 2015 when Google introduced pay-as-you-go pricing.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">16:47</span>
+    <span class="transcript__content">Mm-hmm (affirmative).</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">16:47</span>
+    <span class="transcript__content">That was 50% cheaper than ours. And we were like, this is going to kill us. That's one of the difficult things about being in a market that's largely a commodity. Right? Like there's only one right answer for what the latitude and longitude is of a particular address. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">17:06</span>
+    <span class="transcript__content">Right.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">17:06</span>
+    <span class="transcript__content">So we're like this is going to kill us, until we cut our prices to match. And then our revenue went up. Which we weren't expecting at all. And that was very interesting, and I think an instructive lesson on that power of just trying to understand your customers, and make their lives easier. Because we are still doing different things than Google was doing. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">17:36</span>
+    <span class="transcript__content">Right. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">17:36</span>
+    <span class="transcript__content">And all the other providers.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">17:39</span>
+    <span class="transcript__content">The cool thing there was we were still both working on it as a side project. It wasn't a main source of income or stability or anything. So we were able to make that call to just cut our prices by 50%. If we were to do that when we were both working full-time and that was the only source of income, it would have been extremely risky and nerve-wrecking decision to do so. But it wasn't quite as big of a deal at that point, just because it wasn't a big personal risk to us. It was a risk to the company, but not to us necessarily.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">18:11</span>
+    <span class="transcript__content">Yeah, and we also had extremely lean cost structure. It a a side project so we didn't have office space costs, or salaries, or anything like that. Even when, I think when we launched, I think we had a $10 DigitalOcean server and a load balancer maybe? Or no a database server. It was like 20 bucks, and we made $27 that month, and we're like oh my gosh, it's a success. It made more money than it cost us. Like we have other people paying us for the service we need. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">18:38</span>
+    <span class="transcript__content">I think the most expensive part was actually buying a dot IO domain name. It was like a hundred bucks or something. It's like whoa. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">18:44</span>
+    <span class="transcript__content">That was really cool in 2013.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">18:46</span>
+    <span class="transcript__content">They were cool. We stuck with it. No they're still cool, they're still cool. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">18:54</span>
+    <span class="transcript__content">But yeah, then from that point on it was just slowly iterating and it's funny looking at our revenue chart. I look at it now, and I think wow, this is really cool we got to this point. But then you just look every month it's just incremental, a couple more customers, a couple more-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">19:13</span>
+    <span class="transcript__content">Very slow. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">19:14</span>
+    <span class="transcript__content">Very, very slow. Very very gradual. It was a-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">19:18</span>
+    <span class="transcript__content">What does your billing and accounting and reporting stack look like? Are you doing anything like with services for that? Or doing most of it by hand? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">19:29</span>
+    <span class="transcript__content">Yeah so we basically use stripe for credit card processing, and payments on that end. And then recently, Michele can speak to that, we started using Soho for doing invoicing to customers who need more specific billing than just a standard stuff we have. We actually have a very very light weight stack for all the accounting stuff still. And that's actually one of the things we've been struggling with a lot more recently. Trying to find good ways to to have more insight analytics into what we're doing, and more automation around. Because right now, it's still a lot of processes that are manual, or things where we have to pull the data manually. We can't just look at a nice little dashboard, and see everything necessarily. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">20:19</span>
+    <span class="transcript__content">Yeah. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">20:20</span>
+    <span class="transcript__content">Yeah, I think we're getting there, but there's still a lot of stuff in spreadsheets and I probably spent the first two months of this year just working on taxes. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">20:26</span>
+    <span class="transcript__content">Yeah. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">20:28</span>
+    <span class="transcript__content">We have an accountant that we work with too, but that's just because our taxes are super complicated from having a business, and owning a house, and having a child. And like I think our tax return is like 75 pages. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">20:39</span>
+    <span class="transcript__content">I think one of the one of the best things I ever did was finally hire an accountant and tax person to do all of that every year. Yeah, I don't think Dave has to worry about this but have you ever been audited or know anybody who's been audited? No?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">20:59</span>
+    <span class="transcript__content">No. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">21:00</span>
+    <span class="transcript__content">No. Yeah I got audited once, and it was largely due to the fact that I was involved in a business where I wasn't paying enough attention to the accounting and assuming somebody else was. And they were not, in a y way, doing anything right. So pretty much from that point on, I found somebody to make sure that that's done correctly and to ask the right questions if they get data that looks not right. Before the IRS sees it. Because once they think it doesn't look right, game over. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">21:33</span>
+    <span class="transcript__content">Yeah it's very important to us that we had all thew stuff clear. Because we don't want to get in trouble at some point. That's also why, Michele in particular, has spent a lot of time just nitty gritty, make sure every single thing is filed accordingly, and categorized, and everything. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">21:52</span>
+    <span class="transcript__content">Yeah, it was something early on that became apparent to me, that I didn't have a huge depth of experience in. Even though I had worked in functions before where I'd been responsible for invoicing and things related to accounting. And I ended up starting a evening MBA program last year, and the first two classes I took were the two accounting classes. Because I was like this is my biggest deficiency, and this is something that a lot of business school students dread taking, and suffer through, but I was like I need to be able to do this. But then it was really fun because I could create financial statements, and be like oh, this is really useful information. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">22:38</span>
+    <span class="transcript__content">Nice. That's cool. So you started MBA night school? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">22:43</span>
+    <span class="transcript__content">Yeah last spring. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">22:44</span>
+    <span class="transcript__content">Did you finish that?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">22:46</span>
+    <span class="transcript__content">No, no. I have two more long years ahead of me. And I'm in the middle of finals right now.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">22:56</span>
+    <span class="transcript__content">Nice, well thank you for taking the time to join us, even though you're in the middle of finals. I did not handle school very well. Things like finals and tests. So I am glad I don't do those anymore. Cool. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">23:09</span>
+    <span class="transcript__content">I have one in about two hours.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">23:11</span>
+    <span class="transcript__content">Nice. All right. So at sometime last year you decided to go full-time, correct? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">23:20</span>
+    <span class="transcript__content">Yeah, so the business was continuing to grow. And like we said, our growth was pretty stable month-over-month, but it was definitely growing. And we were working on it, pretty much every night for an hour or two.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">23:42</span>
+    <span class="transcript__content">Yeah. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">23:42</span>
+    <span class="transcript__content">Plus occasional all nighters on the weekend or a Saturday where Mathias would take our daughter to Ikea all afternoon so I could do accounting. And we used intercom and so we'd get customer messages on our phones and stuff like that. And we would have a pile of messages from customers at the end of the day. Like sometime 20 or 30 people we had to get back to. And it just got to be so much, and a lot of stress trying to handle all of this. And of course if a customer ever wanted us to have a call with them, which is perfectly reasonable, we couldn't really ... Or we could be like oh, we can do it at 08:00 AM or at 5:30 p.m. And actually when they requested a call, I would always hope they were on the west coast just so I could schedule it for six or seven o'clock, and it would still be working hours for them. And so we just kind of realized that this is the right time for me to go full time on this. And at least make sure that our house was in order related to serving the customers and talking to the customers. But that we weren't ready for Mathias to go full-time yet. But around February of this year, we-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">25:04</span>
+    <span class="transcript__content">Yeah, so as Michele was saying, we used to work a lot together and nights and weekends and stuff like that. And also while Michele was working full time, realized she's working on the business so much more than me. And I was actually kind of bummed out, because I was just trying to catch up. Now that Michele has a little bit more time on her hands at least, and we also realized that a lot of goals and dreams and hopes we had for the business, of course requires time, like anything. And of course Michele going full-time only positively affected the business, in terms of revenue growth and stuff like that. The fact we can talk to customers quicker. We're actually able to have these sales calls. Sometimes we actually like almost turned down customers if they had to go through a sales process, because we just could not support that. Or they needed additional details from us. So basically what happened was I more or less went to my boss at my day job, and said, hey, I can't continue like this. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">26:19</span>
+    <span class="transcript__content">Too much stress, too much working nights and weekends. And I really want spend more time working on my side business. And I actually thought I was going to leave that meeting and basically be without a job. But I was offered a very nice compromise saying hey why don't you just reduce your hours here, and spend more time at home. And so I basically worked part-time or like somewhat part-time both places. And super excited to be in that situation now where I work from home a couple of days a week on geocod.io and then I go to see my coworkers and get stuff done at work the other days. So that has been a fantastic arrangement. Kind of the best of both worlds. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">27:00</span>
+    <span class="transcript__content">That's awesome.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">27:01</span>
+    <span class="transcript__content">Yeah, I think we were hoping that when I went full-time it would take the load off of you so you wouldn't have to be working every night, and maybe the customer volume would be more manageable, and then I spend a lot of that time writing articles to improve our SEO, and that just led to more customers. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">27:23</span>
+    <span class="transcript__content">Nice. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">27:23</span>
+    <span class="transcript__content">And Michele had far too much time to really improve on our website and SEO and stuff like that. But really just making our whole product more attractive. So a ton of things with figuring out what the deficiencies in our user experience have been. Also of course by talking to so many customers and just having conversations with them. We weren't able to do that before. So all those iterations on the way we serve our product or showcase our product, of course sort of improved and just again, made more and more customers come and knock at our door. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">28:05</span>
+    <span class="transcript__content">That's a horrible problem to have. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">28:08</span>
+    <span class="transcript__content">Yeah right. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">28:11</span>
+    <span class="transcript__content">It's not difficult to see that, I mean did a brose around of the product website and the API documentation earlier, and all of it looks really, really professional. I mean it looks to the same standard you'd expect from large companies like Stripe or somebody like that. It all looks really good. It's very impressive. Credit to you both. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">28:33</span>
+    <span class="transcript__content">Thanks. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">28:33</span>
+    <span class="transcript__content">Thank you. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">28:36</span>
+    <span class="transcript__content">Cool. So at this point you're working full-time and a half, on this project. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">28:42</span>
+    <span class="transcript__content">Kind of. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">28:45</span>
+    <span class="transcript__content">Nice, that's very cool. And it sounds like you're still super excited about it. It sounds like the use cases you're getting, the people you're talking to, it's all fun stuff all exciting. Is there anything that you like dread or is there certain use cases that you don't want to talk about, that you're not really happy with. I imagine something like geocoding, I can imagine there might be some questionable usage of this data as well. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">29:11</span>
+    <span class="transcript__content">In terms of things were struggling with, I said one thing that we're struggling with, I think a lot of people are struggling with, is GDPR implementation. And so this is something we've been spending a ton of time looking into. How does it affect our infrastructure? How does it affect the products we offer people? How does it change our relationships with our vendors? It's all very very complicated. And a lot of the resources out there are for big companies. Or the articles written are from law firms that want to get hired by big companies to handle this for them. And we're just two people working on this business, and trying to figure that out ourselves, is definitely a challenge. And so we're currently, we just talked about it earlier, like we have a huge list in GitHub of all the stuff that we need to address. It's definitely a big challenge for us. And I think for a lot of other small businesses, and you know, I hope there ends up being an easy way for people to implement this. And it and it makes it so other people can very easily start up a side project, and address a need for people. And if there are things people need to think about, those things are eventually very very clear and easy to implement because they're not right now. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">30:31</span>
+    <span class="transcript__content">Mm-hmm (affirmative).</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">30:33</span>
+    <span class="transcript__content">I think that it's good to show that being a small, business of two people, you got to wear many hats. Obviously. That's one of the big differences from my day job and Michele's previous engagement, is just suddenly you have to take on a lot of responsibilities of things that you would never be tasked to do in the past, because you're not the right person for the job right? So I think it certainly goes above us, but it's a lot of things you wish you didn't have to do. But there's nobody else to delegate or share a project with. Other than the two of us. So that's certainly one of the most frustrating things. There's also of course, always the lack of resources, of which you can build this grand thing yesterday. But the good thing is like with like the resources, at least it's just two people trying to figure out like how to prioritize. You don't have to have big grand meetings with dozens of stakeholders to figure it out. You can just sit here and have breakfast, and drink some coffee, and figure it out. Which is always nice. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">31:45</span>
+    <span class="transcript__content">Cool. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">31:48</span>
+    <span class="transcript__content">I was just going to say that I think it really helps that both of us are sharing the customer support. I think having direct engagement with the customer is really really important. And I think that's something that makes discussing changes or new features much easier. Because if I come to the table, literally the breakfast table, and I say, hey we have this usability issue on our spreadsheet upload, where you know XYZ is happening. At a corporate meeting I would have to be presenting data of like how many people are experiencing this, and screenshots of it, and like really really really through to prove to the other person basically that this is actually a problem and something that they should care about. And then try to imbue some empathy for the customer on them. Versus when we have those situations here, Mathias will be like yeah, I know that's an issue. Someone reached out to me about it this week, and I was like helping them through it and like we're on the same page about what the customer needs and that is so valuable and saves us so much of that bureaucratic time that you end up having to spend in larger environments. And I think we both want to do customer support as long as possible and if we ever hire employees, everyone has to do customer support. Because it's so important to be directly involved with your customer. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">33:07</span>
+    <span class="transcript__content">Yeah, some people talk about, oh who's the first person you hire? Is it someone part-time to do customer support? And I think that would be almost the last thing to hire for us. Of course there's an issue of scale, and we can't, don't spend all of our time doing customer support. But we really want to stay on top of it, as long as is technically possible. Like, that's what we like also about having a relatively small businesses is we can. If this was a business that was 10, 50x size, we would be completely out of control with things like that. And maybe out of touch too. So-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">33:42</span>
+    <span class="transcript__content">Yeah. I can relate to that. Our founder did all of our customer support himself up until about this time last year I think. So that was since 2009. I covered for him when he was on holiday and I liked that part of it as well. Like hearing how all the customers are doing. Unfortunately for us, we also have free users, and that tends to not be as nice. On that side. Because they expect the world, but don't pay for it still, and it's a bit like ... But yeah it's really cool that you can keep on top of that. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">34:18</span>
+    <span class="transcript__content">I think that 80/20 rule definitely applies. You'll get 80% of your revenue from 20% of your customers. And that's definitely something that we experience often as needing to provide a lot of support to a free user. But the way I think about it is, you don't know when they're going to become a paying customer, or they're going to know somebody who's going to become a paying customer. And even if they're a free user, they're still a user on the other side. They're still a person. They're still a person with a problem. And we built this because we wanted to solve people's problems and make it easier for them. And we're not a nonprofit, but we do believe very strongly in just making this easier for people, and sometimes they pay us and sometimes they don't, or they don't right away. And you can't ... If you try to trace it directly, I think you lose some of that human element of it. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">35:14</span>
+    <span class="transcript__content">It is very surprising, a lot of people who were ... Like the example of people who were students and used our services free, and then they got a job right after school and suddenly we had like quote-unquote Enterprise contract with this big company because this person recommended to use us. And they used to be a free user, but it certainly paid back in dividends. So I think it does happen a lot. Of course most of the time you don't know that it happens that way, but I wouldn't be surprised if it happens more than we think. So we just have to remind ourselves always to do that. And we don't really have a simple way for our support tools will look up people and see if they're free users or not. Like we try to not really think about that. We try to make sure everybody has the best possible support we can give. Yeah. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">36:09</span>
+    <span class="transcript__content">Yeah, that's very noble of you. Our paying customers get priority support, so you almost like, it's in your face that they are the paying customers. So I can't really miss it, but yeah ... Anyway you're right in that you should treat them just as equally as ... I find that quite hard with some of ours, but ... So do you have any plans for expansion then, or are you just going to keep seeing how it goes. I mean obviously at some point, it'd be nice if you could go full time Mathias. But then it's also kind of nice that you've also got the stability of your employee job as well. I mean I was actually going to say, I don't suppose you're expanding into the UK at any point are you? Because you could solve a few problems for me. But I think you're US and Canada only at the minute, yeah? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">36:59</span>
+    <span class="transcript__content">Yeah, we're currently working on adding worldwide coverage. So we will be in the UK very soon. That's going to be at city level only, to start. And then we'll be going down to the street or the rooftop level as data is available. Probably be a slow process, but we definitely have had people from the very beginning asking us for worldwide support. And so that will probably be a huge expansion for us. In terms of the data. In terms of customers. I mean there's where GDPR compliance gets very important. Because that applies to any EU person. And also in terms of customer support. Like that load is going to increase significantly. Of course the number of edge cases and complications and it's all going to get much more complicated and it's definitely something I am excited about, but also a little bit nervous about. That is how we'll handle that. And then we're also expanding into HIPAA compliant geocoding. Or people who need very high security geocoding. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">38:12</span>
+    <span class="transcript__content">So whenever you go to your doctor's office in the US, all of your personal health information is handled in a very rigorous and regulated way. And we have had a lot of people reach out to us asking for HIPAA compliant geocoding, because there aren't a lot of options that were out there and the few options that are, are extremely expensive. So we're trying to help those customers as well. And so those are kind of the two main things we're working on this year. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">38:46</span>
+    <span class="transcript__content">Yeah, so I think, sort of our product or business development has always been to sort of two tracks. We've always continuously worked on improving the geocoding engine, and the geocoding product itself. Like we want it to always be better, and more flexible like we've added things like spelling correction. And more intelligent than the picking different results, by different scoring mechanisms, and things like that. Support for multiple types of data sources and accuracies and stuff like that. Maybe more formats, like we added intersections at some point. And things of that nature. And then the other part is all the things of how you can access our geocoding engine, and what we can sprinkle on top of it. So all the things about spreadsheet upload, and adding the data patterns we're talking about. And right now the big thing is worldwide, which is going to touch both tracks. But to start with, mostly on the geocoding engine side of things, supporting multiple countries. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">39:59</span>
+    <span class="transcript__content">Sounds good to me. So we're running up on 40 minutes. Do you want to start wrapping things up Beau? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">40:06</span>
+    <span class="transcript__content">Yeah, I think so. Did you guys have anything that you wanted, or did you two have anything that you wanted to share? Any big news? Any tips or tricks or anything like that? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">40:18</span>
+    <span class="transcript__content">Well maybe we should talk about one thing you addressing at Lericon, was it kind of sucks to work from home or alone right? So you can find a good solution to that problem. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">40:35</span>
+    <span class="transcript__content">Yeah so I tried a bunch of different things. I tried networking at home. I love my dog but it just got a little lonely. And working from Whole Foods which is actually a really great solution because they have free electric car charging, and you know healthy food, so I would just go camp out there for like two hours and use the wifi and get some lunch, and get a lot of work done. I tried working from Mathias' office. But then ultimately decided to join a co-working space. Which has been really great and it's about a half hour bike ride from here, which is fantastic because I found that on a lot of days I didn't go outside very much or I'd go outside for like five minutes to walk the dog, and then I was back inside. And even I was working from home today, and it's like 75 degrees outside and breezy and beautiful and I walked outside at 1: 30, and I was like wow I haven't been outside all day. It's amazing outside. So I'd set up camp on the picnic table outside for a little bit. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">41:38</span>
+    <span class="transcript__content">So that's been great just to get me out and get me talking to other people and a little fresh air in my day. And I find when I work from home, I end up starting the laundry and doing the dishes and all sorts of things, and so it helps keep me focused. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">41:59</span>
+    <span class="transcript__content">Even though I'm only home a couple days a week, I quickly started feeling that. Like let me just do this really quick. Or it's a nice day, let's take a nice long walk with the dog. Which is actually nice to do things like that. But if you end up tying into all the errands at home and stuff like that, it kind of fills all your time really quickly. But thankfully since I still have my regular day job, I'm fine with working from home the couple days a week that I work from home. So it's just the limit of what I can take probably, before I would go crazy. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">42:38</span>
+    <span class="transcript__content">Yeah I mean I can relate to that. I've working from home for a few years now. I used to go to the local coffee shop, and I'd camp out there for the afternoon, I didn't really speak to anyone, but just having people around me was nice. But strangely 18 months ago my wife gave up work. So she's unemployed. She's an aspiring writer. She's writing a novel at the minute. And since she's been at home, even though she works on the ground floor, and I work two floors up, so we're in a town house. And I don't leave the house anymore to go to the coffee shop. I feel strange in that I don't want to say to my wife, I'm going to get away from the house when she's there. If that makes sense. So we barely speak to each other, while we're actually working, but I still feel weird leaving the house, if she's there. Does that make sense? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">43:38</span>
+    <span class="transcript__content">Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">43:38</span>
+    <span class="transcript__content">Yeah I can relate to that, yeah. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">43:40</span>
+    <span class="transcript__content">I don't want it to seem like I'm trying to get away from her if that makes sense. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">43:45</span>
+    <span class="transcript__content">Mm-hmm (affirmative).</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">43:45</span>
+    <span class="transcript__content">There's been a couple days when I've gone to the coworking space, on days when he's at home, and we'll be slacking back and forth about something, then wind up miscommunication something and it's like, oh wait this feels like a real company now. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">44:01</span>
+    <span class="transcript__content">Nice. Yeah Beca and I still slack each other. She's upstairs usually painting or in the living room painting, and I'll be ... We make fun all the time, that we're slacking each other at home, and we're just on different floors is all. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">44:16</span>
+    <span class="transcript__content">Yeah we have set a slack team just for the two of us, and well there's probably more bots than human beings in that slack team. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">44:23</span>
+    <span class="transcript__content">Yeah we're big fans of Hey Taco. Which is a little app you can integrate into Slack and you can send each other tacos for appreciation. And we would just send each other tacos all the time. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">44:37</span>
+    <span class="transcript__content">Yeah, so many integrations and things going on. We actually have like 10 channels, between the two of us, and stuff like that. It's kind of silly, but it feels great also to really separate personal and business. So we can put all the business stuff in there, and leave like iMessage and stuff like that for just personal stuff. So it's easy to find a previous discussion we had, and sort of be able to turn off work when it's time to relax, and stuff like that. So-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">45:06</span>
+    <span class="transcript__content">That's cool. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave</span>
+    <span class="transcript__time">45:09</span>
+    <span class="transcript__content">All right then. Thank you very much for going on talking, it's been great. I did look at the product, and I'm very impressed. And it's even more impressive that you've done it all yourselves. So yeah, thank you very much. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">45:22</span>
+    <span class="transcript__content">Yeah, thank you for joining us. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Mathias</span>
+    <span class="transcript__time">45:23</span>
+    <span class="transcript__content">Thank you for having us. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Michele</span>
+    <span class="transcript__time">45:25</span>
+    <span class="transcript__content">Thanks for having us. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">45:25</span>
+    <span class="transcript__content">Cool. All right. Well we'll call this one a wrap. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau</span>
+    <span class="transcript__time">45:43</span>
+    <span class="transcript__content">You've been listening to That Podcast with Beau and Dave. You can find Beau on Twitter and Google+ at Beau Simonson, and Dave on Twitter at davedevelopment. You can subscribe to this podcast and review it on iTunes. If you'd like to review us, but don't feel like we earned five stars, email us so that we can talk about your issues. You can also subscribe to this podcast with RSS from our website thatpodcast.io From our website, you can also sign up for our newsletter to get super secret extra content from Beau and Dave sent directly to your inbox. Like the music? You can thank Grillo for allowing us to sample the track Das Kingdom, for our intro and outro. You can find Das Kingdom and other tracks by Grillo at grillo.bandcamp.com. Spelled G-R-I-L-L-O.</span>
+</p>
+{% endblock %}
