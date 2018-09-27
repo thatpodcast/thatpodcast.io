@@ -1,0 +1,35 @@
+---
+use: ["episodes"]
+permalink: export.json
+
+---
+{
+    "episodes": {    
+{% for episode in data.episodes %}
+        "{{ episode.guid }}": {
+            "number": "{{ episode.number }}",
+            "guid": "{{ episode.guid }}",
+            "title": "{{ episode.title }}",
+            "subtitle": "{{ episode.subtitle }}",
+            "date": "{{ episode.date }}",
+            "media_url": "{{ episode.meta.rss_url|replace({'http://': 'https://'}) }}",
+            "duration": "{{ episode.meta.duration }}",
+            "file_size": "{{ episode.file_size }}",
+            "path": "{{ episode.url }}",
+            "background_image": {
+                "url": "{{ site.url }}{{ episode.bg_image }}",
+                "width": "{{ episode.bg_image_width }}",
+                "height": "{{ episode.bg_image_height }}",
+                "credit": {
+                    "by": "{{ episode.image_credit.by }}",
+                    "url": "{{ episode.image_credit.url }}",
+                    "description": "{{ episode.image_credit.description }}"
+                }
+            },
+            "content": {{ episode.blocks.content|json_encode|raw }},
+            "itunes_summary": {{ episode.blocks.itunes_summary|json_encode|raw }},
+            "transcript": {{ episode.blocks.transcript|json_encode|raw }}
+        }{% if not loop.last %},{% endif %}
+{% endfor %}
+    }
+}
