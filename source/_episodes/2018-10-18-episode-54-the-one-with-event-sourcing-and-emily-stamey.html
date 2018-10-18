@@ -1,0 +1,684 @@
+---
+title: The One with Event Sourcing and Emily Stamey
+subtitle: 
+number: 54
+date: Thu, 18 Oct 2018 08:38:00 +0000
+guid: 3d6715d1-43bb-4194-adb4-d09ecf6b0c22
+embed_url: http://audio.simplecast.com/c042db5b.mp3
+rss_url: http://audio.simplecast.com/c042db5b.mp3
+download_url: http://audio.simplecast.com/c042db5b.mp3
+duration: 00:43:16
+file_size: 20853008
+explicit: no
+bg_image: /assets/css/theatre-desk.jpg
+bg_image_width: 1280
+bg_image_height: 501
+image_credit:
+    url: https://conf2018.phpsrbija.rs/
+    description: Madlenianum Theatre
+    by: PHP Serbia
+
+---
+{% block content %}
+
+{% endblock %}
+{% block itunes_summary %}
+
+{% endblock %}
+{% block transcript %}
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">00:14</span>
+    <span class="transcript__content">Hi, and welcome to another episode of That Podcast. I'm Dave.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">00:18</span>
+    <span class="transcript__content">And I'm Beau.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">00:19</span>
+    <span class="transcript__content">And we have a special guest with us today. We have Emily Stamey. Hi, Emily.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">00:29</span>
+    <span class="transcript__content">Hi.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">00:29</span>
+    <span class="transcript__content">Would you like to tell us just a little bit about yourself? Do a bit of an introduction?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">00:31</span>
+    <span class="transcript__content">Hi. I'm a developer. I work at InQuest, a network security company that has a tool for monitoring network traffic and doing some threat assessment. And I'm predominantly a PHP developer. I work on the front end of that application that displays the results of what threats have been found to the users.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">00:56</span>
+    <span class="transcript__content">Cool. So what is your part of the application, then? 'Cause you're not actually doing the packet inspection or anything like that, are you?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">01:04</span>
+    <span class="transcript__content">No. I am working on the front end, but I am a back end developer. So I'm on the user facing part of the application that, like I said, shows the results of the analysis.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">01:19</span>
+    <span class="transcript__content">Okay. Cool. Nice. I've worked with some people working on some network security boxes, what's the word? When you have a box you just plug in? Just an off the shelf sort of thing.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">01:39</span>
+    <span class="transcript__content">Appliance?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">01:39</span>
+    <span class="transcript__content">Appliance. Yeah, that's the word I was looking for. I've known some people who have worked on that kind of thing in the past. Is it an appliance, or is it a cloud based thing or ...</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">01:48</span>
+    <span class="transcript__content">We do have our own appliance.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">01:48</span>
+    <span class="transcript__content">Is that something you can talk about?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">01:51</span>
+    <span class="transcript__content">There are a lot of layers to it, but the product itself does something that isn't readily available on the market. It does some deep file inspection of what is being passed across the network. And not being from a security background, it's a little bit hard for me to explain it well. Sorry.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">02:15</span>
+    <span class="transcript__content">What kind of customers do you have? Who looks for the appliance that you're selling or the software?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">02:22</span>
+    <span class="transcript__content">It's a lot of government contracts.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">02:25</span>
+    <span class="transcript__content">Okay. Cool. So it's mostly large enterprises and things like that.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">02:29</span>
+    <span class="transcript__content">There are some smaller entities using it, but I guess the usual ... I'm kind of terrible at this. But I guess there's usually someone dedicated to monitoring this traffic.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">02:49</span>
+    <span class="transcript__content">So the user interface you're describing that you work on, that's going to be used by end users, not by professionals that work with you? Does that make sense? So the interface is what your customers see rather than a reporting for people who work for you to then act on?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">03:12</span>
+    <span class="transcript__content">Right. The end user is at our customer's office. And we actually don't see what they see in most cases. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">03:19</span>
+    <span class="transcript__content">Yeah. So it's directly for them to use. I wasn't too sure about that, so that's cool. And that's all in PHP? Do you use any fancy JavaScript stuff on the front end? I'm very far behind in the whole JavaScript world. Beau is a bit up to date on that kind of thing. So I say fancy, it could be anything. Anything more than Jquery is fancy to me.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">03:49</span>
+    <span class="transcript__content">Yeah, we actually got a comment on Twitter as far as Dave saying I'm up to speed. I mentioned something about this whole CSS inside JavaScript being a fad, and this person just jumped on that just to say something snotty along the lines of "Yeah, that was like 2016. It's not a fad anymore. It's just the way things are done." And I was like "Ooh. Okay."</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">04:21</span>
+    <span class="transcript__content">Yeah. So the user interface itself, the part that I work on, is PHP, API, and Angular. And that's really just for, like I said, displaying the information of what we found. The engine itself that does the scanning and analysis is built using Python and a little bit of Go. And there are some older Perl packages that are being phased out. Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">04:59</span>
+    <span class="transcript__content">I've looked at a little bit to find some information, but no.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">05:05</span>
+    <span class="transcript__content">Good ol' Perl. I don't know if we've ever talked about that, Dave, but my first language of choice was actually Perl.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">05:13</span>
+    <span class="transcript__content">Yeah?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">05:14</span>
+    <span class="transcript__content">Me too.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">05:14</span>
+    <span class="transcript__content">Back in the late 90s. I spent a lot of time in Perl before I jumped on PHP.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">05:22</span>
+    <span class="transcript__content">I've shipped quite a bit of Perl. At some point in the past, the particular spreadsheet library that was available for Perl was in cpan was far superior than anything else I could find at least on a Linux ecosystem to the point where the spreadsheets I was generating did include a lot of formula and complicated stuff. So I had to use Perl for that basically just because it was the only library of all the available open source spreadsheet ... And I say spreadsheet, Excel spreadsheet. Had to be Excel generating stuff. Perl was the one. And yeah, it was messy, but it worked. It's probably still working now 10, 15 years later. I hope anyway.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">06:17</span>
+    <span class="transcript__content">Yeah. The language has changed so much. At least in my experience from when I was writing it. I don't think it's Perl 6 yet. I think they had a PHP 6 sort of thing going on for a little while. I think it's still the same version of Perl. Maybe another minor version or two or something like that. But I can't read it. It looks so different now than I remember or anything that I'm used to. It's just bizarre.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">06:46</span>
+    <span class="transcript__content">The abbreviating of variables and things like that that I used to love, and I thought it was so weird as we started stretching them out in PHP and making them more detailed and descriptive. Now looking back at them in Perl, it's hard. It's hard to track.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">07:08</span>
+    <span class="transcript__content">Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">07:11</span>
+    <span class="transcript__content">Yeah, it's funny. The only thing I can think of that I took a lot from Perl is the regular expressions. That's the only thing that still stays with me today. I occasionally think of the Perl naming convention that I don't really follow anymore. I don't know if I was taught, but I read somewhere that in Perl things like arrays should be named singular rather than a plural, because you're then gonna say ... If you then do referencing, the array would add an index. Then it would be singular in the index. So thing one rather than things one, if that makes sense. But yeah. I rarely stick to it. But I remember that for some reason. That stays with me from Perl.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">08:01</span>
+    <span class="transcript__content">Cool. So you're relatively new at this job, right Emily?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">08:07</span>
+    <span class="transcript__content">Yeah. Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">08:11</span>
+    <span class="transcript__content">I've known you for a while. I think I met you at php[tek] three or four years ago maybe.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">08:16</span>
+    <span class="transcript__content">At least.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">08:16</span>
+    <span class="transcript__content">Something along those lines. And I wanna say it was at one of the open spaces on domain driven design. I think you were there. A couple of other people that I've met were there as well. So I know you've been doing a lot of DDD stuff. You've been doing a lot at least over the last couple years. Doing Event Sourcing and things like that. You're giving a number of talks on these subjects too. I've been able to sit in on a couple of them, which is pretty awesome. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">08:48</span>
+    <span class="transcript__content">So how far did you actually get with your Event Sourcing and CQRS stuff at your previous place? Did you actually get a fully realized application that was running in production?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">09:01</span>
+    <span class="transcript__content">Yes. But I should say that the only fully DDD application that I worked on was that first one, because we went all in and did all the things. So we bit off DDD, CQRS, and Event Sourcing all at once. I hadn't really finished the Blue Book, and I had skimmed parts of the Red Book as well. My teammates, Dustin and Mitch, I guess Dustin read most of it and had been doing a fair amount of research before we launched that project, but we bit off quite a bit of work. And we also had the really tight deadlines that produced quality code. But we did manage to produce something that worked really well and did its job really well. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">09:51</span>
+    <span class="transcript__content">It was a scholarships application that managed students that were applying for scholarships in the College of Engineering, and they were being given scholarships that were awarded by different departments of the College of Engineering. So they could look at the students and see their qualifications. They could look at the scholarships and see what was required of a candidate to receive that scholarship. And then handling all of the budgets. All of that was fully Event Sourced. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">10:27</span>
+    <span class="transcript__content">Cool. It sounds like it was a domain well suited for these complicated tasks, even if it was on a tight schedule.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">10:34</span>
+    <span class="transcript__content">Yeah. It was definitely needed for this project, because the existing application that we were trying to replace in parts had been really neglected. It hadn't been getting regular maintenance to bring it up to par. There were a few things that were broken, but the code was really risky to make changes to. So being able to write some new code off to the side and hook into the [inaudible 00:11:02] framework was really helpful, so that if something went wrong, and we had only replaced-</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">11:08</span>
+    <span class="transcript__content">I don't think I'd realize ...</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">11:10</span>
+    <span class="transcript__content">You didn't realize it was CodeIgniter?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">11:13</span>
+    <span class="transcript__content">Yeah, that's ... Wow. Have you used CodeIgniter before, Dave?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">11:20</span>
+    <span class="transcript__content">I used CodeIgniter once. And interesting story, I made a URL shortener, because that was a thing to do with [inaudible 00:11:32] frameworks. And it was shortly after the .in top level domain extension had been released, so I believe that's for India. The in. So I pinched a domain name lnkd.in. Which was great for a little while, but I then did get some nasty emails and threats of legal action. And I managed to negotiate a year's premium access to LinkedIn as part of me releasing the domain to them. Especially because [inaudible 00:12:11] I think. And I believe they did actually use it for short URLs at LinkedIn for some time. I'm sure not my code, but the actual domain. And the domain does redirect to LinkedIn itself now. So that's my one bit of CodeIgniter experience.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">12:32</span>
+    <span class="transcript__content">Nice. Yeah, I remember finding CodeIgniter, and I actually liked it a lot back then. It was the first framework that I used that wasn't my own stuff. But yeah. I quickly started doing the Symphony stuff, and then CodeIgniter seemed wrong. I don't know how I'd actually look at it if I found it right now. It might not be so bad if it really just does the job.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">13:02</span>
+    <span class="transcript__content">And this application wasn't bad because of CodeIgniter by any stretch. It was really just that a lot of our applications had been around for 10 or more years. And they were built by students who weren't always as far into their computer science degrees as they could have been when they got started. So they were learning on the job. And so the applications reflected that. And there were also waves of developers who would touch those applications, so you'd get these watermarks of which developer had been in this part of the application.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">13:44</span>
+    <span class="transcript__content">Nice.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">13:44</span>
+    <span class="transcript__content">Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">13:47</span>
+    <span class="transcript__content">So you were at PHP Serbia recently. You and I were two of three U.S. people. Were there more U.S. people than us? </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">13:57</span>
+    <span class="transcript__content">It was the two of us and Eryn'O'Neal.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">14:00</span>
+    <span class="transcript__content">Yeah. And did you give an Event Sourcing talk there? Or what was your talk there?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">14:07</span>
+    <span class="transcript__content">I did. It's called "Hey, Boss. Event Sourcing Could Fix That."</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">14:13</span>
+    <span class="transcript__content">Nice. That sounds like a great topic.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">14:16</span>
+    <span class="transcript__content">Well, I've been trying to find ways to lower the barrier to entry that I felt like I was dealing with when I was first learning Event Sourcing. There are a lot of resources out there that you can read that can give you the details. But sometimes you just need that higher level view of how do these pieces fit together? And why doesn't this really make sense? And you can beat yourself up because it doesn't seem to make a whole lot of sense. So trying to find a way of explaining the different design patterns and what they're doing and how the pieces fit together. So when you go find that fire hose of all the information you need, maybe you've got a little bit of an understanding of what each of those pieces are. And I hope that's helpful.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">15:08</span>
+    <span class="transcript__content">Yeah. Mm-hmm (affirmative). I think it is. I think that's probably the next wave of Event Sourcing, CQRS, DDD stuff is trying to make it easier for people to use it, people to understand it, people to know where not to use it. That sort of thing. So I think that anybody contributing to that is doing something really good for the community. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">15:33</span>
+    <span class="transcript__content">So are you trying to sell your current boss on Event Sourcing?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">15:39</span>
+    <span class="transcript__content">Yeah. And for the most part we've been able to sell it. We were starting to go down a rabbit hole of biting off a little too much event sourcing all at once for what we had time to do in this release cycle. But I think we've got a useful, I guess, dipping your toe into Event Sourcing. And it's not really very traditional, but this organization will have a lot more traffic than what I've been used to in the past. A lot of my applications just haven't had a gigantic Event Store. And so this time, we could very well have a large Event Store. Or we have one that's very large. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">16:31</span>
+    <span class="transcript__content">Yeah, I guess if it's relating to, even if it's not packet level events, if it's transmission level events of a set of data. A lot of data goes through the network these days. So have you done any estimates? How many hundreds of thousands of events per day, per hour, per week?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">16:54</span>
+    <span class="transcript__content">Well, the thing that we're looking at Event Sourcing first is where we would look at these sessions. We detect a session across the network, and that session has files. And those files get scored. And based on the files that are in the session, the session gets a score. But then that session can be looked at again. You can rescore the file or rescore the session. So there's an event for each of those types of things. And I was looking at our ... We have a test server where we simulate some traffic. And in just a little over a month, there were three million sessions. More than three million sessions. And that was just the sessions. So thinking about that many events and then some multiplier to figure out the average, it was definitely looking big. And it's definitely going to be big I mean. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">17:56</span>
+    <span class="transcript__content">Mm-hmm (affirmative). That's cool. And so the scoring. Would that be similar to a projection, or is that something ... Will the scores themselves be events, or is that more an interpretation of the event stream?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">18:09</span>
+    <span class="transcript__content">Well because we have this scanning happening in another part of the application, and we already have the code written to handle this, the way that we're going to approach it at first is to write the events to the Event Store from the engine that's doing this analysis when it detects a session, when it scores a file. And throw those events into the Event Store. And then from my side of things, we're going to try to do things a little bit lazy. And we're going to only grab the events that are relevant to that session so we can show the history of what has happened with that session. So instead of building a projection that analyzes all of the events, we're going to analyze only the events for that session. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">19:09</span>
+    <span class="transcript__content">Okay.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">19:10</span>
+    <span class="transcript__content">Which is hard, because that's not really the way I've learned to do things. And it feels really wrong at first. And I read a blog post about lazy Event Sourcing, and it basically described this type of strategy. But I think given the load that we have, and that we're going to be putting it in place and see how it goes, this has a better chance of being successful and not being completely killed. Because we're on an older version of MySQL right now. We're looking at some alternatives, like the Event Store. Yeah. It's just called the Event Store. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">20:03</span>
+    <span class="transcript__content">Looking at using a tool like that, but for right now, we just want to see how we can make it work. And we'll be able to evaluate it using the tools that we have already and go from there.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">20:19</span>
+    <span class="transcript__content">So in this particular instance, are there any DDD concepts in the Event Sourcing that you're doing now? Are all of the events tied around an ID that represents the session? Is the session an aggregate root in that case or ... What kind of things are you doing there?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">20:39</span>
+    <span class="transcript__content">Yeah. We're gonna use the session idea for these events. And I'm looking at the Event Store in this case as just being specific to that session domain. But identifying the session ID at the top level of the event so that we can easily pull those. And then as we're going forward, when we're able to upgrade MySQL, for example, into something where we can look in the payload and pull out that session ID without having it separated out at the top level of the Event Store. Or like I said, using the Event Store itself where you can set up a stream ID, and we could theoretically set up a different stream for each of the sessions to build the projection for each of those streams. We would have that option.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">21:36</span>
+    <span class="transcript__content">So is the session like a ... Is it a domain concept that the end user for the UI that you're building is aware of? Do they get to see the 100,000 sessions that went through the system this morning? Do they work at that level when they're looking at the UI?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">21:59</span>
+    <span class="transcript__content">For the most part. There's some access that gets determined of whether or not they're able to see what they're allowed to see depending on their user group and things like that, but ...</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">22:11</span>
+    <span class="transcript__content">Okay.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">22:13</span>
+    <span class="transcript__content">If they're allowed that session, then they're allowed to see the history of the scoring.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">22:18</span>
+    <span class="transcript__content">Okay. So they can actually be presented with a session that they have access to? And they can see all the files that were a part of that session and that sort of thing?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">22:26</span>
+    <span class="transcript__content">Yeah.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">22:27</span>
+    <span class="transcript__content">That sounds like an interesting UI model as well. Are you doing any of the UX stuff or is somebody ...</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">22:36</span>
+    <span class="transcript__content">No. We have different people who are working on that part of the problem. There's quite a lot to be done on the API itself. We've been adding a lot of features and improving a lot of other features as we get more feedback from customers. And we find where some of the pain points are.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">23:03</span>
+    <span class="transcript__content">So in terms of these sessions, do you handle the rights for that through the API? So that do you write? Does the software that's scanning and analyzing, does that send things to you in a format that you store in the Event Store? Is that software writing straight to the Event Store for you, and you're just projecting from it?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">23:24</span>
+    <span class="transcript__content">For right now, that software that's doing the analysis is going to write to the Event Store, and we will be consuming those events and building from there. We were looking at doing it more in that other software, but the tooling in Python was really limited. There are a lot of examples of how you could do it, but that does end up being where a lot of the friction is. But it's really tricky to find the tooling to support what you wanna do. And I found it really hard to do that in Python and then go, because there were a lot of not fully formed projects. And the ones in the PHP space are still trying to work out some kinks. And several of them are still labeled as "Do not use this in production." So that can be tricky.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">24:25</span>
+    <span class="transcript__content">Yeah. So I'm assuming apart the [inaudible 00:24:30] of the enterprise platform. So JtoE and DM and .net, and PHP of course, I've not really looked too much at any kind of event source in CQRS libraries that are out there for the languages. I've definitely not to Python. I have looked at one for Ruby, but again, it's the only I've seen I think. So I really don't know the state of that kind of thing in Python, Ruby, even JavaScript to an extent. I know JavaScript has similar things. I don't know much about it, but I know redux and things like that are based on these kind of theories even if they've given it a different name. But yeah. I haven't really looked at CQRS and Event Sourcing libraries for the languages that much. So you never know. PHP might actually be slightly ahead of the curve there.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">25:25</span>
+    <span class="transcript__content">That would be pretty interesting if that turned out to be the case. I haven't looked a lot either. I know that when I talked with Emily once, she mentioned looking for some Go libraries.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">25:34</span>
+    <span class="transcript__content">Yeah. The Go ones seemed a lot more like an example of this is how it would work, and the Event Store itself was a RabbitMQ.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">25:51</span>
+    <span class="transcript__content">I didn't understand the problem with that at first until you talked about it a little bit more. I'm like "Well, RabbitMQ, that's a great way to distribute domain messages." I didn't think that would be a problem necessarily.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">26:05</span>
+    <span class="transcript__content">Yeah. Until you start to think about that it will pick off whichever one it feels like. And if that Event Store is supposed to maintain your history, and the order in which the Event Store produced is always important and always significant, and you will always play them in the order that they came in, then how can you put them in a queue?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">26:31</span>
+    <span class="transcript__content">Yeah. It wasn't until I realized you were saying that that was the Event Store was RabbitMQ ... Have you heard of anything like that, Dave?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">26:42</span>
+    <span class="transcript__content">No. I've had RabbitMQ as used as a [inaudible 00:26:46] but not the actual store. That's not what it's made for, is it?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">26:51</span>
+    <span class="transcript__content">So yeah. It might be interesting to look at those other languages at some point and see what that ecosystem looks like. I have Go on my list of languages I really, really, really want to learn. Mostly because I haven't learned any new languages lately. And that seems like one that would be right up with what I would like to do. Have you done much with Go, Dave or Emily?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">27:21</span>
+    <span class="transcript__content">Yeah, I mean I've put together a few bits and bows. I still my domain drop catching. So as Go is my target, it's been a bit more like a systems language. I wondered how well it would perform against my current PHP implementation. I've written the versions of the software in Ruby and Python and PHP. No Perl yet. And Go. And I found that because PHP, well, once it's up and running, because this is a long running thing, the biggest problem for the drop catching software that I know of is actually sending off the registration request, because it needs to be encrypted through TLS. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">28:13</span>
+    <span class="transcript__content">So that's a bit of a ghost that needs to be fast but is always slow. Because that's really the only thing that needs to be really quick, I found that PHP links out well with the Open SSL library whatever it is that it didn't make any difference which language I used. So I didn't really proceed. But like I say, I wrote a version of that software in Go. I can't remember any of it to be quite honest. I have some experience, but not really a lot.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">28:50</span>
+    <span class="transcript__content">Mm-hmm (affirmative). How about you, Emily? Have you done much or anything with Go really?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">28:55</span>
+    <span class="transcript__content">I looked at it when I thought very briefly that I was going to have to implement something during this release and had a small panic attack. But it seemed fine, but going into it and expecting to be able to use someone else's library seemed like that might not be as easy. It seemed like the libraries were mostly supported by one person, and a lot of them were maybe just playing around with an implementation and exploring it but not going the route of making it useful in a production environment.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">29:39</span>
+    <span class="transcript__content">It's hard though. I find that whichever platform I go to, and I don't know if it's just because I'm not looking in the right places, because the platforms you're deeply familiar with, even if you mention something that I had a problem that I didn't know of any libraries available in PHP to solve it, there's a good chance I'd know of another PHP library or frameworks that does do something similar, and I'd be able to go look and see what they did, which would lead me down the path to a project or a library that's well maintained, has some good documentation. Whereas when I go to other platforms, I just don't even know where to start. There's no ... </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">30:25</span>
+    <span class="transcript__content">And you don't even have the network either. I might reach out to Beau, and he might know in our own ecosystems. Whereas the other ones, without that network of people to ask, you can shout from the rooftops on Twitter, but still it's very different to actually knowing a few people in the community who you can ask. For we all know, there could be an absolutely top notch Event Sourcing library in Python. Just unfortunately the Googling just didn't work for you. Something along those lines.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">30:55</span>
+    <span class="transcript__content">That's very true. Yeah. Because even PHP packages a lot of times will get members of Triangle PHP, my local user group, will get them to share a project they're working on or something they're trying. And if we start asking them "Well, what library did you use for this thing?" Or "What library did you use for the other," it's always something new. And then other members will pipe in with different libraries that they're using for a similar problem. And so you're always learning about new libraries. And they're really good libraries.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">31:31</span>
+    <span class="transcript__content">Yeah. Obviously if you're in a user group, and you're always at conferences, you're really well plugged into that community, and you get to hear about these things. And like I say, on the other platforms I missed that. It's probably what keeps me in PHP, because I know where to look for most of the stuff.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">31:54</span>
+    <span class="transcript__content">Yeah. I feel the same.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">31:57</span>
+    <span class="transcript__content">So quick aside on the thing that Dave mentioned about things that are required but are always slow. I recently was tipped off to something with the whole profiling scene with the jump to PHP 7. Maybe you both have seen this already. But the PHP 7 is so much faster, that it's very noticeable now when you profile it. The profiling part adds slowness. It adds more perceived slowness than there was before, because the profiling part still takes a constant amount of time. Because it was always in C. It was already compiled. And it was already for the most part as fast as it was going to be. Maybe we can always make it faster or whatever, but when you took a request before that took a hundred milliseconds for PHP time, and profiling added 50 milliseconds, it's 150 milliseconds. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">33:06</span>
+    <span class="transcript__content">So it didn't seem like it added that much. But now that PHP 7 might be able to run that 100 milliseconds worth of code in 20 milliseconds, suddenly now that constant time of profiling of 50 milliseconds is more than the actual application was gonna execute before. There was a whole article, I think it was an article on Tideways talking about it. But I hadn't' even really realized that, because I was late to the PHP 7 game. So I didn't really notice these sorts of problems. But apparently it's something that people have looked at. Did either of you run into that, or have you seen any discussions about that?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">33:44</span>
+    <span class="transcript__content">I haven't specifically. I don't do that much profiling. And if I do, I have a classical. I call it the mini profiler, and it basically has static methods with start, stop, and it can dump the information out. And I can quickly litter my code with those to start with. And then only after that has not revealed anything will I leap to something like [inaudible 00:34:13]. So I'm not using it often enough to have noticed. I do remember the days when XD Book was the way we used to profile, and K Cash Grand and things like that. And then XD Book obviously had massive overhead to most requested. So I do know of it then, because it did make it hard. You just didn't really know how relative this was from a request without XD [inaudible 00:34:38] run into the profiled version. So yeah. How about you Emily?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">34:44</span>
+    <span class="transcript__content">No. I haven't really been playing around with that.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">34:49</span>
+    <span class="transcript__content">Yeah. I guess it's something that even goes beyond just profiling. If you're making API requests that always took 50 milliseconds, and they still take 50 milliseconds, your API time might go down, but now there's a larger perceived percentage of time spent doing things that take known resource limits. Anyway. It was something that I hadn't really considered or expected, and I wondered if it was something that other people had been talking about outside of profiling even on these great benefits of PHP going faster, but now certain things seem slower. Even though they've actually stayed the same amount of time. Like SQL response times. That sort of thing.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">35:38</span>
+    <span class="transcript__content">Just that whole idea that there's this constant overhead, that other things might switch, or other things might vary, but those bits that are always gonna take a certain amount of time.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">35:48</span>
+    <span class="transcript__content">It's like going back to the domain drop catching, that software, it spends most of its time throttling. It spends all its time querying to see if a domain is available yet. And you're only allowed to make so many queries per second, minute, hour. So it doesn't matter which language you use. Nearly all of them can sleep for a certain number of microseconds quite effectively. And that's what it spends most of its time doing. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">36:22</span>
+    <span class="transcript__content">Yeah. Cool. So did you have anything else you wanted to talk about, Emily? Any other fun Event Sourcing, DDD related stuff?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">36:31</span>
+    <span class="transcript__content">Why don't you tell us about Women Who Code, you're involved with?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">36:36</span>
+    <span class="transcript__content">I am. I am a director of a local network called Women Who Code Raleigh-Durham. And we've been building up our network here. We've been here for about a year. And trying to help more women developers connect with each other, because a lot of times we end up being the only females on our team. So helping build up that network. And we've been doing a lot of different events from brunch to having guest speakers talk about professional development, and doing some maker events where we play around with Arduino or sewable circuits. There have just been a lot of things. And it's been a really good group, and we're growing pretty quickly. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">37:27</span>
+    <span class="transcript__content">Okay. So is it sort of a worldwide movement or organization and you run, did you say a chapter? Is that what you said? You run the local chapter. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">37:38</span>
+    <span class="transcript__content">Yeah. Ours is a network, and then they're all over the globe. And it's an organization to support women in engineering, predominantly software engineering. Help them build up their professional networks.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">37:57</span>
+    <span class="transcript__content">Oh, that's cool. So it actually expands over the engineering disciplines as well.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">38:02</span>
+    <span class="transcript__content">It's mostly focused at software engineering. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">38:05</span>
+    <span class="transcript__content">Okay. I was talking to a friend who I play hockey with the other day, and I've only been playing hockey with him for a while, and I didn't know what he did for a living, and he's an automation engineer. And he then asked me what I did, and I said "Oh, I'm a software engineer." He said "Oh, cool." And we both literally at the same time said "Not a real engineer, of course." It always makes me laugh, because when I was university, I still did software engineering. That was the name of the course I did, the degree I got. But they had a seminar type thing where one of the chaps from the engineering faculty, I think it was a mechanical engineer, had a debate, battle with one of the lecturers from the software engineering faculty or the computer science faculty about if computer science was indeed engineering or not. And he actually held the ... I don't know if you have a title for engineers over there in the States, but in Europe there's a title called Eur Ing, and in European engineer. And it's a proper title. Just like a doctor or professor. He was a Eur Ing. Brian Thompson. So basically I guess it's like being a chartered engineer. And I could have been a chartered engineer I think, because of that degree, my work. I do find it interesting.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">39:41</span>
+    <span class="transcript__content">In the states, there's a professional engineering license, and so once they graduate with their engineering degree, they usually have a sponsor who's already a professional engineer who will help them in their first few years and meet with them a little bit about what projects they're working on, what they're learning and things like that. A little bit of a mentorship thing. And then they take another exam after they've been in the industry for a few years. And when they complete that exam, they can have the professional engineer PE after their name.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">40:20</span>
+    <span class="transcript__content">Right. Okay. So would that apply to software engineers as well or just other types of engineers?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">40:27</span>
+    <span class="transcript__content">No. No. Because most of the states here don't really recognize it in the same way. And I have the same debates in college. And I have them at home because my husband is a mechanical engineer.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">40:41</span>
+    <span class="transcript__content">I just wondered. [inaudible 00:40:44] Remind me. So in the UK at least, you can be a chartered engineer, so CN is the ... And I know I could apply for that if I wished because of my degree at university was accredited by them as being a degree course worthy of the charter. And I'd have to go through a similar kind of process where I'd need a sponsor. I'd need to evidence my however many years of industry experience and stuff like that, but yeah. Just wondered.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">41:14</span>
+    <span class="transcript__content">Yeah. I think it would be cool if we could have a similar structure. I think it would be really helpful.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">41:23</span>
+    <span class="transcript__content">Yeah. I still call myself a software engineer, because I don't know how much engineering I truly do these days, But I feel like that's what I did at university, and I like it as a title.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">41:37</span>
+    <span class="transcript__content">Well, if you call yourself a developer, then you can be confused with someone who is developing property.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">41:43</span>
+    <span class="transcript__content">Properties. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">41:45</span>
+    <span class="transcript__content">It's all the same, isn't it?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">41:47</span>
+    <span class="transcript__content">It can always get confused with something else.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">41:50</span>
+    <span class="transcript__content">Yeah. For real.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">41:52</span>
+    <span class="transcript__content">Okay. So how are we doing for time, Beau?</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">41:56</span>
+    <span class="transcript__content">I think we're probably getting close to the end here.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">41:59</span>
+    <span class="transcript__content">Okay. So thank you for coming on, Emily. It's been really nice to meet you and have you on the show.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">42:08</span>
+    <span class="transcript__content">Yes. Yes. Thank you for joining.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">42:13</span>
+    <span class="transcript__content">It's been great to meet you too. Thank you very much for having me here.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Dave Marshall</span>
+    <span class="transcript__time">42:13</span>
+    <span class="transcript__content">And we'll put links to your website or to your bio and everything on our Twitter and put everything in the show notes, and if anyone wants to know what kind of other things Emily's been up to, you can follow those links.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Emily Stamey</span>
+    <span class="transcript__time">42:25</span>
+    <span class="transcript__content">Okay.</span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau Simensen</span>
+    <span class="transcript__time">42:26</span>
+    <span class="transcript__content">Sounds good. I think we'll call this one a wrap. </span>
+</p>
+<p class="transcript">
+    <span class="transcript__speaker">Beau recording</span>
+    <span class="transcript__time">42:43</span>
+    <span class="transcript__content">You've been listening to That Podcast with Beau and Dave. You can find Beau on Twitter and Google Plus @BeauSimensen and Dave on Twitter @davedevelopment. You can subscribe to this podcast and review it on iTunes. If you'd like to review us but don't feel like we've earned five stars, email us so we can talk about your issues. You can also subscribe to this podcast with RSS from our website, thatpodcast.io. From our website, you can also sign up for our newsletter to get super secret extra content from Beau and Dave sent directly to your inbox. Like the music? You can think Grillo for allowing us to sample the track "Dust Kingdom" for our intro and outro. You can find "Dust Kingdom" and other tracks by Grillo at grillo.bandcamp.com. Spelled G R I L L O. </span>
+</p>
+{% endblock %}
